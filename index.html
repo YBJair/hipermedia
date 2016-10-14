@@ -7,23 +7,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet">
-  <link rel="stylesheet" href="css/estilo.css"/> 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/estilo.css" media="screen"/>
 </head>
 <body>
-  <header>
+  <header class="text">
     <a href="index.html"><h1><img src="images/logo.jpg" alt="logo" /></h1></a>
 
     <form action="indexConectado.html">
-      <p><label for="user">Usuario: </label><input class="text" id="user" name="User" type="text"/>
-        <label for="pass">Contraseña: </label><input id="pass" name="Password" type="password"/>
+      <p><label for="user">Usuario: </label><input  id="user" name="User" type="text" placeholder="Usuario"/>
+        <label for="pass">Contraseña: </label><input id="pass"  name="Password" type="password" placeholder="Contraseña"/>
         <button class="boton" type="submit">Entrar</button></p>
       </form>
 
       <p><a href="registro.html">Registro</a></p>
       <form action="buscar.html"><p>
-        <label for="search">Buscar: </label><input id="search" name="Busqueda" type="search" autofocus/>
+        <label for="search">Buscar: </label><input id="search"  placeholder="Buscar" name="Busqueda" type="search" autofocus/>
         <button type="submit"> <i class="material-icons">search</i></button>
       </p></form>
       <hr>

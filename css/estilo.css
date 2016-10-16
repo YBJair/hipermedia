@@ -1,3 +1,5 @@
+/* Colores de la pagina jade #28B78D azul marino #243743 gris #8A949B blanco #FAFAFA*/
+
 body{
     background-image: url("../images/background.png");
 }
@@ -8,6 +10,33 @@ label{
 a{
   color: #FAFAFA;
 }
+
+/*Formato del main*/
+main{
+  position: relative;
+  background-color: #8A949B;
+  width: 60%;
+  left: 20%;
+  margin-top: 10%;
+  padding: 1%;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 0px solid #000000;
+}
+
+/*Formato articulo*/
+
+article{
+  display: inline-block;
+  position: relative;
+  margin: 0.5%;
+  border-radius: 10px 10px 10px 10px;
+
+ 
+}
+
+/*Campos de texto en formularios */
 .text input{
   display: inline-block;
   -webkit-box-sizing: border-box;
@@ -39,7 +68,7 @@ a{
   transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
 }
 
-.text:hover input{
+.text input:hover{
   color: rgba(181,181,181,1);
   background: rgba(0,0,0,0.4);
   -webkit-transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
@@ -48,7 +77,7 @@ a{
   transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
 }
 
-.text:focus input {
+.text input:focus {
   width: 213px;
   cursor: default;
   padding: -13px 20px 0;
@@ -58,6 +87,8 @@ a{
   -o-transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
   transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
 }
+
+/*Boton estandar*/
 .boton {
   display: inline-block;
   -webkit-box-sizing: content-box;

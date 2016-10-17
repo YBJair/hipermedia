@@ -11,37 +11,41 @@
   <header class="text">
     <a href="index.html"><img src="images/logo.jpg" alt="logo" /></a>
 
-    <form action="indexConectado.html">
-      <p><label for="user">Usuario: </label><input  id="user" name="User" type="text" placeholder="Usuario"/>
-        <label for="pass">Contraseña: </label><input id="pass"  name="Password" type="password" placeholder="Contraseña"/>
-        <button class="boton" type="submit">Entrar</button></p>
-      </form>
+    <form action="indexConectado.html" method="POST">
+      <p>
+        <label for="user">Usuario: </label><input id="user" name="User" type="text" placeholder="Usuario"/>
+        <label for="pass">Contraseña: </label><input id="pass" name="Password" type="password" placeholder="Contraseña"/>
+        <input type="submit"/>
+      </p>
+    </form>
 
     <!--p><a href="registro.html">Registro</a></p-->
-    <form action="resultado.html"><p><label for="search">Buscar: </label><input id="search" name="Busqueda" type="text" placeholder="Busqueda"/>
-      <button type="submit"><i class="material-icons">search</i></button>
-      </p></form>
-      <hr>
-    </header>
+    <form action="resultado.html" method="POST">
+      <p><label for="search">Buscar: </label><input id="search" name="Busqueda" type="text" placeholder="Busqueda"/>
+        <button type="submit"><i class="material-icons">search</i></button>
+      </p>
+    </form>
+    <hr>
+  </header>
 
-    <main>
-      <article>
-        <h2>Approves</h2>
-        <figure><a href="imagen.html"><img src="images/approves.gif" alt="meh"  /></a></figure>
-        <p>08/04/1994</p>
-        <p>Spoin</p>
-      </article>
-      <article>
-        <h2>Decorasiao</h2>
-        <figure><a href=""><img src="images/dormitorio.jpg" alt="meh"  /></a></figure>
-        <p>31/02/2054</p>
-        <p>Meh</p>
-      </article>
-    </main>
-    <footer>
-      <p>Jesús Hernández Fernández. Email: jhf6@alu.ua.es</p>
-      <p>Jair Abel Jiménez Bellocchio. Email: jajb2@alu.ua.es</p>
-    </footer>
-  </body>
+  <main>
+    <article>
+      <h2>Approves</h2>
+      <figure><a href="imagen.html"><img src="images/approves.gif" alt="meh"  /></a></figure>
+      <p>08/04/1994</p>
+      <p>Spoin</p>
+    </article>
+    <article>
+      <h2>Decorasiao</h2>
+      <figure><a href=""><img src="images/dormitorio.jpg" alt="meh"  /></a></figure>
+      <p>31/02/2054</p>
+      <p>Meh</p>
+    </article>
+  </main>
+  <footer>
+    <p>Jesús Hernández Fernández. Email: jhf6@alu.ua.es</p>
+    <p>Jair Abel Jiménez Bellocchio. Email: jajb2@alu.ua.es</p>
+  </footer>
+</body>
 
-  </html>
+</html>

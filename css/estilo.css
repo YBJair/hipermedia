@@ -5,6 +5,7 @@ body{
     background-image: url("../images/background.png");
     font-family: arial, sans-serif;
     color: #FAFAFA;
+    margin: 0px;
 }
 /* Contenido de la web*/
 a{
@@ -15,26 +16,51 @@ a{
 /*Formato header*/
 header{
   padding: 10px;
-}
-header img{
-  float: left;
-  margin: 1em;
+  background-color: #243743;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 }
 header label{
   position: absolute;
   left: -10000px;
 }
-
-/*.loginF{
-  float: left;
-}
-*/
-.loginF input{
-  margin: 1em;
+#logo{
+  display: inline-block;
+  margin: 1vh;
 }
 
+header form{
+  margin: 1vh;
+}
 
 
+.search{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 15px;
+}
+.search button{
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px 0 0 5px;
+}
+.loginF{
+  display: inline-block;
+  float: right;
+}
+.loginF *{
+  display: inline-block;
+}
+
+
+
+.formM{
+  padding: 15px;
+}
+.formM label,.formM input,.formM select,.formM button{
+  margin: 10px;
+}
 
 h1.index{
     color: #FAFAFA;
@@ -127,7 +153,7 @@ article img{
 .text input:focus {
   width: 213px;
   cursor: default;
-  padding: -13px 20px 0;
+  padding: 0 20px 0;
   color: rgba(255,255,255,1);
   -webkit-transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
   -moz-transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
@@ -192,8 +218,8 @@ footer{
   border-color: black;
   background-color: #243743;
   height: 5%;
-  color: #FAFAFA;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif, Arial, Helvetica, sans-serif;
   font-size: 1.5vh;
+  margin: 10px;
 }

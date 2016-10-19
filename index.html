@@ -12,24 +12,27 @@
 </head>
 <body>
   <header class="text">
-    <a href="index.html" ><img src="images/logo.jpg" alt="logo" /></a>
+    <a href="index.html" id="logo"><img src="images/logo.jpg" alt="logo" /></a>
 
-    <form action="buscar.html" method="POST">
+    <form action="buscar.html" method="POST" class="search">
 
-      <label for="search">Buscar: </label><input id="search"  placeholder="Buscar" name="Busqueda" type="search" autofocus/>
+      <label for="search">Buscar: </label><input id="search"  placeholder="Busqueda" name="Busqueda" type="search" autofocus/>
       <button type="submit"> <i class="material-icons">search</i></button>
 
     </form>
-    <form action="indexConectado.html" method="POST" class="loginF">
-      <label for="user">Usuario: </label><input  id="user" name="User" type="text" placeholder="Usuario" required/>
-      <label for="pass">Contraseña: </label><input id="pass"  name="Password" type="password" placeholder="Contraseña" required/>
-      <button class="boton" type="submit">Entrar</button>
-    </form>
-    <a class="boton" href="registro.html">Registro</a>
-    <br>
-    <hr>
-  </header>
 
+
+    <div class="loginF">
+      <!--a class="boton" href="" id="butt">Entrar</a-->
+      <form action="indexConectado.html" method="POST" class="">
+        <label for="user">Usuario: </label><input  id="user" name="User" type="text" placeholder="Usuario" required/>
+        <label for="pass">Contraseña: </label><input id="pass"  name="Password" type="password" placeholder="Contraseña" required/>
+        <button class="boton" type="submit">Entrar</button>
+      </form>
+      <a class="boton" href="registro.html">Registro</a>
+    </div>
+  </header>
+  <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
   <main>
     <!-- Resolucion: 250x167-->
     <article><a href="imagen.html"><img src="images/approves.gif" alt="gif"/></a></article>

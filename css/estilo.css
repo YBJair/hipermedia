@@ -2,14 +2,37 @@
 
 body{
     background-image: url("../images/background.png");
-}
-/* Contenido de la web*/
-label{
+    font-family: arial, sans-serif;
     color: #FAFAFA;
 }
+/* Contenido de la web*/
 a{
-  color: #FAFAFA;
+  color: inherit;
+  text-decoration: none;
 }
+
+/*Formato header*/
+header{
+  padding: 10px;
+}
+header img{
+  float: left;
+  margin: 1em;
+}
+header label{
+  position: absolute;
+  left: -10000px;
+}
+
+.loginF{
+  float: left;
+
+}
+.loginF input{
+  margin: 1em;
+}
+
+
 
 /*Formato del main*/
 main{
@@ -33,7 +56,7 @@ article{
   margin: 0.5%;
   border-radius: 10px 10px 10px 10px;
 
- 
+
 }
 
 /*Campos de texto en formularios */
@@ -140,5 +163,5 @@ article{
 
 /* Pie de pagina*/
 footer{
-    color: #FAFAFA
+
 }

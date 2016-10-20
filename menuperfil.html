@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-
-
 <html lang="es">
 
 <head>
@@ -12,20 +9,19 @@
 </head>
 <body>
   <header class="text">
-    <a href="indexConectado.html"><img src="images/logo.jpg" alt="logo" /></a>
+    <a id="logo" href="indexConectado.html"><img src="images/logo.jpg" alt="logo" /></a>
 
-    <a href="menuperfil.html"><img src="images/perfil.jpg" alt="Foto de perfil" /></a>
-    <span id="nombreUsuario">Suk Mike Hok</span>
-    <a href="index.html">Desconectarse</a>
-
-
-    <form action="buscar.html" method="POST">
-      <p>
-        <label for="search">Buscar: </label><input id="search" class="text" name="Busqueda" type="search" placeholder="Busqueda"/>
-        <button type="submit"> <i class="material-icons">search</i></button>
-      </p>
+    <form action="buscarconectado.html" method="POST" class="search">
+      <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
+      <button type="submit"> <i class="material-icons">search</i></button>
     </form>
-    <hr>
+
+    <div class="perfilF">
+      <a href="menuperfil.html"><img src="images/perfil.jpg" alt="Editar perfil" /></a>
+      <span>Suk Mike Hok</span>
+      <a class="boton" href="index.html">Desconectarse</a>
+    </div>
+
   </header>
 
   <main>

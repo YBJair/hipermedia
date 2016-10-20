@@ -8,11 +8,21 @@
 </head>
 <body>
 
-  <header>
-    <a href="indexConectado.html"><img src="images/logo.jpg" alt="logo" /></a>
-    <hr>
-  </header>
+  <header class="text">
+    <a id="logo" href="indexConectado.html"><img src="images/logo.jpg" alt="logo" /></a>
 
+    <form action="buscarconectado.html" method="POST" class="search">
+      <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
+      <button type="submit"> <i class="material-icons">search</i></button>
+    </form>
+
+    <div class="perfilF">
+      <a href="menuperfil.html"><img src="images/perfil.jpg" alt="Editar perfil" /></a>
+      <span>Suk Mike Hok</span>
+      <a class="boton" href="index.html">Desconectarse</a>
+    </div>
+
+  </header>
   <main>
     <p> The request for an album has been accepted. The total cost is 6.66€ </p>
   </main>

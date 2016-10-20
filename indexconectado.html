@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-
-
 <html lang="es">
 
 <head>
@@ -12,28 +9,27 @@
 </head>
 <body>
   <header class="text">
-    <a href="indexConectado.html"><img src="images/logo.jpg" alt="logo" /></a>
+    <a id="logo" href="indexConectado.html"><img src="images/logo.jpg" alt="logo" /></a>
 
-    <a href="menuperfil.html"><img src="images/perfil.jpg" alt="Editar perfil" /></a>
-    <span id="nombreUsuario">Suk Mike Hok</span>
-    <a href="index.html">Desconectarse</a>
-
-
-    <form action="buscar.html" method="POST">
-      <p>
-        <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
-        <button type="submit"> <i class="material-icons">search</i></button>
-      </p>
+    <form action="buscarconectado.html" method="POST" class="search">
+      <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
+      <button type="submit"> <i class="material-icons">search</i></button>
     </form>
-    <hr>
-  </header>
 
+    <div class="perfilF">
+      <a href="menuperfil.html"><img src="images/perfil.jpg" alt="Editar perfil" /></a>
+      <span>Suk Mike Hok</span>
+      <a class="boton" href="index.html">Desconectarse</a>
+    </div>
+
+  </header>
+  <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
   <main>
     <!--<h1>Página Principal</h1>
 
     <h2>Subscripciones</h2>
     <h2>Ultimas subidas</h2>-->
-    <article><a href="imagen.html"><img src="images/approves.gif" alt="meh"  /></a></article>
+    <article><a href="imagenconectado.html"><img src="images/approves.gif" alt="meh"  /></a></article>
     <article><a href=""><img src="images/dormitorio.jpg" alt="okay"/></a></article>
   </main>
 

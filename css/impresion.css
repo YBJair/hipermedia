@@ -1,31 +1,26 @@
-/* Colores de la pagina jade #28B78D azul marino #243743 gris #8A949B blanco #FAFAFA*/
-/* Fuentes font-family: Verdana, Geneva, Tahoma, sans-serif, Arial, Helvetica, sans-serif; */
-
-/*Clases prediseñadas */
-/*Cuados de entrada de texto*/
 .text input{
   display: inline-block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+  /*-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;*/
   box-sizing: border-box;
-  width: 150px;
-  height: 42px;
+  width: 100px;
+  height: 30px;
   cursor: pointer;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 0 20px;
+  padding: 0 15px;
   overflow: hidden;
   border: none;
   /*-webkit-border-radius: 21px;*/
-  border-radius: 21px;
+  border-radius: 14px;
   font: normal 20px/normal "Antic", Helvetica, sans-serif;
   color: rgba(140,140,140,1);
   text-decoration: normal;
   /*-o-text-overflow: ellipsis;*/
   text-overflow: ellipsis;
-  background: rgba(40,40,40,0.4);
+  background: #FFF;
   /*-webkit-box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.5) inset;*/
   box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.5) inset;
   /*-webkit-transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);*/
@@ -60,12 +55,12 @@
   /*-webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;*/
   box-sizing: content-box;
-  margin: 0.5em;
-  padding: 0 1.5em;
-  border: 1px solid rgba(211,211,211,1);
+  margin: 0.25em;
+  padding: 0 1em;
+  border: 0.5px solid rgba(211,211,211,1);
   /*-webkit-border-radius: 0.2em;*/
   border-radius: 0.2em;
-  font: normal normal bold 1em/2em Arial, Helvetica, sans-serif;
+  font: normal normal bold 1em Arial, Helvetica, sans-serif;
   color: rgba(114,114,114,1);
   /*-o-text-overflow: clip;*/
   text-overflow: clip;
@@ -105,7 +100,7 @@
 
 /*fin clases prediseñadas*/
 body{
-    background-image: url("../images/background.png");
+    /*background-image: url("../images/background.png");*/
     font-family: arial, sans-serif;
     color: #FAFAFA;
     margin: 0px;
@@ -120,7 +115,7 @@ a{
 header{
   height: 20%;
   padding: 1%;
-  background-color: #243743;
+  background-color: #FFF;
   border-style: solid;
   border-width: 1px;
   border-color: black;
@@ -194,7 +189,7 @@ header form{
 }
 
 h1.index{
-    color: #FAFAFA;
+    color: #151515;
     position: relative;
     width: 80%;
     left: 10%;
@@ -207,7 +202,7 @@ h1.index{
 /*Formato del main*/
 main{
   position: relative;
-  background-color: #8A949B;
+  background-color: #FFF;
   width: 70%;
   margin-left: 12.5%;
   margin-top: 8%;
@@ -220,7 +215,7 @@ main{
   /*
   -moz-border-radius: 5px 5px 5px 5px;
   -webkit-border-radius: 5px 5px 5px 5px ;*/
-  border: 0px solid #000000;
+  border: 1px solid #000000;
 }
 
 /*Formato articulo*/
@@ -247,10 +242,11 @@ footer{
   border-style: solid;
   border-width: 1px;
   border-color: black;
-  background-color: #243743;
+  background-color: #FFF;
   height: 5%;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif, Arial, Helvetica, sans-serif;
+  color: #111;
   font-size: 1.5vh;
   margin: 10px;
 }

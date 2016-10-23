@@ -137,7 +137,25 @@ header label{
 #logo img{
   width: 100%;
 }
-
+#tarifas{
+  position: relative;
+  margin: 0px 0px 0px 0px;
+  bottom: 50%;
+  display: block;
+  width: 100%;
+}
+#tableTarifas{
+  width: 100%;
+}
+#explicacion{
+  position: relative;
+  text-align: center;
+  font-size: 3vh;
+}
+#formRegistro{
+  position: relative;
+  width: 100%;
+}
 header form{
   margin: 1vh;
 }

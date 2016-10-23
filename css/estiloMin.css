@@ -1,7 +1,5 @@
 @media (max-width: 904px){
 
-
-
         .text input{
         display: inline-block;
         -webkit-box-sizing: border-box;
@@ -155,11 +153,11 @@
         }
         #search{
             display: none;
-        }   
+        }
         #perfil{
             width: 70%;
 
-        }     
+        }
         #perfilText{
             font-size: 0.7em;
         }

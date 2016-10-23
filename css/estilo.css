@@ -1,8 +1,6 @@
 /* Colores de la pagina jade #28B78D azul marino #243743 gris #8A949B blanco #FAFAFA*/
 /* Fuentes font-family: Verdana, Geneva, Tahoma, sans-serif, Arial, Helvetica, sans-serif; */
 
-@media (min-width: 905px){
-
   /*Clases prediseñadas */
   /*Cuados de entrada de texto*/
     .text input{
@@ -226,6 +224,15 @@
       border: 0px solid #000000;
     }
 
+    #titulo{
+      float: left;
+      margin-bottom: 10px;
+    }
+    #fecha{
+      text-align: right;
+      font-size: 1em;
+      margin-bottom: 50px;
+    }
     /*Formato articulo*/
 
     article{
@@ -262,6 +269,9 @@
       position: relative;
       width: 100%;
     }
+    #detalleImg{
+      text-align: center;
+    }
 
 
     /* Pie de pagina*/
@@ -276,4 +286,3 @@
       font-size: 1.5vh;
       margin: 10px;
     }
-}

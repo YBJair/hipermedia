@@ -1,45 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php include("includes/head.php");?>
+<?php include("includes/headerC.php");?>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Inicio</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/estiloMin.css" type="text/css" media="(max-width: 904px)"/>
-  <link rel="stylesheet" href="css/estilo.css" type="text/css" media="(min-width: 905px)"/>
-  <link rel="stylesheet" href="css/impresion.css" media="print"/>
-</head>
-<body>
-  <header class="text">
-    <a id="logo" href="indexConectado.php"><img src="images/logo.jpg" alt="logo" /></a>
+<h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
+<main>
+  <!--<h1>Página Principal</h1>
 
-    <form action="buscarconectado.php" method="POST" class="search">
-      <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
-      <button type="submit"> <i class="material-icons">search</i></button>
-    </form>
+  <h2>Subscripciones</h2>
+  <h2>Ultimas subidas</h2>-->
+  <article><a href="imagen.php"><img src="images/approves.gif" alt="meh"  /></a></article>
+  <article><a href=""><img src="images/dormitorio.jpg" alt="okay"/></a></article>
+</main>
 
-    <div class="perfilF">
-      <a href="menuperfil.php"><img id="perfil" src="images/perfil.jpg" alt="Editar perfil" /></a>
-      <span id="perfilText">Suk Mike Hok</span>
-      <a class="boton" href="index.php">Desconectarse</a>
-    </div>
-
-  </header>
-  <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
-  <main>
-    <!--<h1>Página Principal</h1>
-
-    <h2>Subscripciones</h2>
-    <h2>Ultimas subidas</h2>-->
-    <article><a href="imagen.php"><img src="images/approves.gif" alt="meh"  /></a></article>
-    <article><a href=""><img src="images/dormitorio.jpg" alt="okay"/></a></article>
-  </main>
-
-  <footer>
-    <p>Jesús Hernández Fernández. Email: jhf6@alu.ua.es</p>
-    <p>Jair Abel Jiménez Bellocchio. Email: jajb2@alu.ua.es</p>
-  </footer>
-
-</body>
-
-</html>
+<?php include("includes/footer.php");?>

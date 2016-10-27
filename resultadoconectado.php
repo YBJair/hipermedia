@@ -1,49 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<?php include("includes/head.php");?>
+<?php include("includes/headerC.php");?>
 
-  <meta charset="UTF-8">
-  <title>Resultados</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet"/>
-  <link rel="stylesheet" href="css/estiloMin.css" type="text/css" media="(max-width: 904px)"/>
-  <link rel="stylesheet" href="css/estilo.css" type="text/css" media="(min-width: 905px)"/>
-  <link rel="stylesheet" href="css/impresion.css" media="print"/>
-</head>
-<body>
-  <header class="text">
-    <a id="logo" href="indexConectado.php"><img src="images/logo.jpg" alt="logo" /></a>
+<main>
+  <article>
+    <h2>Approves</h2>
+    <figure><a href="imagen.php"><img src="images/approves.gif" alt="meh"  /></a></figure>
+    <p>08/04/1994</p>
+    <p>Spoin</p>
+  </article>
+  <article>
+    <h2>Decorasiao</h2>
+    <figure><a href=""><img src="images/dormitorio.jpg" alt="meh"  /></a></figure>
+    <p>31/02/2054</p>
+    <p>Meh</p>
+  </article>
+</main>
 
-    <form action="buscarconectado.php" method="POST" class="search">
-      <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
-      <button type="submit"> <i class="material-icons">search</i></button>
-    </form>
-
-    <div class="perfilF">
-      <a href="menuperfil.php"><img id="perfil" src="images/perfil.jpg" alt="Editar perfil" /></a>
-      <span id="perfilText">Suk Mike Hok</span>
-      <a class="boton" href="index.php">Desconectarse</a>
-    </div>
-
-  </header>
-
-  <main>
-    <article>
-      <h2>Approves</h2>
-      <figure><a href="imagen.php"><img src="images/approves.gif" alt="meh"  /></a></figure>
-      <p>08/04/1994</p>
-      <p>Spoin</p>
-    </article>
-    <article>
-      <h2>Decorasiao</h2>
-      <figure><a href=""><img src="images/dormitorio.jpg" alt="meh"  /></a></figure>
-      <p>31/02/2054</p>
-      <p>Meh</p>
-    </article>
-  </main>
-  <footer>
-    <p>Jesús Hernández Fernández. Email: jhf6@alu.ua.es</p>
-    <p>Jair Abel Jiménez Bellocchio. Email: jajb2@alu.ua.es</p>
-  </footer>
-</body>
-
-</html>
+<?php include("includes/footer.php");?>

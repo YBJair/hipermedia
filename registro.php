@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<?php include("includes/head.php");?>
+<?php include("includes/headerL.php");?>
 
-  <meta charset="UTF-8">
-  <title>Registro</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/estiloMin.css" type="text/css" media="(max-width: 1044px)"/>
-  <link rel="stylesheet" href="css/estilo.css" type="text/css" media="(min-width: 1045px)"/>
-  <link rel="stylesheet" href="css/impresion.css" media="print"/>
-  <link rel="alternate stylesheet" href="css/accesible.css" title="estilo con letra mas grande y mejor contraste">
-</head>
-<body>
-  <header>
-    <a id="logo" href="index.php"><img src="images/logo.jpg" alt="logo" /></a>
-  </header>
   <h1 class="index">Registro nuevo usuario</h1>
   <main>
     <form action="" method="POST">
@@ -284,11 +271,5 @@
       <button type="submit" name="button">Aceptar</button>
     </form>
   </main>
-  <footer>
-    <p>Jesús Hernández Fernández. Email: jhf6@alu.ua.es</p>
-    <p>Jair Abel Jiménez Bellocchio. Email: jajb2@alu.ua.es</p>
-  </footer>
 
-</body>
-
-</html>
+  <?php include("includes/footer.php");?>

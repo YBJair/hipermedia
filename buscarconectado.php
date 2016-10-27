@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Buscar</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/estiloMin.css" type="text/css" media="(max-width: 904px)"/>
-  <link rel="stylesheet" href="css/estilo.css" type="text/css" media="(min-width: 905px)"/>
-  <link rel="stylesheet" href="css/impresion.css" media="print"/>
-</head>
-<body>
-  <header class="text">
-    <a id="logo" href="indexConectado.php"><img src="images/logo.jpg" alt="logo" /></a>
+<?php include("includes/head.php");?>
+<?php include("includes/headerC.php");?>
 
-    <form action="buscar.php" method="POST" class="search">
-      <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
-      <button type="submit"> <i class="material-icons">search</i></button>
-    </form>
-
-    <div class="perfilF">
-      <a href="menuperfil.php"><img src="images/perfil.jpg" alt="Editar perfil" /></a>
-      <span>Suk Mike Hok</span>
-      <a class="boton" href="index.php">Desconectarse</a>
-    </div>
-
-  </header>
 
   <form action="resultadoconectado.php" method="POST" class="formM">
     <label for="title">Título: </label><input id="title" class="text" name="titulo" type="text"/>
@@ -273,6 +250,4 @@
     <button type="submit" name="button" class="boton">Buscar</button>
   </form>
 
-</body>
-
-</html>
+<?php include("includes/footer.php");?>

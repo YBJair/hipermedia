@@ -1,35 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-
-  <meta charset="UTF-8">
-  <title>Reply</title>
-  <link rel="stylesheet" href="css/estiloMin.css" type="text/css" media="(max-width: 904px)"/>
-  <link rel="stylesheet" href="css/estilo.css" type="text/css" media="(min-width: 905px)"/>
-  <link rel="stylesheet" href="css/impresion.css" media="print"/>
-  <link rel="alternate stylesheet" href="css/accesible.css" title="estilo con letra mas grande y mejor contraste">
-</head>
-<body>
-
-  <header class="text">
-    <a id="logo" href="indexConectado.php"><img src="images/logo.jpg" alt="logo" /></a>
-
-    <form action="buscarconectado.php" method="POST" class="search">
-      <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
-      <button type="submit"> <i class="material-icons">search</i></button>
-    </form>
-
-    <div class="perfilF">
-      <a href="menuperfil.php"><img id="perfil" src="images/perfil.jpg" alt="Editar perfil" /></a>
-      <span id="perfilText">Suk Mike Hok</span>
-      <a class="boton" href="index.php">Desconectarse</a>
-    </div>
-
-  </header>
+<?php include("includes/head.php");?>
+<?php include("includes/headerC.php");?>
   <main>
     <p> The request for an album has been accepted. The total cost is 6.66€ </p>
   </main>
 
 </body>
-
 </html>

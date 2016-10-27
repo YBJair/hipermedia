@@ -12,7 +12,7 @@
 </head>
 <body>
   <header>
-    <a id="logo" href="index.html"><img src="images/logo.jpg" alt="logo" /></a>
+    <a id="logo" href="index.php"><img src="images/logo.jpg" alt="logo" /></a>
   </header>
   <h1 class="index">Registro nuevo usuario</h1>
   <main>

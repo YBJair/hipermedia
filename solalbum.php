@@ -13,17 +13,17 @@
 <body>
 
   <header class="text">
-    <a id="logo" href="indexConectado.html"><img src="images/logo.jpg" alt="logo" /></a>
+    <a id="logo" href="indexConectado.php"><img src="images/logo.jpg" alt="logo" /></a>
 
-    <form action="buscarconectado.html" method="POST" class="search">
+    <form action="buscarconectado.php" method="POST" class="search">
       <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
       <button type="submit"> <i class="material-icons">search</i></button>
     </form>
 
     <div class="perfilF">
-      <a href="menuperfil.html"><img id="perfil" src="images/perfil.jpg" alt="Editar perfil" /></a>
+      <a href="menuperfil.php"><img id="perfil" src="images/perfil.jpg" alt="Editar perfil" /></a>
       <span id="perfilText">Suk Mike Hok</span>
-      <a class="boton" href="index.html">Desconectarse</a>
+      <a class="boton" href="index.php">Desconectarse</a>
     </div>
 
   </header>
@@ -60,7 +60,7 @@
     <article id="formRegistro">
       <h2> Formulario</h2>
       <p>Los campos marcados con (*) son obligatorios</p>
-      <form autocomplete="on" action="respalbum.html" method="POST">
+      <form autocomplete="on" action="respalbum.php" method="POST">
         <p>
           <label for="name">Nombre: </label>
           <input id="name" placeholder="nombre" name="name" type="text"  required autofocus/>(*)

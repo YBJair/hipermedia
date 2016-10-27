@@ -12,17 +12,17 @@
 </head>
 <body>
   <header class="text">
-    <a id="logo" href="indexConectado.html"><img src="images/logo.jpg" alt="logo" /></a>
+    <a id="logo" href="indexConectado.php"><img src="images/logo.jpg" alt="logo" /></a>
 
-    <form action="buscarconectado.html" method="POST" class="search">
+    <form action="buscarconectado.php" method="POST" class="search">
       <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
       <button type="submit"> <i class="material-icons">search</i></button>
     </form>
 
     <div class="perfilF">
-      <a href="menuperfil.html"><img id="perfil" src="images/perfil.jpg" alt="Editar perfil" /></a>
+      <a href="menuperfil.php"><img id="perfil" src="images/perfil.jpg" alt="Editar perfil" /></a>
       <span id="perfilText">Suk Mike Hok</span>
-      <a class="boton" href="index.html">Desconectarse</a>
+      <a class="boton" href="index.php">Desconectarse</a>
     </div>
 
   </header>
@@ -38,7 +38,7 @@
       <!--<button type="submit" name="button">Guardar</button>-->
       <hr>
     </form>
-    <!--<form class="" action="index.html" method="post">
+    <!--<form class="" action="index.php" method="post">
     <p><label for="password">Nueva Contraseña: </label><input id="password" name="Pass" type="password" required/>
     <label for="confirm">Confirmar contraseña</label><input id="confirm" name="confirm" type="password" required/></p>
     <button type="submit" name="button">Guardar</button>
@@ -52,7 +52,7 @@
 
   <ul>
     <li><a href="#">Crear Album</a></li>
-    <li><a href="solalbum.html">Solicitar album</a></li>
+    <li><a href="solalbum.php">Solicitar album</a></li>
     <li><a href="#">Darse de baja</a></li>
   </ul>
 

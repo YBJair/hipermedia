@@ -4,34 +4,28 @@
   <meta charset="UTF-8">
   <title>Buscar</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-   <link rel="stylesheet" href="css/estiloMin.css" type="text/css" media="(max-width: 1044px)"/>
-  <link rel="stylesheet" href="css/estilo.css" type="text/css" media="(min-width: 1045px)"/>
+    <link rel="stylesheet" href="css/estiloMin.css" type="text/css" media="(max-width: 904px)"/>
+  <link rel="stylesheet" href="css/estilo.css" type="text/css" media="(min-width: 905px)"/>
   <link rel="stylesheet" href="css/impresion.css" media="print"/>
 </head>
 <body>
   <header class="text">
-    <a href="index.html" id="logo"><img src="images/logo.jpg" alt="logo" /></a>
+    <a id="logo" href="indexConectado.php"><img src="images/logo.jpg" alt="logo" /></a>
 
-    <form action="buscar.html" method="POST" class="search">
-
-      <label for="search">Buscar: </label><input id="search"  placeholder="Busqueda" name="Busqueda" type="search" autofocus/>
+    <form action="buscar.php" method="POST" class="search">
+      <label for="search">Buscar: </label><input id="search" class="text"name="Busqueda" type="search" placeholder="Busqueda" autofocus/>
       <button type="submit"> <i class="material-icons">search</i></button>
-
     </form>
 
-
-    <div class="loginF">
-      <!--a class="boton" href="" id="butt">Entrar</a-->
-      <form action="buscarconectado.html" method="POST" class="">
-        <label for="user">Usuario: </label><input  id="user" name="User" type="text" placeholder="Usuario" required/>
-        <label for="pass">Contraseña: </label><input id="pass"  name="Password" type="password" placeholder="Contraseña" required/>
-        <button class="boton" type="submit">Entrar</button>
-      </form>
-      <a class="boton" href="registro.html">Registro</a>
+    <div class="perfilF">
+      <a href="menuperfil.php"><img src="images/perfil.jpg" alt="Editar perfil" /></a>
+      <span>Suk Mike Hok</span>
+      <a class="boton" href="index.php">Desconectarse</a>
     </div>
+
   </header>
 
-  <form action="resultado.html" method="POST" class="formM">
+  <form action="resultadoconectado.php" method="POST" class="formM">
     <label for="title">Título: </label><input id="title" class="text" name="titulo" type="text"/>
     <br>
     <label for="fechaB">Fecha: </label><input id="fechaB" type="date" name="fecha">

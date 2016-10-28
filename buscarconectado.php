@@ -1,6 +1,8 @@
-<?php include("includes/head.php");?>
-<?php include("includes/headerC.php");?>
-
+<?php
+  $title= "Busqueda";
+  include("includes/head.php");
+  include("includes/headerC.php");
+?>
 
   <form action="resultadoconectado.php" method="POST" class="formM">
     <label for="title">Título: </label><input id="title" class="text" name="titulo" type="text"/>

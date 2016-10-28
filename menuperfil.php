@@ -1,5 +1,8 @@
-<?php include("includes/head.php");?>
-<?php include("includes/headerC.php");?>
+<?php
+  $title= "Perfil";
+  include("includes/head.php");
+  include("includes/headerL.php");
+?>
 
   <main>
     <h1>Pagina de Perfil</h1>

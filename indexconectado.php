@@ -1,6 +1,8 @@
-<?php include("includes/head.php");?>
-<?php include("includes/headerC.php");?>
-
+<?php
+  //$title= "";
+  include("includes/head.php");
+  include("includes/headerC.php");
+?>
 <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
 <main>
   <!--<h1>Página Principal</h1>

@@ -1,6 +1,15 @@
 <?php include("includes/head.php");?>
 <?php include("includes/headerL.php");?>
 
+  <?php
+    session_start();
+
+    
+
+
+  ?>
+
+
   <h1 class="index">Registro nuevo usuario</h1>
   <main>
     <form action="" method="POST">

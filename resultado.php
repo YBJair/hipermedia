@@ -1,5 +1,8 @@
-<?php include("includes/head.php");?>
-<?php include("includes/headerL.php");?>
+<?php
+  $title= "Resultado busqueda";
+  include("includes/head.php");
+  include("includes/headerL.php");
+?>
 
 <main>
   <article>

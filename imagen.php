@@ -1,6 +1,8 @@
-<?php include("includes/head.php");?>
-<?php include("includes/headerL.php");?>
-
+<?php
+  //$title= "";
+  include("includes/head.php");
+  include("includes/headerC.php");
+?>
   <main>
 
       <h2 id="titulo">Approves</h2>

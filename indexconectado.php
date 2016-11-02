@@ -1,5 +1,5 @@
 <?php
-  //$title= "";
+  $title= "Pictures and Images";
   include("includes/head.php");
   include("includes/headerC.php");
 ?>

@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8">
-    <title>Pictures and Images <?php echo $title;?></title>
+    <title><?php echo $title;?></title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link rel="stylesheet" href="css/estiloMin.css" type="text/css" media="(max-width: 1044px)"/>
     <link rel="stylesheet" href="css/estilo.css" type="text/css" media="(min-width: 1045px)"/>

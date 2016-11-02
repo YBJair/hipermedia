@@ -1,5 +1,5 @@
 <?php
-  //$title= "";
+  $title= "Respuesta Album";
   include("includes/head.php");
   include("includes/headerC.php");
 ?>

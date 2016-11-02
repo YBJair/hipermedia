@@ -51,7 +51,7 @@
       <p>
         <label for="address">Dirección: </label>
         <input id="address" name="street" type="text" placeholder="Calle" required/>
-        <input id="numberAddress" name="number address" type="number" placeholder="Número" required/>
+        <input id="numberAddress" name="numberadd" type="number" placeholder="Número" required/>
         <input id="cp" name="cp" type="number"  placeholder="CP"  required/>
         <select id="city" name="city"  required>
           <option value=""></option>
@@ -75,15 +75,15 @@
       </p>
       <p>
         <label for="numCop"> Número de copias </label>
-        <input id="numCop" name="number Copies" type="number" value="1" min="1" />(*)
+        <input id="numCop" name="numbercopies" type="number" value="1" min="1" />(*)
       </p>
       <p>
         <label for="resolution"> Resolucion de impresión: </label>
-        <input id="resolution" type="range" name="points" min="150" max="900" step="150">(*)
+        <input id="resolution" type="range" name="resolution" min="150" max="900" step="150">(*)
       </p>
       <p>
         <label for="album">Álbum de PI: </label>
-        <select id="album" name="PI's album" required>
+        <select id="album" name="album" required>
           <option value=""></option>
           <option value="1"> Finchingo</option>
           <option  value="2"> Pinchipopi</option>
@@ -91,13 +91,13 @@
       </p>
       <p>
         <label for="receip"> Fecha de recibo: </label>
-        <input type="date" id="receip" name="receipt date" />
+        <input type="date" id="receip" name="receip" />
       </p>
       <p>
         <label> ¿Imprimir a color? </label>
-        <input type="radio" id="colorprint" name="print" value="color">
+        <input type="radio" id="colorprint" name="colorprint" value="color">
         <label for="colorprint"> Si </label>
-        <input type="radio" id="black" name="print" value="black">
+        <input type="radio" id="black" name="radioprint" value="black">
         <label for="black">No </label>
       </p>
       <button type="submit" >Aceptar </button>

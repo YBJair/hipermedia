@@ -12,6 +12,7 @@
       <p><label for="userName">Usuario: </label><!--<input id="userName" name="Nombre" type="text" placeholder="Suk Mike Hok" required/>--> Suk Mike Hok</p>
       <p><label for="email">Email: </label><!--<input id="email" name="email" type="email" placeholder="example@gmail.com" required/>-->sukmike@gmail.com</p>
       <p><label for="imgP">Imagen de perfil: </label><!--<input id="imgP" name="img" type="file"/>--> <img src="images/perfil.jpg" alt="perfil"/></p>
+
       <!--<button type="submit" name="button">Guardar</button>-->
       <hr>
     </form>

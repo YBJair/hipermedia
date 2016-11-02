@@ -7,9 +7,9 @@
 <h1 class="index">Registro nuevo usuario</h1>
 <main>
   <form action="" method="POST">
-    <p><label for="userName">Usuario: </label><input id="userName" name="Nombre" type="text" required/></p>
+    <p><label for="userName">Usuario: </label><input id="userName" name="nombre" type="text" required/></p>
     <p>
-      <label for="password">Contraseña: </label><input id="password" name="Pass" type="password" required/>
+      <label for="password">Contraseña: </label><input id="password" name="pass" type="password" required/>
       <label for="confirm">Confirmar contraseña: </label><input id="confirm" name="confirm" type="password" required/>
     </p>
     <p><label for="email">Email: </label><input id="email" name="email" type="email" placeholder="example@gmail.com" required/></p>
@@ -25,10 +25,7 @@
     </p>
     <p>
       <label for="city">Ciudad: </label>
-      <select id="city" name="city">
-        <option value="Elche"> Elche </option>
-        <option value="Meh"> Meh </option>
-      </select>
+      <input id="city" type="text" name="city" placeholder="Ciudad"/>
 
 
       <label for="country">Pais: </label>

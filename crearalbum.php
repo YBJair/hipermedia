@@ -4,15 +4,15 @@
   include("includes/headerC.php");
 ?>
 
-<h1 class="index">Registro nuevo usuario</h1>
+<h1 class="index">Crear Album</h1>
 <main>
   <form action="crearalbum.php" method="POST">
-    <p><label for="titulo">Usuario: </label><input id="titulo" name="titulo" type="text" required/></p>
+    <p><label for="title">Usuario: </label><input id="title" name="titulo" type="text" required/></p>
     <p>
       <label for="descripcion">Descripción: </label><input id="descripcion" type="text" name="descripcion" placeholder="descripcion">
     </p>
     <p>
-      <label for="fecha" >Fecha: </label><input id="fecha" type="date" name="fecha" required>
+      <label for="date" >Fecha: </label><input id="date" type="date" name="fecha" required>
     </p>
     <p>
       <label for="country">Pais: </label>
@@ -254,7 +254,7 @@
       </select>
     </p>
 
-    <input type="submit" value="Crear" class="boton">
+    <input type="submit" value="Crear" class="boton"/>
   </form>
 </main>
 

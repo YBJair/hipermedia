@@ -29,7 +29,7 @@
   <h2>Mis Albumes</h2>
 
   <ul>
-    <li><a href="#">Crear Album</a></li>
+    <li><a href="crearalbum.php">Crear Album</a></li>
     <li><a href="solalbum.php">Solicitar album</a></li>
     <li><a href="#">Darse de baja</a></li>
   </ul>

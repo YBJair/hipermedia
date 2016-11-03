@@ -9,12 +9,10 @@
     if(isset($_GET["titulo"])){
       $titulo=$_GET["titulo"];
 
-      echo "<h1 class='index'>Resultado de la busqueda: <?php echo $titulo; ?></h1>";
     }
   }
-
-
 ?>
+<h1 class='index'>Resultado de la busqueda: <?php echo $titulo; ?></h1>
 <main>
   <article>
     <h2>Approves</h2>

@@ -2,6 +2,10 @@
   $title= "Solicitar Album";
   include("includes/head.php");
   include("includes/headerC.php");
+
+  if(isset($_SESSION["remember"])==false){
+		header("location: index.php");
+	}
 ?>
 <p id="explicacion"> Mediante este formulario puedes solicitar un album en color o en blanco y negro.</p>
 <main>

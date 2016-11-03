@@ -9,7 +9,9 @@
   <div class="perfilF">
     <a href="menuperfil.php"><img id="perfil" src="images/perfil.jpg" alt="Editar perfil" /></a>
     <span id="perfilText">Suk Mike Hok</span>
-    <a class="boton" href="index.php">Desconectarse</a>
+
+
+    <a class="boton" href="index.php?login=true">Desconectarse</a>
   </div>
 
 </header>

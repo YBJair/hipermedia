@@ -2,6 +2,19 @@
   $title= "Pictures and Images";
   include("includes/head.php");
   include("includes/headerL.php");
+
+
+	session_start();
+	if(isset($_SESSION["remember"])==true){
+		header("location: principal.php");
+	}
+	if(isset($_GET["q"]) && $_GET["q"]=="login"){
+		$pagina="l";
+	}else if(isset($_GET["q"]) && $_GET["q"]=="registro"){
+		$pagina="r";
+	}else{
+		$pagina="l";
+	}
 ?>
 
 <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>

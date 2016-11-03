@@ -2,6 +2,9 @@
   $title= "Crear Album";
   include("includes/head.php");
   include("includes/headerC.php");
+  if(isset($_SESSION["remember"])==false){
+		header("location: index.php");
+	}
 ?>
 
 <h1 class="index">Crear Album</h1>

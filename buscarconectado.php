@@ -2,6 +2,9 @@
   $title= "Busqueda";
   include("includes/head.php");
   include("includes/headerC.php");
+  if(isset($_SESSION["remember"])==false){
+		header("location: index.php");
+	}
 ?>
 <form action="resultadoconectado.php" method="GET" class="formM">
   <label for="title">Título: </label><input id="title" class="text" name="titulo" type="text" value="<?php if(isset($_GET["busqueda"]))echo $_GET["busqueda"]; ?>" required/>

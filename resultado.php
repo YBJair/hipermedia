@@ -8,7 +8,6 @@
   if(isset($_GET)){
     if(isset($_GET["titulo"])){
       $titulo=$_GET["titulo"];
-
     }
   }
 ?>

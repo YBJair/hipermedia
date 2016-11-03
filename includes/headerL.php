@@ -20,6 +20,13 @@
         $user=$_POST["user"];
         $pass=$_POST["password"];
         if(($user=="jesus" && $pass=="admin") || ($user=="jair" && $pass=="admin") || ($user=="test" && $pass=="admin")){
+          if(isset($_POST["remember"]) && ($_POST["remember"]=="Yes" || $_POST["remember"]=="on")){
+						setcookie("remember_user", $user);
+						setcookie("remember_pass", $pass);
+						setcookie("remember_time", time());
+					}
+					$_SESSION["remember"]=$user;
+
           header("location: principal.php");
         }else{
           header("location: index.php?error");
@@ -33,6 +40,7 @@
     <form action="index.php" method="POST" class="">
       <label for="user">Usuario: </label><input  id="user" name="user" type="text" placeholder="Usuario" required/>
       <label for="pass">Contraseña: </label><input id="pass"  name="password" type="password" placeholder="Contraseña" required/>
+      <label class="show" for="remember">¿recordarme?</label><input id="remember"type="checkbox" name="remember" >
       <button class="boton" type="submit">Entrar</button>
     </form>
     <a class="boton" href="registro.php">Registro</a>

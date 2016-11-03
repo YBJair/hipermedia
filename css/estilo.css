@@ -204,6 +204,10 @@
         font-size: 4vh;
         font-family: Verdana, Geneva, Tahoma, sans-serif, Arial, Helvetica, sans-serif;
     }
+    .show{
+      display: inline;
+    }
+      
 
     /*Formato del main*/
     main{

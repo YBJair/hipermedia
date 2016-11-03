@@ -23,7 +23,7 @@
   				} else header("location: registro.php?error=3");
   			} else header("location: registro.php?error=2");
   		} else header("location: registro.php?error=1");
-  	}
+  	}else header("location: registro.php?error=0");
   }
 ?>
 

@@ -3,12 +3,16 @@
   include("includes/head.php");
   include("includes/headerC.php");
 
-    if(isset($_GET)){
-      if(isset($_GET["titulo"])){
-        $titulo=$_GET["titulo"];
+  if(isset($_SESSION["remember"])==false){
+  		header("location: index.php");
+	}
 
-      }
+  if(isset($_GET)){
+    if(isset($_GET["titulo"])){
+      $titulo=$_GET["titulo"];
+
     }
+  }
   ?>
 <h1 class='index'>Resultado de la busqueda: <?php echo $titulo; ?></h1>
 <main>

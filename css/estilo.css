@@ -3,7 +3,7 @@
 
   /*Clases prediseñadas */
   /*Cuados de entrada de texto*/
-    .box{
+    .text input{
       display: inline-block;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -34,7 +34,7 @@
       transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
     }
 
-    .box:hover{
+    .text input:hover{
       color: rgba(181,181,181,1);
       background: rgba(0,0,0,0.4);
       /*-webkit-transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
@@ -43,7 +43,7 @@
       transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
     }
 
-    .box:focus {
+    .text input:focus {
       width: 213px;
       cursor: default;
       padding: 0 20px 0;

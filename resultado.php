@@ -2,8 +2,19 @@
   $title= "Resultado busqueda";
   include("includes/head.php");
   include("includes/headerL.php");
-?>
 
+
+
+  if(isset($_GET)){
+    if(isset($_GET["titulo"])){
+      $titulo=$_GET["titulo"];
+
+      echo "<h1 class='index'>Resultado de la busqueda: <?php echo $titulo; ?></h1>";
+    }
+  }
+
+
+?>
 <main>
   <article>
     <h2>Approves</h2>

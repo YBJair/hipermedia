@@ -1,7 +1,7 @@
 <?php
   $title= "Perfil";
   include("includes/head.php");
-  include("includes/headerL.php");
+  include("includes/headerC.php");
 ?>
 
   <main>

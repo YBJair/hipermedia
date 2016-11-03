@@ -1,33 +1,20 @@
 <?php
-  $title= "Registro";
+  $title= "Crear Album";
   include("includes/head.php");
-  include("includes/headerL.php");
+  include("includes/headerC.php");
 ?>
 
 <h1 class="index">Registro nuevo usuario</h1>
 <main>
-  <form action="registro.php" method="POST">
-    <p><label for="userName">Usuario: </label><input id="userName" name="nombre" type="text" required/></p>
+  <form action="crearalbum.php" method="POST">
+    <p><label for="titulo">Usuario: </label><input id="titulo" name="titulo" type="text" required/></p>
     <p>
-      <label for="password">Contraseña: </label><input id="password" name="pass" type="password" required/>
-      <label for="confirm">Confirmar contraseña: </label><input id="confirm" name="confirm" type="password" required/>
-    </p>
-    <p><label for="email">Email: </label><input id="email" name="email" type="email" placeholder="example@gmail.com" required/></p>
-    <p><label for="gender">Genero: </label>
-      <select id="gender" name="gender">
-        <option value="male"> Hombre</option>
-        <option value="female"> Mujer</option>
-      </select>
-
+      <label for="descripcion">Descripción: </label><input id="descripcion" type="text" name="descripcion" placeholder="descripcion">
     </p>
     <p>
-      <label for="birth" >Fecha de nacimiento: </label><input id="birth" type="date" name="birth" required>
+      <label for="fecha" >Fecha: </label><input id="fecha" type="date" name="fecha" required>
     </p>
     <p>
-      <label for="city">Ciudad: </label>
-      <input id="city" type="text" name="city" placeholder="Ciudad"/>
-
-
       <label for="country">Pais: </label>
       <select id="country" name="country">
         <option value="AF">Afganistán</option>
@@ -267,10 +254,7 @@
       </select>
     </p>
 
-    <p>
-      <label for="profile">Imagen de perfil: </label><input id="profile" name="img" type="file"/>
-    </p>
-    <button type="submit" name="button">Aceptar</button>
+    <input type="submit" value="Crear" class="boton">
   </form>
 </main>
 

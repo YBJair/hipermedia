@@ -3,14 +3,15 @@
   include("includes/head.php");
   include("includes/headerL.php");
 ?>
-<form action="resultado.php" method="POST" class="formM">
-  <label for="title">Título: </label><input id="title" class="text" name="titulo" type="text"/>
+<form action="resultado.php" method="GET" class="formM">
+  <label for="title">Título: </label><input id="title" class="text" name="titulo" type="text" value="<?php if(isset($_GET["busqueda"]))echo $_GET["busqueda"]; ?>" required/>
   <br>
-  <label for="fechaB">Fecha: </label><input id="fechaB" type="date" name="fecha">
+  <label for="fechaB">Fecha: </label><input id="fechaB" type="date" name="fecha"/>
   <br>
 
   <label for="country">Pais: </label>
-  <select id="country" name="country">
+  <select id="country" name="pais">
+    <option value="">--Selecciona un pais--</option>
     <option value="AF">Afganistán</option>
     <option value="AL">Albania</option>
     <option value="DE">Alemania</option>
@@ -75,7 +76,7 @@
     <option value="AE">Emiratos Árabes Unidos</option>
     <option value="ER">Eritrea</option>
     <option value="SI">Eslovenia</option>
-    <option value="ES" selected>España</option>
+    <option value="ES">España</option>
     <option value="US">Estados Unidos</option>
     <option value="EE">Estonia</option>
     <option value="ET">Etiopía</option>
@@ -248,7 +249,7 @@
   </select>
 
   <br>
-  <button type="submit" name="button" class="boton">Buscar</button>
+  <input type="submit" class="boton" value="Buscar"/>
 </form>
 
 <?php include("includes/footer.php");?>

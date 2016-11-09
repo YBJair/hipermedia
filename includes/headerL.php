@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <header class="text">
   <a href="index.php" id="logo"><img src="images/logo.jpg" alt="logo" /></a>
 
@@ -40,7 +36,9 @@
     <form action="index.php" method="POST" class="">
       <label for="user">Usuario: </label><input  id="user" name="user" type="text" placeholder="Usuario" required/>
       <label for="pass">Contraseña: </label><input id="pass"  name="password" type="password" placeholder="Contraseña" required/>
-      <label class="show" for="remember">¿recordarme?</label><input id="remember"type="checkbox" name="remember" >
+      <div class="">
+        <label class="show" for="remember">¿recordarme?</label><input id="remember"type="checkbox" name="remember" >
+      </div>
       <button class="boton" type="submit">Entrar</button>
     </form>
     <a class="boton" href="registro.php">Registro</a>

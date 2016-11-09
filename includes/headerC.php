@@ -11,7 +11,7 @@
     <span id="perfilText">Suk Mike Hok</span>
 
 
-    <a class="boton" href="index.php?login=true">Desconectarse</a>
+    <a class="boton" href="index.php?q=login">Desconectarse</a>
   </div>
 
 </header>

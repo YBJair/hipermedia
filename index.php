@@ -5,14 +5,18 @@
 
 
   if(isset($_SESSION["remember"])==true){
-		//header("location: principal.php");
+		header("location: principal.php");
 	}
-	if(isset($_GET["q"]) && $_GET["q"]=="login"){
-		$pagina="l";
-	}else if(isset($_GET["q"]) && $_GET["q"]=="registro"){
-		$pagina="r";
-	}else{
-		$pagina="l";
+	if(isset($_GET["q"]) && $_GET["q"]=="logout"){
+    if(isset($_SESSION["remember"])){
+       unset($_SESSION["remember"]);
+       if(isset($_COOKIE["remember_user"])){
+         setcookie("remember_user", "", time() -3600);
+         setcookie("remember_pass", "", time() -3600);
+         setcookie("remember_time", "", time() -3600);
+       }
+       header("location: index.php");
+     }
 	}
 ?>
 

@@ -8,10 +8,10 @@
 		header("location: index.php");
 	}
 
-  $titulo= "Approves";
-  $fecha = "08/04/1994";
-  $src   = "images/approves.gif"
-  $albumes;
+  $titulo = "Approves";
+  $fecha  = "08/04/1994";
+  $src    = "images/approves.gif";
+  $albumes="";
 
 
 ?>

@@ -222,7 +222,7 @@
     .perfilF img{
       border-radius: 50%;
     }
-    .perfilF span{
+    #perfilText{
       margin-top: 30px;
     }
 

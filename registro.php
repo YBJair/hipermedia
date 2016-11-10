@@ -30,9 +30,9 @@
 
 <h1 class="index">Registro nuevo usuario</h1>
 
-<h3 class="index">
 <?php
 	if (isset($_GET["error"])) {
+    echo "<h3 class='index'>";
 		switch($_GET["error"]){
 			case 0:
 				echo "Debe enviar todos los datos";
@@ -50,12 +50,12 @@
 				echo "error desconocido";
 			break;
 		}
+    echo "</h3>";
 	}
   if(isset($_GET["exito"])){
     echo "El usuario se ha registrado correctamente";
   }
 ?>
-</h3>
 
 <main>
   <form action="registro.php" method="POST">

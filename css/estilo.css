@@ -54,7 +54,44 @@
       transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
     }
 
+
+     form>.text{
+      display: inline-block;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 150px;
+      height: 42px;
+      cursor: pointer;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 0 20px;
+      overflow: hidden;
+      border: none;
+      border-radius: 21px;
+      font: normal 20px/normal "Antic", Helvetica, sans-serif;
+      color: rgba(140,140,140,1);
+      text-decoration: normal;
+      text-overflow: ellipsis;
+      background: rgba(40,40,40,0.4);
+      box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.5) inset;
+    }
+    form>.text:hover{
+      color: rgba(181,181,181,1);
+      background: rgba(0,0,0,0.4);
+    }
+    form>.input:focus {
+      width: 213px;
+      cursor: default;
+      padding: 0 20px 0;
+      color: rgba(255,255,255,1);
+    }
     /*Boton estandar*/
+    .perfilF .boton{
+      margin-top: 21px;
+    }
     .boton {
       display: inline-block;
       /*-webkit-box-sizing: content-box;
@@ -127,7 +164,7 @@
       border-width: 1px;
       border-color: black;
     }
-    header label{
+    .text>label{
       position: absolute;
       left: -10000px;
     }
@@ -159,12 +196,18 @@
       margin: 5px 0 0 5px;
       width: 15%;
     }
-    .loginF{
+    .loginF, .loginF *{
       display: inline-block;
-      float: right;
     }
-    .loginF *{
-      display: inline-block;
+    .loginF{
+      float: right;
+      position: relative;
+      margin-bottom: 15px;
+    }
+    .absol{
+      position: absolute;
+      margin-top: 50px;
+      left: 5px;
     }
 
     .perfilF {
@@ -182,10 +225,6 @@
     .perfilF span{
       margin-top: 30px;
     }
-    .perfilF .boton{
-      margin-top: 21px;
-    }
-
 
     .formM{
       padding: 15px;
@@ -194,15 +233,22 @@
       margin: 10px;
     }
 
-    h1.index{
-        color: inherit;
+    .index{
         position: relative;
         width: 80%;
         left: 10%;
         text-align: center;
+        padding: 1%;
         margin-top: 2%;
-        font-size: 4vh;
         font-family: Verdana, Geneva, Tahoma, sans-serif, Arial, Helvetica, sans-serif;
+        color: inherit;
+    }
+    h1.index{
+        font-size: 4vh;
+    }
+    h3.index{
+        background-color: red;
+        font-size: 2vh;
     }
     .show{
       display: inline;
@@ -237,8 +283,8 @@
       font-size: 1em;
       margin-bottom: 50px;
     }
-    /*Formato articulo*/
 
+    /*Formato articulo*/
     article{
       display: inline-block;
       position: relative;

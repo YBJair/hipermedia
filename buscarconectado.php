@@ -2,8 +2,10 @@
   $title= "Busqueda";
   include("includes/head.php");
   include("includes/headerC.php");
+
+  
   if(isset($_SESSION["remember"])==false){
-		header("location: index.php");
+		header("location: buscar.php");
 	}
 ?>
 <form action="resultadoconectado.php" method="GET" class="formM">

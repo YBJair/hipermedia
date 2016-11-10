@@ -3,7 +3,9 @@
   include("includes/head.php");
   include("includes/headerL.php");
 
-
+  if(isset($_SESSION["remember"])==true){
+    header("location: resultadoconectado.php");
+  }
 
   if(isset($_GET)){
     if(isset($_GET["titulo"])){

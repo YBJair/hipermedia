@@ -13,11 +13,14 @@
   <article id="tarifas">
     <h2>Tabla de tarifas</h2>
     <table id="tableTarifas">
+      <thead>
 
-      <tr>
-        <td>Concepto </td>
-        <td>Tarifa </td>
-      </tr>
+        <tr>
+          <td>Concepto </td>
+          <td>Tarifa </td>
+        </tr>
+
+      </thead>
       <tr>
         <td> &lt; 5 páginas </td>
         <td> 0.10€ por página</td>

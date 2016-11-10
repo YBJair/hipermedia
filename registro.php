@@ -5,8 +5,8 @@
 
   if(isset($_POST)){
     //se comprueba que esten inicializacdas
-    if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"]) && isset($_POST["fecha"])
-    && isset($_POST["ciudad"]) && isset($_POST["pais"])  && isset($_POST["foto"])){
+    if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"])
+     && isset($_POST["fecha"]) && isset($_POST["ciudad"]) && isset($_POST["pais"]) && isset($_POST["foto"])){
   		//Comprobamos con los introducidos
   		if($_POST["nombre"] != "" && $_POST["nombre"] != "jesus" && $_POST["nombre"] != "jair" && $_POST["nombre"] != "test"){
   			if ($_POST["pass"] == $_POST["pass2"]){
@@ -20,14 +20,17 @@
   					$pais   = $_POST["pais"];
   					$foto   = $_POST["foto"];
 
+            header("location: registro.php?exito=0");
   				} else header("location: registro.php?error=3");
   			} else header("location: registro.php?error=2");
   		} else header("location: registro.php?error=1");
-  	}else header("location: registro.php?error=0");
+  	}
   }
 ?>
 
 <h1 class="index">Registro nuevo usuario</h1>
+
+<h3 class="index">
 <?php
 	if (isset($_GET["error"])) {
 		switch($_GET["error"]){
@@ -44,10 +47,16 @@
 				echo "El email no es valido";
 			break;
 			default:
-				echo "Error desconocido";
+				echo "error desconocido";
 			break;
 		}
-	} ?>
+	}
+  if(isset($_GET["exito"])){
+    echo "El usuario se ha registrado correctamente";
+  }
+?>
+</h3>
+
 <main>
   <form action="registro.php" method="POST">
     <p>
@@ -313,7 +322,7 @@
     </p>
 
     <p>
-      <label for="profile">Imagen de perfil: </label><input id="profile" name="foto" type="file"/>
+      <label for="profile">Imagen de perfil: </label><input id="profile" name="foto" type="file" />
     </p>
     <button type="submit" name="button">Aceptar</button>
   </form>

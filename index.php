@@ -1,7 +1,7 @@
 <?php
   $title= "Pictures and Images";
-  include("includes/head.php");
-  include("includes/headerL.php");
+  include_once("includes/head.php");
+  include_once("includes/headerL.php");
 
 
   if(isset($_SESSION["remember"])==true){
@@ -32,4 +32,4 @@
 
 </main>
 
-<?php include("includes/footer.php");?>
+<?php include_once("includes/footer.php");?>

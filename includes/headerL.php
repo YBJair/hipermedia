@@ -29,18 +29,46 @@
         }
       }
     }
+    
+    if(isset($_GET['borrarcookie'])){
+		if(isset($_COOKIE['remember_user'])){
+		setcookie("remember_user", "", time() -3600);
+		setcookie("remember_pass", "", time() -3600);
+		setcookie("remember_time", "", time() -3600);
+	  }
+	}
   ?>
 
   <div class="loginF">
     <!--a class="boton" href="" id="butt">Entrar</a-->
-    <form action="index.php" method="POST" class="text">
+    
+  <form action="index.php" method="POST" class="text">
+    <?php 
+    if(isset($_COOKIE['remember_user'])){
+		$dia = date("d/m/Y", $_COOKIE['remember_time']);
+		$hora = date("h:i", $_COOKIE['remember_time']);
+		
+		echo <<<END
+		
+		<div>Hola {$_COOKIE['remember_user']}, su ultima visita fue el $dia a las $hora</div>";
+		<button class="boton" type="submit">Entrar</button>
+		<a class="boton" href="index.php?borrarcookies">Registro</a>
+
+END;
+		
+	} else{ 
+    ?>
+    
       <label for="user">Usuario: </label><input  id="user" name="user" type="text" placeholder="Usuario" required/>
       <label for="pass">Contraseña: </label><input id="pass"  name="password" type="password" placeholder="Contraseña" required/>
       <div class="absol">
         <input id="remember"type="checkbox" name="remember"><label class="show" for="remember">¿Recordarme?</label>
       </div>
       <button class="boton" type="submit">Entrar</button>
-    </form>
+    
+    <?php }?>
+  </form>
+
     <a class="boton" href="registro.php">Registro</a>
   </div>
 </header>

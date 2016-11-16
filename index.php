@@ -2,7 +2,19 @@
   $title= "Pictures and Images";
   include_once("includes/head.php");
   include_once("includes/headerL.php");
-  include_once("includes/bbddConexion.php");
+  //include_once("includes/bbddConexion.php");
+
+  $bbdd = @mysqli_connect(
+          'localhost', //server
+          'user', 
+          'root',
+          'pibd'  //bbdd
+        );
+        if(!$bbdd){
+          echo '<p> Error en base de datos: ' . mysqli_connect_error();
+          echo '</p>\n';
+          exit;
+        }
 
   if(isset($_SESSION["remember"])==true){
 		header("location: principal.php");

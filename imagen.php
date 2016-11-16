@@ -19,15 +19,14 @@
 		header("location: index.php");
 	}
 
-  $titulo = "Approves";
-  $fecha  = "08/04/1994";
-  $src    = "images/approves.gif";
-  $albumes="";
 
 
 ?>
   <main>
+      <?php
+          
 
+      ?>
       <h2 id="titulo"><?php echo $titulo ?></h2>
       <h3 id="fecha">Fecha: <?php echo $fecha ?></h3>
       <figure id="detalleImg"><img  src="<?php  echo $src?>" alt="aproves"/></figure>

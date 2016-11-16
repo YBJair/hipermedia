@@ -39,16 +39,18 @@
         $sentencia = 'SELECT titulo, fecha, pais, fichero from fotos ';
         for($i = 0; $i < mysqli_num_rows ; $i++){
           
-             
+             $j = $i++;
+             $k = $j++;
+             $l = $k++;
              $foto = mysqli_query($bbdd,$sentencia);
              $foto = mysqli_fetch_array($nombre,MYSQLI_NUM);
              echo "<article>\n
                   <h2>$foto[$i]</h2>\n
-                  <figure><a href=imagen.php><img src=images/$foto[$i+3] /></a></figure>\n
-                  <p>$foto[$i+2]</p>\n
-                  <p>$foto[$i+1]</p>\n";
+                  <figure><a href=imagen.php><img src=images/$foto[$l] /></a></figure>\n
+                  <p>$foto[$k]</p>\n
+                  <p>$foto[$j]</p>\n";
 
-
+                  $i += 3;
         }
 
   ?>

@@ -20,7 +20,7 @@
           $user, 
           $pass,
           'pibd'  //bbdd
-        )
+        );
         if(!$bbdd){
           echo '<p> Error en base de datos: ' . mysqli_connect_erro();
           echo '</p>\n';

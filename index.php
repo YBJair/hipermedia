@@ -43,7 +43,7 @@
      $id = mysql_query($bbdd,$sentencia);*/
 
      echo "<article>\n
-                <a href="$foto"><<img src="$foto" alt="$titulo"/></a>\n
+                <a href=$foto><img src=$foto alt=$titulo/></a>\n
                 <p>Titulo: $titulo</p>\n
                 <p>Fecha: $date</p>\n
                 <p>País: $pais</p>\n

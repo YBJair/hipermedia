@@ -17,16 +17,16 @@
         $pass=$_POST["password"];
         $bbdd = @mysqli_connect(
           'localhost', //server
-          $user, 
-          $pass,
+          'user', 
+          'root',
           'pibd'  //bbdd
         );
         if(!$bbdd){
-          echo '<p> Error en base de datos: ' . mysqli_connect_erro();
+          echo '<p> Error en base de datos: ' . mysqli_connect_error();
           echo '</p>\n';
           exit;
         } else {
-          echo '<p> Todo correcto</p> \n>';
+          echo '<p> Todo correcto</p> \n';
         }
 
 

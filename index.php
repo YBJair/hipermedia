@@ -53,11 +53,12 @@
 
      /*$sentencia = 'SELECT IdFoto from Fotos f order by FRegistro asc limit 1 offset $i';
      $id = mysql_query($bbdd,$sentencia);*/
-     echo "$foto $titulo $date $pais";
+     
+     echo "$foto $titulo $fecha $pais";
      echo "<article>\n
-                <a href=$foto><img src=$foto alt=$titulo/></a>\n
+                <a href=http://localhost/hipermedia/images/$foto><img src=http://localhost/hipermedia/images/$foto alt=$titulo/></a>\n
                 <p>Titulo: $titulo</p>\n
-                <p>Fecha: $date</p>\n
+                <p>Fecha: $fecha</p>\n
                 <p>País: $pais</p>\n
           </article>\n";
   }

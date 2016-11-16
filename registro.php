@@ -3,6 +3,18 @@
   include("includes/head.php");
   include("includes/headerL.php");
 
+  $bbdd = @mysqli_connect(
+          'localhost', //server
+          'user', 
+          'root',
+          'pibd'  //bbdd
+        );
+        if(!$bbdd){
+          echo '<p> Error en base de datos: ' . mysqli_connect_error();
+          echo '</p>';
+          exit;
+        }
+
   if(isset($_POST)){
     //se comprueba que esten inicializacdas
     if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"])
@@ -88,7 +100,21 @@
       <input id="city" type="text" name="ciudad" placeholder="Ciudad" <?php if (isset($ciudad)) echo "value='".$ciudad."' disabled"; ?>/>
       <label for="country">Pais: </label>
       <select id="country" name="pais" <?php if (isset($pais)) echo "disabled"; ?>>
-        <option value="AF">Afganistán</option>
+        <?php 
+        //Buscamos los paises en la BBDD
+        $sentencia = 'SELECT NomPais from Paises p ';
+        for($i = 0; $i < mysqli_num_rows; $i++){
+          /*order by NomPais asc limit 1 offset $i*/
+             
+             $nombre = mysqli_query($bbdd,$sentencia);
+             $nombre = mysqli_fetch_array($nombre,MYSQLI_NUM);
+             echo "<option value=$nombre[$i]>$nombre[$i]</option>\n";
+
+
+        }
+        
+        ?>
+        <!--<option value="AF">Afganistán</option>
         <option value="AL">Albania</option>
         <option value="DE">Alemania</option>
         <option value="AD">Andorra</option>
@@ -321,7 +347,7 @@
         <option value="YE">Yemen</option>
         <option value="YU">Yugoslavia</option>
         <option value="ZM">Zambia</option>
-        <option value="ZW">Zimbabue</option>
+        <option value="ZW">Zimbabue</option>-->
       </select>
     </p>
 

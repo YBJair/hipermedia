@@ -15,7 +15,21 @@
 
   <label for="country">Pais: </label>
   <select id="country" name="pais">
-    <option value="">--Selecciona un pais--</option>
+    <?php 
+        //Buscamos los paises en la BBDD
+        $sentencia = 'SELECT NomPais from Paises p ';
+        for($i = 0; $i < mysqli_num_rows; $i++){
+          /*order by NomPais asc limit 1 offset $i*/
+             
+             $nombre = mysqli_query($bbdd,$sentencia);
+             $nombre = mysqli_fetch_array($nombre,MYSQLI_NUM);
+             echo "<option value=$nombre[$i]>$nombre[$i]</option>\n";
+
+
+        }
+        
+        ?>
+    <!--<option value="">--Selecciona un pais--</option>
     <option value="AF">Afganistán</option>
     <option value="AL">Albania</option>
     <option value="DE">Alemania</option>
@@ -249,7 +263,7 @@
     <option value="YE">Yemen</option>
     <option value="YU">Yugoslavia</option>
     <option value="ZM">Zambia</option>
-    <option value="ZW">Zimbabue</option>
+    <option value="ZW">Zimbabue</option>-->
   </select>
 
   <br>

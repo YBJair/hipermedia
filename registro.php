@@ -20,7 +20,14 @@
   					$pais   = $_POST["pais"];
   					$foto   = $_POST["foto"];
 
-            header("location: registro.php?exito=0");
+            echo "<p class = \"registro\">El usuario se ha registrado correctamente</p>\n";
+            echo "<p class = \"registro\">Usuario: $user</p>\n";
+            echo "<p class = \"registro\">Email: $email</p>\n";
+            echo "<p class = \"registro\">Sexo: $sexo</p>\n";
+            echo "<p class = \"registro\">Fecha: $fecha</p>\n";
+            echo "<p class = \"registro\">Ciudad: $ciudad </p>\n";
+            echo "<p class = \"registro\">País: $pais </p>\n";
+
   				} else header("location: registro.php?error=3");
   			} else header("location: registro.php?error=2");
   		} else header("location: registro.php?error=1");
@@ -52,9 +59,6 @@
 		}
     echo "</h3>";
 	}
-  if(isset($_GET["exito"])){
-    echo "El usuario se ha registrado correctamente";
-  }
 ?>
 
 <main>

@@ -139,6 +139,9 @@ form>.input:focus {
   -o-transition: none;*/
   transition: none;
 }
+p.registro{
+  text-align: center;
+}
 
 /*fin clases prediseñadas*/
 

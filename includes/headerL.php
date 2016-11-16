@@ -23,7 +23,7 @@
 					}
 					$_SESSION["remember"]=$user;
 
-          header("location: principal.php");
+          header("location: menuperfil.php");
         }else{
           header("location: index.php?error");
         }

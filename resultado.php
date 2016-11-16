@@ -34,9 +34,9 @@
 <h1 class='index'>Resultado de la busqueda: <?php echo "$titulo $fecha $pais" ; ?></h1>
 <main>
   <?php
-
+        
      
-        $sentencia = 'SELECT titulo, fecha, pais, fichero from fotos ';
+        $sentencia = 'SELECT titulo, fecha, pais, fichero from fotos where titulo = $titulo and fecha = $fecha and pais = $pais ';
         for($i = 0; $i < mysqli_num_rows ; $i++){
           
              $j = $i++;

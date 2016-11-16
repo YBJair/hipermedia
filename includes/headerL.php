@@ -15,7 +15,22 @@
         //Comprobamos los parametros (en un futuro se comprobaran con la base de datos)
         $user=$_POST["user"];
         $pass=$_POST["password"];
-        if(($user=="jesus" && $pass=="admin") || ($user=="jair" && $pass=="admin") || ($user=="test" && $pass=="admin")){
+        $bbdd = @mysqli_connect(
+          'localhost', //server
+          $user, 
+          $pass,
+          'pibd'  //bbdd
+        )
+        if(!$bbdd){
+          echo '<p> Error en base de datos: ' . mysqli_connect_erro();
+          echo '</p>\n';
+          exit;
+        } else {
+          echo '<p> Todo correcto</p> \n>';
+        }
+
+
+       /* if(($user=="jesus" && $pass=="admin") || ($user=="jair" && $pass=="admin") || ($user=="test" && $pass=="admin")){
           if(isset($_POST["remember"]) && ($_POST["remember"]=="Yes")){
 						setcookie("remember_user", $user);
 						setcookie("remember_pass", $pass);
@@ -26,7 +41,7 @@
           header("location: menuperfil.php");
         }else{
           header("location: index.php?error");
-        }
+        }*/
       }
     }
     

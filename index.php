@@ -12,7 +12,7 @@
         );
         if(!$bbdd){
           echo '<p> Error en base de datos: ' . mysqli_connect_error();
-          echo '</p>\n';
+          echo '</p>';
           exit;
         }
 
@@ -40,16 +40,16 @@
   for($i = 0; $i < 5; $i++){
 
      $sentencia = 'SELECT Titulo from Fotos f order by FRegistro asc limit 1 offset $i';
-     $titulo = mysql_query($bbdd,$sentencia);
+     $titulo = mysqli_query($bbdd,$sentencia);
 
      $sentencia = 'SELECT Fichero from Fotos f order by FRegistro asc limit 1 offset $i';
-     $foto = mysql_query($bbdd,$sentencia);
+     $foto = mysqli_query($bbdd,$sentencia);
 
      $sentencia = 'SELECT Fecha from Fotos f order by FRegistro asc limit 1 offset $i';
-     $fecha = mysql_query($bbdd,$sentencia);
+     $fecha = mysqli_query($bbdd,$sentencia);
 
      $sentencia = 'SELECT Pais from Fotos f order by FRegistro asc limit 1 offset $i';
-     $pais = mysql_query($bbdd,$sentencia);
+     $pais = mysqli_query($bbdd,$sentencia);
 
      /*$sentencia = 'SELECT IdFoto from Fotos f order by FRegistro asc limit 1 offset $i';
      $id = mysql_query($bbdd,$sentencia);*/

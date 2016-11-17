@@ -1,4 +1,5 @@
-$bbdd = @mysqli_connect(
+<?php  
+    $bbdd = @mysqli_connect(
           'localhost', //server
           'user', 
           'root',
@@ -9,3 +10,4 @@ $bbdd = @mysqli_connect(
           echo '</p>\n';
           exit;
         }
+        ?>

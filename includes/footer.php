@@ -4,4 +4,4 @@
 </footer>
 </body>
 </html>
-<?php mysql_close($bbdd); ?>
+<?php mysqli_close($bbdd); ?>

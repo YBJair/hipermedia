@@ -16,17 +16,9 @@ if(isset($_SESSION["remember"])==true){
   <label for="country">Pais: </label>
   <select id="country" name="pais">
     <?php
-
-    //Buscamos los paises en la BBDD
-    $resultado = mysqli_query($bbdd, 'SELECT * from paises');
-    while ($fila=$resultado->fetch_assoc()){
-
-      $nombre= $fila['NomPais'];
-      $id= $fila['idPais'];
-
-      echo "<option value='$id'>$nombre</option>\n";
-    }
-
+    
+    include("includes/paises.php");
+    
 
 
     ?>

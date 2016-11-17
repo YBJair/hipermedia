@@ -1,76 +1,64 @@
 <?php
-  $title= "Registro";
-  include("includes/head.php");
-  include("includes/headerL.php");
+$title= "Registro";
+include("includes/head.php");
+include("includes/headerL.php");
 
-  $bbdd = @mysqli_connect(
-          'localhost', //server
-          'user', 
-          'root',
-          'pibd'  //bbdd
-        );
-        if(!$bbdd){
-          echo '<p> Error en base de datos: ' . mysqli_connect_error();
-          echo '</p>';
-          exit;
-        }
+if(isset($_POST)){
+  //se comprueba que esten inicializacdas
+  if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"])
+  && isset($_POST["fecha"]) && isset($_POST["ciudad"]) && isset($_POST["pais"]) && isset($_POST["foto"])){
+    //Comprobamos con los introducidos
+    if($_POST["nombre"] != "" && $_POST["nombre"] != "jesus" && $_POST["nombre"] != "jair" && $_POST["nombre"] != "test"){
+      if ($_POST["pass"] == $_POST["pass2"]){
+        if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+          $user   = $_POST["nombre"];
+          $pass   = $_POST["pass"];
+          $email  = $_POST["email"];
+          $sexo   = $_POST["sexo"];
+          $fecha  = $_POST["fecha"];
+          $ciudad = $_POST["ciudad"];
+          $pais   = $_POST["pais"];
+          $foto   = $_POST["foto"];
 
-  if(isset($_POST)){
-    //se comprueba que esten inicializacdas
-    if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"])
-     && isset($_POST["fecha"]) && isset($_POST["ciudad"]) && isset($_POST["pais"]) && isset($_POST["foto"])){
-  		//Comprobamos con los introducidos
-  		if($_POST["nombre"] != "" && $_POST["nombre"] != "jesus" && $_POST["nombre"] != "jair" && $_POST["nombre"] != "test"){
-  			if ($_POST["pass"] == $_POST["pass2"]){
-  				if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
-  					$user   = $_POST["nombre"];
-  					$pass   = $_POST["pass"];
-  					$email  = $_POST["email"];
-            $sexo   = $_POST["sexo"];
-            $fecha  = $_POST["fecha"];
-  					$ciudad = $_POST["ciudad"];
-  					$pais   = $_POST["pais"];
-  					$foto   = $_POST["foto"];
+          echo "<p class = \"registro\">El usuario se ha registrado correctamente</p>\n";
+          echo "<p class = \"registro\">Usuario: $user</p>\n";
+          echo "<p class = \"registro\">Email: $email</p>\n";
+          echo "<p class = \"registro\">Sexo: $sexo</p>\n";
+          echo "<p class = \"registro\">Fecha: $fecha</p>\n";
+          echo "<p class = \"registro\">Ciudad: $ciudad </p>\n";
+          echo "<p class = \"registro\">País: $pais </p>\n";
 
-            echo "<p class = \"registro\">El usuario se ha registrado correctamente</p>\n";
-            echo "<p class = \"registro\">Usuario: $user</p>\n";
-            echo "<p class = \"registro\">Email: $email</p>\n";
-            echo "<p class = \"registro\">Sexo: $sexo</p>\n";
-            echo "<p class = \"registro\">Fecha: $fecha</p>\n";
-            echo "<p class = \"registro\">Ciudad: $ciudad </p>\n";
-            echo "<p class = \"registro\">País: $pais </p>\n";
-
-  				} else header("location: registro.php?error=3");
-  			} else header("location: registro.php?error=2");
-  		} else header("location: registro.php?error=1");
-  	}
+        } else header("location: registro.php?error=3");
+      } else header("location: registro.php?error=2");
+    } else header("location: registro.php?error=1");
   }
+}
 ?>
 
 <h1 class="index">Registro nuevo usuario</h1>
 
 <?php
-	if (isset($_GET["error"])) {
-    echo "<h3 class='index'>";
-		switch($_GET["error"]){
-			case 0:
-				echo "Debe enviar todos los datos";
-			break;
-			case 1:
-				echo "El usuario ya esta registrado";
-			break;
-			case 2:
-				echo "Las contraseñas no coinciden";
-			break;
-			case 3:
-				echo "El email no es valido";
-			break;
-			default:
-				echo "error desconocido";
-			break;
-		}
-    echo "</h3>";
-	}
+if (isset($_GET["error"])) {
+  echo "<h3 class='index'>";
+  switch($_GET["error"]){
+    case 0:
+    echo "Debe enviar todos los datos";
+    break;
+    case 1:
+    echo "El usuario ya esta registrado";
+    break;
+    case 2:
+    echo "Las contraseñas no coinciden";
+    break;
+    case 3:
+    echo "El email no es valido";
+    break;
+    default:
+    echo "error desconocido";
+    break;
+  }
+  echo "</h3>";
+}
 ?>
 
 <main>
@@ -100,19 +88,18 @@
       <input id="city" type="text" name="ciudad" placeholder="Ciudad" <?php if (isset($ciudad)) echo "value='".$ciudad."' disabled"; ?>/>
       <label for="country">Pais: </label>
       <select id="country" name="pais" <?php if (isset($pais)) echo "disabled"; ?>>
-        <?php 
+        <?php
+
         //Buscamos los paises en la BBDD
-        $sentencia = 'SELECT NomPais from Paises p ';
-        for($i = 0; $i < mysqli_num_rows; $i++){
-          /*order by NomPais asc limit 1 offset $i*/
-             
-             $nombre = mysqli_query($bbdd,$sentencia);
-             $nombre = mysqli_fetch_array($nombre,MYSQLI_NUM);
-             echo "<option value=$nombre[$i]>$nombre[$i]</option>\n";
+        $resultado = mysqli_query($bbdd, 'SELECT * from paises');
+        while ($fila=$resultado->fetch_assoc()){
 
+          $nombre= $fila['NomPais'];
+          $id= $fila['idPaises'];
 
+          echo "<option value='$id'>$nombre</option>\n";
         }
-        
+
         ?>
         <!--<option value="AF">Afganistán</option>
         <option value="AL">Albania</option>

@@ -4,17 +4,7 @@
   include_once("includes/headerL.php");
   //include_once("includes/bbddConexion.php");
 
-  $bbdd = @mysqli_connect(
-          'localhost', //server
-          'user', 
-          'root',
-          'pibd'  //bbdd
-        );
-        if(!$bbdd){
-          echo '<p> Error en base de datos: ' . mysqli_connect_error();
-          echo '</p>';
-          exit;
-        }
+
 
   if(isset($_SESSION["remember"])==true){
 		header("location: principal.php");
@@ -30,42 +20,38 @@
        header("location: index.php");
      }
 	}
+
+  $resultado= mysqli_query($bbdd, "select * from fotos order by FRegistro desc limit 5");
+
+  
 ?>
 
 <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
 <main>
-  <!-- Resolucion: 250x167-->
 
-  <?php 
-  for($i = 0; $i < 5; $i++){
 
-     $sentencia = 'SELECT Titulo from Fotos f order by FRegistro asc limit 1 offset $i';
-     $titulo = mysqli_query($bbdd,$sentencia);
+  <?php
+  while($fila=$resultado->fetch_assoc()){
+    $id= $fila ["idFoto"];
+    $foto= $fila ["Fichero"];
+    $titulo= $fila ["Titulo"];
+    $fecha= $fila ["Fecha"];
+    $pais= $fila ["Pais"];
+    $resultadopais = mysqli_query($bbdd, "SELECT NomPais FROM paises WHERE idPaises=".$pais);
+    $filapais= $resultadopais->fetch_assoc();
+    $nombrepais= $filapais['NomPais'];
 
-     $sentencia = 'SELECT Fichero from Fotos f order by FRegistro asc limit 1 offset $i';
-     $foto = mysqli_query($bbdd,$sentencia);
-
-     $sentencia = 'SELECT Fecha from Fotos f order by FRegistro asc limit 1 offset $i';
-     $fecha = mysqli_query($bbdd,$sentencia);
-
-     $sentencia = 'SELECT Pais from Fotos f order by FRegistro asc limit 1 offset $i';
-     $pais = mysqli_query($bbdd,$sentencia);
-
-     /*$sentencia = 'SELECT IdFoto from Fotos f order by FRegistro asc limit 1 offset $i';
-     $id = mysql_query($bbdd,$sentencia);*/
-     
-     echo "$foto $titulo $fecha $pais";
-     echo "<article>\n
-                <a href=http://localhost/hipermedia/images/$foto><img src=http://localhost/hipermedia/images/$foto alt=$titulo/></a>\n
+      echo "<article>\n
+                <a href='imagen.php?id=$id'><img src='$foto' alt='$titulo'/></a>\n
                 <p>Titulo: $titulo</p>\n
                 <p>Fecha: $fecha</p>\n
-                <p>País: $pais</p>\n
+                <p>País: $nombrepais</p>\n
           </article>\n";
   }
 
-  
-  ?>
 
+  ?>
+  <!-- Resolucion: 250x167-->
   <!--
   <article><a href="imagen.php"><img src="images/approves.gif" alt="snoop dog"/></a></article>
   <article><a href=""><img src="images/camion.gif" alt="camion"/></a></article>
@@ -77,7 +63,7 @@
   <article><a href=""><img src="images/dormitorio.jpg" alt="dormitorio"/></a></article>
   <article><a href=""><img src="images/dormitorio.jpg" alt="dormitorio"/></a></article>
   <article><a href=""><img src="images/dormitorio.jpg" alt="dormitorio"/></a></article>
--->
+  -->
 </main>
 
 <?php include_once("includes/footer.php");?>

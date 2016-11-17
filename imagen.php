@@ -3,28 +3,21 @@
   include("includes/head.php");
   include("includes/headerC.php");
 
-  $bbdd = @mysqli_connect(
-          'localhost', //server
-          'user', 
-          'root',
-          'pibd'  //bbdd
-        );
-        if(!$bbdd){
-          echo '<p> Error en base de datos: ' . mysqli_connect_error();
-          echo '</p>';
-          exit;
-        }
-
   if(isset($_SESSION["remember"])==false){
 		header("location: index.php");
 	}
 
 
+  if(isset($_GET)){
+    if(isset($_GET['id'])){
 
+      $resultado= mysqli_query($bbdd, 'SELECT * from fotos');
+    }
+  }
 ?>
   <main>
       <?php
-          
+
 
       ?>
       <h2 id="titulo"><?php echo $titulo ?></h2>

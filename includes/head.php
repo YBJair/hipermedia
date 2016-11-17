@@ -1,5 +1,17 @@
 <?php
 session_start();
+$bbdd = @mysqli_connect(
+        'localhost', //server
+        'user',
+        'root',
+        'pibd'  //bbdd
+      );
+      mysqli_set_charset($bbdd, 'utf8');
+      if(!$bbdd){
+        echo '<p> Error en base de datos: ' . mysqli_connect_error();
+        echo '</p>';
+        exit;
+      }
 ?>
 <!DOCTYPE html>
 <html lang="es">

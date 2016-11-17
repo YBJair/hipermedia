@@ -22,7 +22,7 @@ if(isset($_SESSION["remember"])==true){
     while ($fila=$resultado->fetch_assoc()){
 
       $nombre= $fila['NomPais'];
-      $id= $fila['idPaises'];
+      $id= $fila['idPais'];
 
       echo "<option value='$id'>$nombre</option>\n";
     }

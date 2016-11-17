@@ -21,9 +21,9 @@
      }
 	}
 
-  $resultado= mysqli_query($bbdd, "select * from fotos order by FRegistro desc limit 5");
+  $resultado= mysqli_query($bbdd, "SELECT * FROM fotos ORDER BY FRegistro DESC LIMIT 5");
 
-  
+
 ?>
 
 <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
@@ -37,18 +37,21 @@
     $titulo= $fila ["Titulo"];
     $fecha= $fila ["Fecha"];
     $pais= $fila ["Pais"];
-    $resultadopais = mysqli_query($bbdd, "SELECT NomPais FROM paises WHERE idPaises=".$pais);
+    $resultadopais = mysqli_query($bbdd, "SELECT NomPais FROM paises WHERE idPais=".$pais);
     $filapais= $resultadopais->fetch_assoc();
     $nombrepais= $filapais['NomPais'];
 
-      echo "<article>\n
-                <a href='imagen.php?id=$id'><img src='$foto' alt='$titulo'/></a>\n
-                <p>Titulo: $titulo</p>\n
-                <p>Fecha: $fecha</p>\n
-                <p>País: $nombrepais</p>\n
-          </article>\n";
-  }
 
+    echo <<<HEREDOC
+			<article>
+        <a href='imagen.php?id=$id'><img src='$foto' alt='$titulo'/></a>
+        <p>$titulo</p>
+        <p>$fecha</p>
+        <p>$nombrepais</p>
+      </article>
+HEREDOC;
+
+  }
 
   ?>
   <!-- Resolucion: 250x167-->

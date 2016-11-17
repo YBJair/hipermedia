@@ -31,9 +31,10 @@
 
 
 
-  <h2>Mis Albumes</h2>
+  <h2>Albumes</h2>
 
   <ul>
+    <li><a href="misalbumes.php">Mis Albumes</a></li>
     <li><a href="crearalbum.php">Crear Album</a></li>
     <li><a href="solalbum.php">Solicitar album</a></li>
     <li><a href="#">Darse de baja</a></li>

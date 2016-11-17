@@ -15,14 +15,19 @@
         //Comprobamos los parametros (en un futuro se comprobaran con la base de datos)
         $user=$_POST["user"];
         $pass=$_POST["password"];
-         
 
-        $sentencia = 'SELECT nomUsuario from Usuarios u where u.Clave = $pass and u.nomUsuario = $user';
-        $conect = mysql_query($bbdd,$sentencia); //Comprobamos que la password y usuario haya sido correctamente introducida
 
-        if(!conect){
-            header("location: index.php?error");
-        } else {
+        $comprobacion = "SELECT NomUsuario, Clave FROM usuarios WHERE NomUsuario = '".$user."'";
+        $connect = mysqli_query($bbdd,$comprobacion); //Comprobamos que la password y usuario haya sido correctamente introducida
+
+
+
+        if (mysqli_fetch_assoc($connect)>0){
+
+          $filaConnect = $connect->fetch_array();
+
+           if($filaConnect['Clave']==$pass){
+
           if(isset($_POST["remember"]) && ($_POST["remember"]=="Yes")){
 						setcookie("remember_user", $user);
 						setcookie("remember_pass", $pass);
@@ -32,47 +37,51 @@
 
           header("location: menuperfil.php");
         }
+        else{
+          header("location: index.php?error");
+        }
 
-        
       }
     }
-    
+
+  }
+
     if(isset($_GET['borrarcookie'])){
-		if(isset($_COOKIE['remember_user'])){
-		setcookie("remember_user", "", time() -3600);
-		setcookie("remember_pass", "", time() -3600);
-		setcookie("remember_time", "", time() -3600);
-	  }
-	}
+    	if(isset($_COOKIE['remember_user'])){
+    		setcookie("remember_user", "", time() -3600);
+    		setcookie("remember_pass", "", time() -3600);
+    		setcookie("remember_time", "", time() -3600);
+      }
+	   }
   ?>
 
   <div class="loginF">
     <!--a class="boton" href="" id="butt">Entrar</a-->
-    
+
   <form action="index.php" method="POST" class="text">
-    <?php 
+    <?php
     if(isset($_COOKIE['remember_user'])){
 		$dia = date("d/m/Y", $_COOKIE['remember_time']);
 		$hora = date("h:i", $_COOKIE['remember_time']);
-		
-		echo <<<END
-		
-		<div>Hola {$_COOKIE['remember_user']}, su ultima visita fue el $dia a las $hora</div>";
-		<button class="boton" type="submit">Entrar</button>
-		<a class="boton" href="index.php?borrarcookies">Registro</a>
 
-END;
-		
-	} else{ 
+		echo <<<HEREDOC
+
+		<div>Hola {$_COOKIE['remember_user']}, su ultima visita fue el $dia a las $hora</div>
+		<button class='boton' type='submit'>Entrar</button>
+		<a class='boton' href='index.php?borrarcookies'>Registro</a>
+
+HEREDOC;
+
+	} else{
     ?>
-    
+
       <label for="user">Usuario: </label><input  id="user" name="user" type="text" placeholder="Usuario" required/>
       <label for="pass">Contraseña: </label><input id="pass"  name="password" type="password" placeholder="Contraseña" required/>
       <div class="absol">
         <input id="remember"type="checkbox" name="remember"><label class="show" for="remember">¿Recordarme?</label>
       </div>
       <button class="boton" type="submit">Entrar</button>
-    
+
     <?php }?>
   </form>
 

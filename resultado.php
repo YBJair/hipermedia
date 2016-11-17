@@ -3,70 +3,46 @@
   include("includes/head.php");
   include("includes/headerL.php");
 
-  $bbdd = @mysqli_connect(
-          'localhost', //server
-          'user', 
-          'root',
-          'pibd'  //bbdd
-        );
-        if(!$bbdd){
-          echo '<p> Error en base de datos: ' . mysqli_connect_error();
-          echo '</p>';
-          exit;
-        }
-
   if(isset($_SESSION["remember"])==true){
     header("location: resultadoconectado.php");
   }
 
   if(isset($_GET)){
-    if(isset($_GET["titulo"])){
-      $titulo=$_GET["titulo"];
-    }
-    if(isset($_GET["fecha"])){
-      $fecha=$_GET["fecha"];
-    }
-    if(isset($_GET["pais"])){
-      $pais=$_GET["pais"];
-    }
-  }
+      $tituloget=$_GET["titulo"];
+      $fechaget=$_GET["fecha"];
+      $paisget=$_GET["pais"];
+
+      $resultadopais = mysqli_query($bbdd, "SELECT NomPais FROM paises WHERE idPais=".$paisget);
+      $filapais= $resultadopais->fetch_assoc();
+      $nombrepais= $filapais['NomPais'];
+
+      $resultado = mysqli_query($bbdd,"SELECT idFoto, Titulo, Fecha, Pais, Fichero FROM fotos WHERE Titulo LIKE '%$tituloget%' OR Fecha = $fechaget OR Pais = $paisget");
 ?>
-<h1 class='index'>Resultado de la busqueda: <?php echo "$titulo $fecha $pais" ; ?></h1>
+<h1 class='index'>Resultado de la busqueda: <?php echo "$tituloget $fechaget $nombrepais" ; ?></h1>
 <main>
   <?php
-        
-     
-        $sentencia = 'SELECT titulo, fecha, pais, fichero from fotos where titulo = $titulo and fecha = $fecha and pais = $pais ';
-        for($i = 0; $i < mysqli_num_rows ; $i++){
-          
-             $j = $i++;
-             $k = $j++;
-             $l = $k++;
-             $foto = mysqli_query($bbdd,$sentencia);
-             $foto = mysqli_fetch_array($nombre,MYSQLI_NUM);
-             echo "<article>\n
-                  <h2>$foto[$i]</h2>\n
-                  <figure><a href=imagen.php><img src=images/$foto[$l] /></a></figure>\n
-                  <p>$foto[$k]</p>\n
-                  <p>$foto[$j]</p>\n";
+      while($fila=$resultado->fetch_assoc()){
+        $id= $fila["idFoto"];
+        $foto= $fila["Fichero"];
+        $titulo= $fila["Titulo"];
+        $fecha= $fila["Fecha"];
+        $pais= $fila["Pais"];
 
-                  $i += 3;
+        $resultadopais2 = mysqli_query($bbdd, "SELECT NomPais FROM paises WHERE idPais=".$pais);
+        $filapais2= $resultadopais2->fetch_assoc();
+        $nombrepais2= $filapais2['NomPais'];
+
+        echo <<<HEREDOC
+          <article>
+            <a href="imagen.php?id=$id"><img src='$foto' alt='$titulo'/></a>
+            <p>$titulo</p>
+            <p>$fecha</p>
+            <p>$nombrepais2</p>
+          </article>
+HEREDOC;
         }
-
+      }
   ?>
-
-  <!--<article>
-    <h2>Approves</h2>
-    <figure><a href="imagen.php"><img src="images/approves.gif" alt="meh"  /></a></figure>
-    <p>08/04/1994</p>
-    <p>Spoin</p>
-  </article>
-  <article>
-    <h2>Decorasiao</h2>
-    <figure><a href=""><img src="images/dormitorio.jpg" alt="meh"  /></a></figure>
-    <p>31/02/2054</p>
-    <p>Meh</p>
-  </article>-->
 </main>
 
 <?php include("includes/footer.php");?>

@@ -2,6 +2,9 @@
   $title= "Pictures and Images";
   include_once("includes/head.php");
   include_once("includes/headerL.php");
+  if(isset($_GET["error"])){
+    echo "<p style='text-align:right'>Introduce bien el usuario</p>";
+  }
   //include_once("includes/bbddConexion.php");
 
 
@@ -41,10 +44,9 @@
     $filapais= $resultadopais->fetch_assoc();
     $nombrepais= $filapais['NomPais'];
 
-
     echo <<<HEREDOC
 			<article>
-        <a href='imagen.php?id=$id'><img src='$foto' alt='$titulo'/></a>
+        <a href="imagen.php?id=$id"><img src='$foto' alt='$titulo'/></a>
         <p>$titulo</p>
         <p>$fecha</p>
         <p>$nombrepais</p>

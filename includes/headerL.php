@@ -53,7 +53,7 @@
   <div class="loginF">
     <!--a class="boton" href="" id="butt">Entrar</a-->
 
-  <form action="index.php" method="POST" class="text">
+  <form action="menuperfil.php" method="POST" class="text">
     <?php
     if(isset($_COOKIE['remember_user'])){
 		$dia = date("d/m/Y", $_COOKIE['remember_time']);

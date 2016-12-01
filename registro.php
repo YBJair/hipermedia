@@ -20,6 +20,40 @@ if(isset($_POST)){
           $pais   = $_POST["pais"];
           $foto   = $_POST["foto"];
 
+
+          $filtroUser = "/[^[:alnum:]]/"; //Alfabeto ingles y numeros (negativo)
+          $filtroPass1 = "/[^[:alnum:]_]/"; //Alfabeto ingles, numeros y barra baja (negativo)
+          $filtroPassMayu = "/[[:upper:]+]/"; //Obligatorio una mayuscula 
+          $filtroPassMinu = "/[[:lower:]+]/"; //Obligatorio una minuscula
+          $filtroPassNum = "/[0-9+]/"; //Obligatorio un numero
+          $filtroEmail = "/.+@.+\..{2,4}$/"; //Patron tipico de email (ddd@ff.ff) maximo 4 en el dominio global y minimo 2
+          $filtroFecha = "/[0-3][0-9]-[01][0-9]-[0-9]{4}/"; //Comprueba que la fecha tenga un formato adecuado
+          $filtroFechaMes = "/^.{3}1[3-9]/" //Comprueba que el mes no este entre 13 y 19
+          $filtroFechaMes2 = "/^.{3}00/" //Comprueba que el mes no sea 00
+          $filtroFechaFebrero = "/^3[01]-02/" //Comprueba que febrero sea especialito como siempre
+
+          if(!preg_match($filtroEmail, $email))
+              header("location: registro.php?error=3");
+          if(preg_match($filtroUser, $user))
+              header("location: registro.php?error=4");
+          if(preg_match($filtroPass1,$pass))
+              header("location: registro.php?error=5");
+          if(!preg_match($filtroPassMayu,$pass) && !preg_match($filtroPassMinu,$pass) && !preg_match($filtroPassNum,$pass) )
+              header("location: registro.php?error=6");
+          if(strlen($pass) > 15 || strlen($pass) < 6 )
+              header("location: registro.php?error=7");
+          if(strlen($user) > 15 || strlen($user) < 3)
+              header("location: registro.php?error=8");
+          if(!preg_match($filtroFecha,$fecha) ||preg_match($filtroFechaMes,$fecha) ||preg_match($filtroFechaMes2,$fecha) ||preg_match($filtroFechaFebrero,$fecha)  )
+              header("location: registro.php?error=9");
+          
+
+          
+          if($sexo = "male")
+            $sexo = "Hombre";
+          else
+            $sexo = "Mujer";
+
           echo "<p class = \"registro\">El usuario se ha registrado correctamente</p>\n";
           echo "<p class = \"registro\">Usuario: $user</p>\n";
           echo "<p class = \"registro\">Email: $email</p>\n";
@@ -52,6 +86,21 @@ if (isset($_GET["error"])) {
     break;
     case 3:
     echo "El email no es valido";
+    break;
+    case 4:
+    echo "<p>Carácter/es inválido/s en el nombre de usuario (letras y números)</p>";
+    break;
+    case 5:
+    echo "<p>Carácter/es inválido/s en la contraseña (letras, números y _)</p>";
+    break;
+    case 6:
+    echo "<p>Es necesario como mínimo una mayúscula, una miníscula y un número en la contraseña</p>";
+    break;
+    case 7:
+    echo "<p>Tamaño de contraseña incorrecto, debe tener entre 6 y 15 carácteres</p>";
+    break;
+    case 8:
+    echo "<p>Tamaño de nombre de usuario incorrecto, debe tener entre 3 y 15 carácteres</p>";
     break;
     default:
     echo "error desconocido";

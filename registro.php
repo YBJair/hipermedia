@@ -40,14 +40,14 @@ if(isset($_POST)){
               header("location: registro.php?error=4");
           if(preg_match($filtroPass1,$pass))
               header("location: registro.php?error=5");
-          if(!preg_match($filtroPassMayu,$pass) && !preg_match($filtroPassMinu,$pass) && !preg_match($filtroPassNum,$pass) )
+          if(!preg_match($filtroPassMayu,$pass) || !preg_match($filtroPassMinu,$pass) || !preg_match($filtroPassNum,$pass) )
               header("location: registro.php?error=6");
           if(strlen($pass) > 15 || strlen($pass) < 6 )
               header("location: registro.php?error=7");
           if(strlen($user) > 15 || strlen($user) < 3)
               header("location: registro.php?error=8");
          /* if(!preg_match($filtroFecha,$fecha))
-             // header("location: registro.php?error=9");
+              header("location: registro.php?error=9");
           if(preg_match($filtroFechaMes,$fecha))
 
               header("location: registro.php?error=9");

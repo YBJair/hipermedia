@@ -19,8 +19,6 @@ if(isset($_POST)){
           $ciudad = $_POST["ciudad"];
           $pais   = $_POST["pais"];
           $foto   = $_POST["foto"];
-          $fRegistro = getdate();
-          $fRegistro = $fRegistro['year']."-".$fRegistro['month']."-".$fRegistro['mday']." ".$fRegistro['hours'].":".$fRegistro['minutes'].":".$fRegistro['seconds'];
 
 
           $filtroUser = "/[^[:alnum:]]/"; //Alfabeto ingles y numeros (negativo)
@@ -30,9 +28,9 @@ if(isset($_POST)){
           $filtroPassNum = "/[0-9+]/"; //Obligatorio un numero
           $filtroEmail = "/.+@.+\..{2,4}$/"; //Patron tipico de email (ddd@ff.ff) maximo 4 en el dominio global y minimo 2
           $filtroFecha = "/[0-3][0-9]-[01][0-9]-[0-9]{4}/"; //Comprueba que la fecha tenga un formato adecuado
-          $filtroFechaMes = "/^.{3}1[3-9]/"; //Comprueba que el mes no este entre 13 y 19
-          $filtroFechaMes2 = "/^.{3}00/"; //Comprueba que el mes no sea 00
-          $filtroFechaFebrero = "/^3[01]-02/"; //Comprueba que febrero sea especialito como siempre
+          $filtroFechaMes = "/^.{3}1[3-9]/" //Comprueba que el mes no este entre 13 y 19
+          $filtroFechaMes2 = "/^.{3}00/" //Comprueba que el mes no sea 00
+          $filtroFechaFebrero = "/^3[01]-02/" //Comprueba que febrero sea especialito como siempre
 
           if(!preg_match($filtroEmail, $email))
               header("location: registro.php?error=3");
@@ -40,37 +38,18 @@ if(isset($_POST)){
               header("location: registro.php?error=4");
           if(preg_match($filtroPass1,$pass))
               header("location: registro.php?error=5");
-          if(!preg_match($filtroPassMayu,$pass) || !preg_match($filtroPassMinu,$pass) || !preg_match($filtroPassNum,$pass) )
+          if(!preg_match($filtroPassMayu,$pass) && !preg_match($filtroPassMinu,$pass) && !preg_match($filtroPassNum,$pass) )
               header("location: registro.php?error=6");
           if(strlen($pass) > 15 || strlen($pass) < 6 )
               header("location: registro.php?error=7");
           if(strlen($user) > 15 || strlen($user) < 3)
               header("location: registro.php?error=8");
-         /* if(!preg_match($filtroFecha,$fecha))
+          if(!preg_match($filtroFecha,$fecha) ||preg_match($filtroFechaMes,$fecha) ||preg_match($filtroFechaMes2,$fecha) ||preg_match($filtroFechaFebrero,$fecha)  )
               header("location: registro.php?error=9");
-          if(preg_match($filtroFechaMes,$fecha))
+          
 
-              header("location: registro.php?error=9");
-          if(preg_match($filtroFechaMes2,$fecha))
-              header("location: registro.php?error=9");
-          if(preg_match($filtroFechaFebrero,$fecha))
-              header("location: registro.php?error=9");*/
-
-
-          if($sexo == "male")
-            $sexo = 1;
-          else
-            $sexo = 2;
-
-          $trozos = explode("-",$fecha);
-          $fecha = $trozos[2]."-".$trozos[1]."-".$trozos[0];
-
-          $registro = "insert into 'usuarios' ('NomUsuario', 'Clave', 'Email', 'Sexo', 'FNacimiento', 'Ciudad', 'Foto', 'FRegistro', 'Pais')
-           values($user,$pass,$email,$sexo,$fecha,$ciudad,$foto,$fRegistro,$pais)";
-
-          $resultado= mysqli_query($bbdd, $registro);
-
-          if($sexo == 1)
+          
+          if($sexo = "male")
             $sexo = "Hombre";
           else
             $sexo = "Mujer";
@@ -122,9 +101,6 @@ if (isset($_GET["error"])) {
     break;
     case 8:
     echo "<p>Tamaño de nombre de usuario incorrecto, debe tener entre 3 y 15 carácteres</p>";
-    break;
-    case 9:
-    echo "<p> Fecha no válida</p>";
     break;
     default:
     echo "error desconocido";

@@ -20,17 +20,21 @@
         $comprobacion = "SELECT NomUsuario, idUsuario FROM usuarios u WHERE u.NomUsuario = '".$user."' and u.Clave ='".$pass."'";
         $result = mysqli_query($bbdd,$comprobacion); //Comprobamos que la password y usuario haya sido correctamente introducida.
         //Devuelve el Nombre del usuario cuyo alias y contraseña coincida
-        $result = $result->fetch_assoc();
 
-       if($result['NomUsuario'] != ""){
-          if(isset($_POST["remember"]) && ($_POST["remember"]=="Yes")){
-						setcookie("remember_user", $user);
-						setcookie("remember_pass", $pass);
-						setcookie("remember_time", time());
-					}
-          $_SESSION["remember"]=(int)$result['idUsuario'];
+        if($result!=false && !mysqli_error($bbdd)){
+          $row = $result->fetch_assoc();
 
-          header("location: menuperfil.php");
+
+          if($row['NomUsuario'] != ""){
+            if(isset($_POST["remember"]) && ($_POST["remember"]=="Yes")){
+  						setcookie("remember_user", $user);
+  						setcookie("remember_pass", $pass);
+  						setcookie("remember_time", time());
+  					}
+            $_SESSION["remember"]=(int)$row['idUsuario'];
+
+            header("location: menuperfil.php");
+         }
        }
         else {
          header("location: index.php?error");
@@ -51,7 +55,7 @@
   <div class="loginF">
     <!--a class="boton" href="" id="butt">Entrar</a-->
 
-  <form action="menuperfil.php" method="POST" class="text">
+  <form action="index.php" method="POST" class="text">
     <?php
     if(isset($_COOKIE['remember_user'])){
 		$dia = date("d/m/Y", $_COOKIE['remember_time']);

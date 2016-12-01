@@ -1,13 +1,15 @@
 <?php
   $title= "Perfil";
   include("includes/head.php");
-  include("includes/headerC.php");
 
   if(isset($_SESSION["remember"])==false){
 	  	header("location: index.php");
+      exit;
 	}
+
+  include("includes/headerC.php");
   if(isset($_POST["nombre"])){
-    
+
     $user   = $_POST["nombre"];
     $pass   = $_POST["pass"];
     $email  = $_POST["email"];

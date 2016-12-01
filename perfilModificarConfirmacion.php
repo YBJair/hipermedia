@@ -1,11 +1,12 @@
 <?php
   $title= "Perfil";
   include("includes/head.php");
-  include("includes/headerL.php");
 
   if(isset($_SESSION["remember"])==false){
 	  	header("location: index.php");
-	}
+      exit;
+  }
+  include("includes/headerC.php");
     if(isset($_POST["nombre"]) == false)
         header("location: index.php");
     else
@@ -18,11 +19,11 @@
         $pais   = $_POST["pais"];
 ?>
 <main>
-  
+
 
 <p>¿Está seguro de querer guardar los cambios?</p>
-<form action = "menuperfil.php" method = "POST"> 
-    
+<form action = "menuperfil.php" method = "POST">
+
     <p>
       <label for="userName">Usuario: </label><input id="userName" name="nombre" disabled type="text" required <?php echo "value='".$user."'"; ?>/>
     </p>
@@ -47,9 +48,9 @@
 
         <?php include("includes/paises.php"); ?>
 
-        
+
       </select>
-      
+
   </p>
  <p>
         <button type="submit" name = "button">Guardar cambios</button>

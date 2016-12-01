@@ -1,11 +1,12 @@
 <?php
   $title= "Perfil";
   include("includes/head.php");
-  include("includes/headerL.php");
 
   if(isset($_SESSION["remember"])==false){
 	  	header("location: index.php");
-	}
+      exit;
+  }
+  include("includes/headerL.php");
   //$id = (String)$_SESSION['remember'];
   $id = 1;
   $sentencia = "select NomUsuario, Email, Sexo, FNacimiento, Ciudad, Foto, Pais
@@ -14,7 +15,7 @@
   $fila = $resultado->fetch_assoc();
 ?>
 <main>
-  
+
 
 
 
@@ -48,9 +49,9 @@
 
         <?php include("includes/paises.php"); ?>
 
-        
+
       </select>
-      
+
   </p>
   <p>
       <button type="submit" name="button">Guardar cambios</button>

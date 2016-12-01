@@ -223,7 +223,13 @@ header form{
   margin: 5px 5px 0 5px;
 }
 .perfilF img{
+  width: 60px;
   border-radius: 50%;
+}
+#perfil2{
+  width: 80px;
+  height: 60px;
+  border-radius: 25%;
 }
 #perfilText{
   margin-top: 30px;

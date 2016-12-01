@@ -1,11 +1,12 @@
 <?php
   $title= "Imagen";
   include("includes/head.php");
-  include("includes/headerC.php");
 
   if(isset($_SESSION["remember"])==false){
 		header("location: index.php");
+    exit;
 	}
+  include("includes/headerC.php");
 
 
   if(isset($_GET)){
@@ -39,11 +40,11 @@
         }
 
     }
-  } 
+  }
 ?>
   <main>
     <?php
-    
+
     if($fila != null){
       echo <<<HEREDOC
         <h2 id="titulo"> $titulo</h2>

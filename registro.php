@@ -3,6 +3,7 @@ $title= "Registro";
 include("includes/head.php");
 include("includes/headerL.php");
 
+//Gestion de los datos de registro
 if(isset($_POST)){
   //se comprueba que esten inicializacdas
   if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"])
@@ -19,20 +20,18 @@ if(isset($_POST)){
           $ciudad = $_POST["ciudad"];
           $pais   = $_POST["pais"];
           $foto   = $_POST["foto"];
+
           $fRegistro = getdate();
-          $fRegistro = $fRegistro['year']."-".$fRegistro['month']."-".$fRegistro['mday']." ".$fRegistro['hours'].":".$fRegistro['minutes'].":".$fRegistro['seconds'];
+          if(strlen($fRegistro['hours']) <2)
+            $fRegistro['hours'] = "0".$fRegistro['hours'];
+          if(strlen($fRegistro['minutes']) <2)
+            $fRegistro['minutes'] = "0".$fRegistro['minutes'];
+          if(strlen($fRegistro['seconds']) <2)
+            $fRegistro['seconds'] = "0".$fRegistro['seconds'];
+          $fRegistro = $fRegistro['year']."-".$fRegistro['mon']."-".$fRegistro['mday']." ".$fRegistro['hours'].":".$fRegistro['minutes'].":".$fRegistro['seconds'];
 
 
-          $filtroUser = "/[^[:alnum:]]/"; //Alfabeto ingles y numeros (negativo)
-          $filtroPass1 = "/[^[:alnum:]_]/"; //Alfabeto ingles, numeros y barra baja (negativo)
-          $filtroPassMayu = "/[[:upper:]+]/"; //Obligatorio una mayuscula 
-          $filtroPassMinu = "/[[:lower:]+]/"; //Obligatorio una minuscula
-          $filtroPassNum = "/[0-9+]/"; //Obligatorio un numero
-          $filtroEmail = "/.+@.+\..{2,4}$/"; //Patron tipico de email (ddd@ff.ff) maximo 4 en el dominio global y minimo 2
-          $filtroFecha = "/[0-3][0-9]-[01][0-9]-[0-9]{4}/"; //Comprueba que la fecha tenga un formato adecuado
-          $filtroFechaMes = "/^.{3}1[3-9]/"; //Comprueba que el mes no este entre 13 y 19
-          $filtroFechaMes2 = "/^.{3}00/"; //Comprueba que el mes no sea 00
-          $filtroFechaFebrero = "/^3[01]-02/"; //Comprueba que febrero sea especialito como siempre
+         include("includes/filtros.php");
 
           if(!preg_match($filtroEmail, $email))
               header("location: registro.php?error=3");
@@ -57,20 +56,20 @@ if(isset($_POST)){
               header("location: registro.php?error=9");*/
 
 
-          if($sexo == "male")
-            $sexo = 1;
-          else
-            $sexo = 2;
 
           $trozos = explode("-",$fecha);
           $fecha = $trozos[2]."-".$trozos[1]."-".$trozos[0];
 
-          $registro = "insert into 'usuarios' ('NomUsuario', 'Clave', 'Email', 'Sexo', 'FNacimiento', 'Ciudad', 'Foto', 'FRegistro', 'Pais')
-           values($user,$pass,$email,$sexo,$fecha,$ciudad,$foto,$fRegistro,$pais)";
+       //if($foto == null)
+              $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, FRegistro, Pais)
+           values(\'$user\',\'$pass\',\'$email\',$sexo,\'$fecha\',\'$ciudad\',\'$fRegistro\',$pais)";
+          /* else
+              $registro = "insert into `usuarios` (`NomUsuario`, `Clave`, `Email`, `Sexo`, `FNacimiento`, `Ciudad`, `Foto`, `FRegistro`, `Pais`)
+           values(\'$user\',\'$pass\',\'$email\',$sexo,\'$fecha\',\'$ciudad\',\'$foto\',\'$fRegistro\',$pais)";*/
 
           $resultado= mysqli_query($bbdd, $registro);
 
-          if($sexo == 1)
+          if($sexo == 1) //Los cambiamos para que al imprimirlos sea legible para el usuario
             $sexo = "Hombre";
           else
             $sexo = "Mujer";
@@ -93,6 +92,7 @@ if(isset($_POST)){
 <h1 class="index">Registro nuevo usuario</h1>
 
 <?php
+//Gestion de errores
 if (isset($_GET["error"])) {
   echo "<h3 class='index'>";
   switch($_GET["error"]){
@@ -149,8 +149,8 @@ if (isset($_GET["error"])) {
     <p>
       <label for="gender">Genero: </label>
       <select id="gender" name="sexo" <?php if (isset($sexo)) echo "disabled"; ?>>
-        <option value="male" > Hombre</option>
-        <option value="female" <?php if (isset($sexo)&&$sexo=="female") echo "selected"; ?>> Mujer</option>
+        <option value="1" > Hombre</option>
+        <option value="2" <?php if (isset($sexo)&&$sexo=="female") echo "selected"; ?>> Mujer</option>
       </select>
     </p>
     <p>

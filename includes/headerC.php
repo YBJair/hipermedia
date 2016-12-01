@@ -8,16 +8,16 @@
 
   <?php
 
-    $idUsu= $_SESSION["remember"];
+  $idUsu= $_SESSION["remember"];
 
-    $sentencia = "SELECT NomUsuario, Foto, Email FROM usuarios WHERE idUsuario=$idUsu";
-    $resultado = mysqli_query($bbdd, $sentencia);
+  $comprobacion = "SELECT NomUsuario, Foto, Email FROM usuarios WHERE idUsuario=$idUsu";
+  $resultado = mysqli_query($bbdd, $comprobacion);
 
-    if($resultado!=false && !mysqli_error($bbdd)){
+  if($resultado!=false && !mysqli_error($bbdd)){
     $resultado = $resultado->fetch_assoc();
     $nombreUsu= $resultado['NomUsuario'];
     if($resultado['Foto']!=null)
-      $fotoUsu= "images/".$resultado['Foto'];
+    $fotoUsu= "images/".$resultado['Foto'];
     else {
       $fotoUsu= "images/perfil.jpg";
     }
@@ -25,18 +25,18 @@
 
     $tipofoto= "";
     if(preg_match("/.gif/", $fotoUsu))
-      $tipofoto="perfil2";
+    $tipofoto="perfil2";
 
     echo <<<HEREDOC
-      <div class='perfilF'>
-        <a href='menuperfil.php'><img id="$tipofoto" src="$fotoUsu" alt='Editar perfil' /></a>
-        <a href='menuperfil.php' id='perfilText'>
-          <span>$nombreUsu</span>
-        </a>
+    <div class='perfilF'>
+    <a href='menuperfil.php'><img id="$tipofoto" src="$fotoUsu" alt='Editar perfil' /></a>
+    <a href='menuperfil.php' id='perfilText'>
+    <span>$nombreUsu</span>
+    </a>
 
-        <a class='boton' href='index.php?q=logout'>Desconectarse</a>
-      </div>
+    <a class='boton' href='index.php?q=logout'>Desconectarse</a>
+    </div>
 HEREDOC;
-    }
+  }
   ?>
 </header>

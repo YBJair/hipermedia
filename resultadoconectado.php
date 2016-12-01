@@ -1,11 +1,12 @@
 <?php
   $title= "Resultado busqueda";
   include("includes/head.php");
-  include("includes/headerC.php");
 
   if(isset($_SESSION["remember"])==false){
   		header("location: index.php");
-	}
+      exit;
+  }
+  include("includes/headerC.php");
 
   if(isset($_GET)){
     if(isset($_GET["titulo"])){

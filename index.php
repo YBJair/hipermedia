@@ -21,8 +21,8 @@
        header("location: index.php");
      }
 	}
-
-  $resultado= mysqli_query($bbdd, "SELECT * FROM fotos ORDER BY FRegistro DESC LIMIT 5");
+  $sentencia="SELECT idFoto, Fichero, Titulo, Fecha, Pais, NomPais FROM fotos, pais WHERE Pais=idPais ORDER BY FRegistro DESC LIMIT 5";
+  $resultado= mysqli_query($bbdd, $sentencia);
 
 
 ?>
@@ -37,9 +37,7 @@
     $titulo= $fila ["Titulo"];
     $fecha= $fila ["Fecha"];
     $pais= $fila ["Pais"];
-    $resultadopais = mysqli_query($bbdd, "SELECT NomPais FROM paises WHERE idPais=".$pais);
-    $filapais= $resultadopais->fetch_assoc();
-    $nombrepais= $filapais['NomPais'];
+    $nombrepais= $fila['NomPais'];
 
     //<!-- Resolucion: 250x167-->
     echo <<<HEREDOC

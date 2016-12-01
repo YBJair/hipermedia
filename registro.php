@@ -62,7 +62,8 @@ if(isset($_POST)){
 
        //if($foto == null)
               $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, FRegistro, Pais)
-           values(\'$user\',\'$pass\',\'$email\',$sexo,\'$fecha\',\'$ciudad\',\'$fRegistro\',$pais)";
+           values('$user','$pass','$email',$sexo,'$fecha','$ciudad','$fRegistro',$pais)";
+
           /* else
               $registro = "insert into `usuarios` (`NomUsuario`, `Clave`, `Email`, `Sexo`, `FNacimiento`, `Ciudad`, `Foto`, `FRegistro`, `Pais`)
            values(\'$user\',\'$pass\',\'$email\',$sexo,\'$fecha\',\'$ciudad\',\'$foto\',\'$fRegistro\',$pais)";*/

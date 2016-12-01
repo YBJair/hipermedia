@@ -15,7 +15,7 @@
     <?php
       if($_SESSION['remember']==true)
         $usuario=(String)$_SESSION['remember'];
-
+      
       $resultado = mysqli_query($bbdd, "SELECT Email, Foto FROM usuarios WHERE NomUsuario='$usuario'");
       $fila = $resultado->fetch_assoc();
       $email=$fila['Email'];
@@ -41,7 +41,7 @@ HEREDOC;
     <button type="submit" name="button">Guardar</button>
   </form>-->
 
-  <a href="#">Modificar datos</a>
+  <a href="perfilModificar.php">Modificar datos</a>
 
 
 

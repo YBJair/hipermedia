@@ -10,7 +10,6 @@
   $id = 1;
   $sentencia = "select NomUsuario, Email, Sexo, FNacimiento, Ciudad, Foto, Pais
       from Usuarios u where $id = idUsuario";
-      echo($sentencia);
   $resultado = mysqli_query($bbdd, $sentencia);
   $fila = $resultado->fetch_assoc();
 ?>

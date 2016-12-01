@@ -12,10 +12,25 @@
     <h1>Pagina de Perfil</h1>
     <h2>Información Personal</h2>
 
+    <?php
+      if($_SESSION['remember']==true)
+        $usuario=(String)$_SESSION['remember'];
+
+      $resultado = mysqli_query($bbdd, "SELECT Email, Foto FROM usuarios WHERE NomUsuario='$usuario'");
+      $fila = $resultado->fetch_assoc();
+      $email=$fila['Email'];
+      $src="images/".$fila['Foto'];
+    ?>
+
     <form action="" method="POST">
-      <p><label for="userName">Usuario: </label><!--<input id="userName" name="Nombre" type="text" placeholder="Suk Mike Hok" required/>--> Suk Mike Hok</p>
-      <p><label for="email">Email: </label><!--<input id="email" name="email" type="email" placeholder="example@gmail.com" required/>-->sukmike@gmail.com</p>
-      <p><label for="imgP">Imagen de perfil: </label><!--<input id="imgP" name="img" type="file"/>--> <img src="images/perfil.jpg" alt="perfil"/></p>
+
+      <?php
+      echo <<<HEREDOC
+      <p><label for="userName">Usuario: </label><!--<input id="userName" name="Nombre" type="text" placeholder="Suk Mike Hok" required/>-->$usuario </p>
+      <p><label for="email">Email: </label><!--<input id="email" name="email" type="email" placeholder="example@gmail.com" required/>-->$email</p>
+      <label for="imgP">Imagen de perfil: </label><!--<input id="imgP" name="img" type="file"/>--> <br/><img src="$src" alt="foto de perfil"/>
+HEREDOC;
+      ?>
 
       <!--<button type="submit" name="button">Guardar</button>-->
       <hr>

@@ -7,7 +7,7 @@ if(isset($_SESSION["remember"])==false){
   header("location: index.php");
 }
 
-$resultado= mysqli_query($bbdd, "SELECT * from fotos order by FRegistro desc limit 5");
+$resultado= mysqli_query($bbdd, "SELECT idFoto, Fichero, Titulo, Fecha, Pais, NomPais FROM fotos, paises WHERE Pais=idPais ORDER BY FRegistro desc limit 5 ");
 ?>
 <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
 <main>
@@ -19,9 +19,7 @@ $resultado= mysqli_query($bbdd, "SELECT * from fotos order by FRegistro desc lim
     $titulo= $fila ["Titulo"];
     $fecha= $fila ["Fecha"];
     $pais= $fila ["Pais"];
-    $resultadopais = mysqli_query($bbdd, "SELECT NomPais FROM paises WHERE idPais=".$pais);
-    $filapais= $resultadopais->fetch_assoc();
-    $nombrepais= $filapais['NomPais'];
+    $nombrepais= $fila["NomPais"];
 
 
     echo <<<HEREDOC

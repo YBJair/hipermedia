@@ -6,6 +6,21 @@
   if(isset($_SESSION["remember"])==false){
 	  	header("location: index.php");
 	}
+  if(isset($_POST["nombre"])){
+    
+    $user   = $_POST["nombre"];
+    $pass   = $_POST["pass"];
+    $email  = $_POST["email"];
+    $sexo   = $_POST["sexo"];
+    $fecha  = $_POST["fecha"];
+    $ciudad = $_POST["ciudad"];
+    $pais   = $_POST["pais"];
+
+    $sentencia = "UPDATE Usuarios SET NomUsuario = '$user', Clave = '$pass', Email = '$email', Sexo = $sexo, FNacimiento ='$fecha'
+        Ciudad = '$ciudad', Pais = $pais  ";
+    $resultado = mysqli_fetch($bbdd,$sentencia);
+    echo ("<p>Cambios guardados</p>");
+  }
 ?>
 
   <main>

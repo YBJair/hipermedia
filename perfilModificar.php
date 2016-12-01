@@ -6,18 +6,20 @@
   if(isset($_SESSION["remember"])==false){
 	  	header("location: index.php");
 	}
-  $id = (String)$_SESSION['remember'];
+  //$id = (String)$_SESSION['remember'];
+  $id = 1;
   $sentencia = "select NomUsuario, Email, Sexo, FNacimiento, Ciudad, Foto, Pais
       from Usuarios u where $id = idUsuario";
       echo($sentencia);
   $resultado = mysqli_query($bbdd, $sentencia);
-  echo ($resultado);
   $fila = $resultado->fetch_assoc();
+?>
+<main>
   
 
-?>
 
-<form action= "menuperfil.php" method="POST">
+
+<form action= "perfilModificarConfirmacion.php" method="POST">
   <p>
     <p>
       <label for="userName">Usuario: </label><input id="userName" name="nombre" type="text" required <?php if (isset($fila['NomUsuario'])) echo "value='".$fila['NomUsuario']."'"; ?>/>
@@ -49,9 +51,12 @@
 
         
       </select>
+      
   </p>
-  
+  <p>
+      <button type="submit" name="button">Guardar cambios</button>
+  </p>
 </form>
-
+</main>
 
 <?php include("includes/footer.php");?>

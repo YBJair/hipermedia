@@ -17,8 +17,8 @@
         $pass=$_POST["password"];
 
 
-        $comprobacion = "SELECT NomUsuario FROM usuarios u WHERE u.NomUsuario = '".$user."' and u.Clave ='".$pass."'";
-        $result = mysqli_query($bbdd,$comprobacion); //Comprobamos que la password y usuario haya sido correctamente introducida. 
+        $comprobacion = "SELECT NomUsuario, idUsuario FROM usuarios u WHERE u.NomUsuario = '".$user."' and u.Clave ='".$pass."'";
+        $result = mysqli_query($bbdd,$comprobacion); //Comprobamos que la password y usuario haya sido correctamente introducida.
         //Devuelve el Nombre del usuario cuyo alias y contraseña coincida
         $result = $result->fetch_assoc();
 
@@ -28,7 +28,7 @@
 						setcookie("remember_pass", $pass);
 						setcookie("remember_time", time());
 					}
-					$_SESSION["remember"]=$user;
+          $_SESSION["remember"]=(int)$result['idUsuario'];
 
           header("location: menuperfil.php");
        }
@@ -38,8 +38,6 @@
 
       }
     }
-
-  
 
     if(isset($_GET['borrarcookie'])){
     	if(isset($_COOKIE['remember_user'])){

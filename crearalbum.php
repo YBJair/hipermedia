@@ -5,6 +5,8 @@
   if(isset($_SESSION["remember"])==false){
 		header("location: index.php");
 	}
+
+  
 ?>
 
 <h1 class="index">Crear Album</h1>
@@ -20,21 +22,9 @@
     <p>
       <label for="country">Pais: </label>
       <select id="country" name="country">
-
         <?php
-
-        //Buscamos los paises en la BBDD
-        $resultado = mysqli_query($bbdd, 'SELECT * from paises');
-        while ($fila=$resultado->fetch_assoc()){
-
-          $nombre= $fila['NomPais'];
-          $id= $fila['idPais'];
-
-          echo "<option value='$id'>$nombre</option>\n";
-        }
-
+          include_once("includes/paises.php");
         ?>
-
       </select>
     </p>
 

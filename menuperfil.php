@@ -1,7 +1,7 @@
 <?php
   $title= "Perfil";
   include("includes/head.php");
-  include("includes/headerL.php");
+  include("includes/headerC.php");
 
   if(isset($_SESSION["remember"])==false){
 	  	header("location: index.php");
@@ -13,22 +13,16 @@
     <h2>Información Personal</h2>
 
     <?php
-      if($_SESSION['remember']==true)
-        $usuario=(String)$_SESSION['remember'];
-      
-      $resultado = mysqli_query($bbdd, "SELECT Email, Foto FROM usuarios WHERE NomUsuario='$usuario'");
-      $fila = $resultado->fetch_assoc();
-      $email=$fila['Email'];
-      $src="images/".$fila['Foto'];
+      $resultado = mysqli_query($bbdd, "SELECT NomUsuario, Email, Foto FROM usuarios WHERE idUsuario='$idUsu'");
     ?>
 
     <form action="" method="POST">
 
       <?php
       echo <<<HEREDOC
-      <p><label for="userName">Usuario: </label><!--<input id="userName" name="Nombre" type="text" placeholder="Suk Mike Hok" required/>-->$usuario </p>
-      <p><label for="email">Email: </label><!--<input id="email" name="email" type="email" placeholder="example@gmail.com" required/>-->$email</p>
-      <label for="imgP">Imagen de perfil: </label><!--<input id="imgP" name="img" type="file"/>--> <br/><img src="$src" alt="foto de perfil"/>
+      <p><label for="userName">Usuario: </label><!--<input id="userName" name="Nombre" type="text" placeholder="Suk Mike Hok" required/>-->$nombreUsu </p>
+      <p><label for="email">Email: </label><!--<input id="email" name="email" type="email" placeholder="example@gmail.com" required/>-->$emailUsu</p>
+      <label for="imgP">Imagen de perfil: </label><!--<input id="imgP" name="img" type="file"/>--> <br/><img src="$fotoUsu" alt="foto de perfil"/>
 HEREDOC;
       ?>
 

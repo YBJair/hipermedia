@@ -10,6 +10,7 @@
   if(isset($_SESSION["remember"])==true){
 		header("location: principal.php");
 	}
+
 	if(isset($_GET["q"]) && $_GET["q"]=="logout"){
     if(isset($_SESSION["remember"])){
        unset($_SESSION["remember"]);
@@ -21,37 +22,38 @@
        header("location: index.php");
      }
 	}
-  $sentencia="SELECT idFoto, Fichero, Titulo, Fecha, Pais, NomPais FROM fotos, pais WHERE Pais=idPais ORDER BY FRegistro DESC LIMIT 5";
+  $sentencia= "SELECT idFoto, Fichero, Titulo, Fecha, Pais, NomPais FROM fotos, paises WHERE idPais=Pais ORDER BY FRegistro DESC LIMIT 5";
   $resultado= mysqli_query($bbdd, $sentencia);
 
 
 ?>
-
 <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
 <main>
+<?php
 
-  <?php
-  while($fila=$resultado->fetch_assoc()){
-    $id= $fila ["idFoto"];
-    $foto= $fila ["Fichero"];
-    $titulo= $fila ["Titulo"];
-    $fecha= $fila ["Fecha"];
-    $pais= $fila ["Pais"];
-    $nombrepais= $fila['NomPais'];
+  if($resultado!=false && !mysqli_error($bbdd)){
+    while($fila=$resultado->fetch_assoc()){
+      $id= $fila ["idFoto"];
+      $foto= $fila ["Fichero"];
+      $titulo= $fila ["Titulo"];
+      $fecha= $fila ["Fecha"];
+      $pais= $fila ["Pais"];
+      $nombrepais= $fila['NomPais'];
 
-    //<!-- Resolucion: 250x167-->
-    echo <<<HEREDOC
-			<article>
-        <a href="imagen.php?id=$id"><img src='$foto' alt='$titulo'/></a>
-        <p>$titulo</p>
-        <p>$fecha</p>
-        <p>$nombrepais</p>
-      </article>
-HEREDOC;
+      //<!-- Resolucion: 250x167-->
+      echo <<<HEREDOC2
+  			<article>
+          <a href='imagen.php?id=$id'><img src='$foto' alt='$titulo'/></a>
+          <p>$titulo</p>
+          <p>$fecha</p>
+          <p>$nombrepais</p>
+        </article>
+HEREDOC2;
 
+    }
   }
 
-  ?>
+?>
 </main>
 
 <?php include_once("includes/footer.php");?>

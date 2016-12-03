@@ -139,6 +139,11 @@ form>.input:focus {
   -o-transition: none;*/
   transition: none;
 }
+.boton i{
+  vertical-align: top;
+  margin-top: 3px;
+}
+
 p.registro{
   text-align: center;
 }
@@ -156,6 +161,9 @@ body{
 a{
   color: inherit;
   text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
 }
 
 /*Formato header*/
@@ -292,7 +300,24 @@ main{
   font-size: 1em;
   margin-bottom: 50px;
 }
+#detalleImg{
+  text-align: center;
+}
+/*Estilo DETALLE IMAGEN*/
+.propietarioImagen>*{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0px 5px 0px 5px;
+}
+.propietarioImagen p{
+  margin-top: 20px;
+}
+.propietarioImagen img{
+  width: 80px;
+  height: 60px;
+  border-radius: 25%;
 
+}
 /*Formato articulo*/
 article{
   display: inline-block;
@@ -328,9 +353,7 @@ article img{
   position: relative;
   width: 100%;
 }
-#detalleImg{
-  text-align: center;
-}
+
 
 
 /* Pie de pagina*/

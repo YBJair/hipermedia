@@ -24,7 +24,7 @@
     echo ("<p>Cambios guardados</p>");
   }
 ?>
-
+  <a class='boton' href='principal.php'><i class="material-icons">arrow_back</i>Volver</a>
   <main>
     <h1>Pagina de Perfil</h1>
     <h2>Información Personal</h2>

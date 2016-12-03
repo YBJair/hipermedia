@@ -13,14 +13,20 @@ if(isset($_GET)){
   if(isset($_GET['id'])){
     $id= $_GET['id'];
 
-    $sentencia="SELECT f.Titulo, f.Fichero, f.Fecha, f.Album, NomPais, albumes.Titulo as TituloAlbum
-    FROM fotos f, paises, albumes
-    WHERE f.idFoto = $id AND f.Pais=paises.idPais AND albumes.idAlbum = f.Album";
+    $sentencia="SELECT f.Titulo, f.Fichero, f.Fecha, f.Album, NomPais, a.Titulo as TituloAlbum, u.NomUsuario, u.Foto
+    FROM fotos f, paises, albumes a, usuarios u
+    WHERE f.idFoto = $id AND f.Pais=paises.idPais AND a.idAlbum = f.Album AND u.idUsuario = a.Usuario";
     $resultado= mysqli_query($bbdd, $sentencia);
 
   }
 }
+
+
+
+
+
 ?>
+<a class='boton' href='principal.php'><i class="material-icons">arrow_back</i>Volver</a>
 <main>
   <?php
   if ($resultado!=false && $resultado->num_rows> 0){
@@ -31,6 +37,8 @@ if(isset($_GET)){
     $idalbum= $fila ["Album"];
     $nombrealbum= $fila["TituloAlbum"];
     $nombrepais= $fila ["NomPais"];
+    $nombrepropietario = $fila["NomUsuario"];
+    $fotopropietario = "images/".$fila["Foto"];
 
     if($nombrepais==null){
       $nombrepais="Desconocido";
@@ -40,22 +48,31 @@ if(isset($_GET)){
       $nombrealbum="No tiene album";
     }
 
-    echo <<<HEREDOC2
-    <h2 id="titulo"> $titulo</h2>
-    <h3 id="fecha">Fecha: $fecha</h3>
-    <figure id="detalleImg"><img width="70%" src='$foto' alt='$titulo'/></figure>
-    <h3>Pais: $nombrepais</h3>
-    <p>
-    <h3>Albumes donde aparece</h3>
-    <a href="album.php?id=$idalbum">$nombrealbum</a>
-    </p>
-HEREDOC2;
+    $contenido = <<<HTML
+<h2 id="titulo"> $titulo</h2>
+<h3 id="fecha">Fecha: $fecha</h3>
+<figure id="detalleImg"><img width="70%" src='$foto' alt='$titulo'/></figure>
+
+<div class="propietarioImagen"><p>Subido por: $nombrepropietario </p><img src="$fotopropietario" alt="foto de perfil"></div>
+
+<h3>Detalles</h3>
+<ul>
+  <li>Pais: $nombrepais</li>
+  <li>Album: <a href="album.php?id=$idalbum">$nombrealbum</a></li>
+</ul>
+
+HTML;
+
+    echo $contenido;
+
 
   }
   else {
     echo "<h1> HTTP 404: FILE NOT FOUND</h1>\n";
   }
 ?>
+
+<h3></h3>
 </main>
 
 <?php include("includes/footer.php");?>

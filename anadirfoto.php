@@ -10,27 +10,28 @@ include("includes/headerC.php");
 
 if(isset($_POST) && isset($_POST["titulo"])){
   //Comprobamos los parametros
-  $descripcion= $_POST['titulo'];
+  $descripcion= $_POST['descripcion'];
   $titulo = $_POST['titulo'];
-  $pais= $_POST['pais'];
-  $fechaRegistro= date("Y-m-d H:i:s");
+  $pais= $_POST['country'];
+  $freg= date("Y-m-d H:i:s");
+  $album = $_POST["album"];
 
   if(isset($_POST['fecha'])){
     $fecha = $_POST['fecha'];
   }
   else {
-    $fechaRegistro= date("Y-m-d H:i:s");
+    $fecha= date("Y-m-d");
   }
   //BEWARE SQL INJECTIONS
-  //$sentencia= "INSERT INTO albumes VALUES (NULL, $titulo, $descripcion, $pais, $idUsu)";
-  //$resultado = mysqli_query($bbdd, $sentencia);
-
+  $sentencia= "INSERT INTO fotos VALUES (NULL, '".$titulo."', '".$descripcion."','".$fecha."', ".$album.", null, '".$freg."', ".$pais.")";
+  $resultado = mysqli_query($bbdd, $sentencia);
+  echo("<p class=registro> Inserción realizada </p>");
 }
 ?>
 
 <h1 class="index">Añadir foto a album</h1>
 <main>
-  <form action="crearalbum.php" method="POST">
+  <form action="anadirfoto.php" method="POST">
     <p><label for="title">Titulo: </label><input id="title" name="titulo" type="text" required/></p>
     <p>
       <label for="descripcion">Descripción: </label><input id="descripcion" type="text" name="descripcion" placeholder="descripcion">

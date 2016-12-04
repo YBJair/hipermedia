@@ -32,7 +32,7 @@
   if($icolor == true) $ppi = $ppi + 0.05;
   $sentencia = "SELECT idFoto from fotos where Album = ".$album;
   $imagenes = mysqli_query($bbdd,$sentencia);
-  $numimagenes = count($imagenes);
+  $numimagenes = $imagenes->num_rows;
   $coste = $cpp * $copias + $numimagenes * $ppi;  
 
   $sentencia = "INSERT INTO solicitudes VALUES (null, ".$album.", '".$nombre."', '".$titulo."', '".$descr."', 

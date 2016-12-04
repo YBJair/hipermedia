@@ -86,7 +86,7 @@
       
   </p>
 </form>
-<form action="index.php">
+<form action="menuperfil.php">
         <button type="submit" name="button">Volver</button>
       </form>
 </main>

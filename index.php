@@ -8,7 +8,7 @@
   //include_once("includes/bbddConexion.php");
 
   if(isset($_SESSION["remember"])==true){
-		header("location: principal.php");
+		//header("location: principal.php");
 	}
 
 	if(isset($_GET["q"]) && $_GET["q"]=="logout"){
@@ -22,6 +22,27 @@
        header("location: index.php");
      }
 	}
+
+  if(isset($_POST["pass"]) && isset($_POST["borrar"])){
+
+    if($_POST["borrar"] == "BORRAR"){
+      $pass = $_POST["pass"];
+      $id = (String)$_SESSION['remember'];
+      $comprobacion = "SELECT NomUsuario FROM usuarios u WHERE u.idUsuario = ".$id." and u.Clave ='".$pass."'";
+      $result = mysqli_query($bbdd,$comprobacion); //Comprobamos que la password haya sido correctamente introducida.
+      //Devuelve el Nombre del usuario cuyo id y contraseña coincida
+      
+      if($result!=false && !mysqli_error($bbdd)){
+          $row = $result->fetch_assoc();
+          if($row['NomUsuario'] == ""){
+            header("location: bajaUsuario.php?error=1");
+          }else{ //Aqui borramos el usuario
+            $borrar = "DELETE FROM usuarios WHERE idUsuario = $id";
+            $borrando = mysqli_query($bbdd, $borrar);
+          }
+      } else header("location: bajaUsuario.php?error=6");
+    }else header("location: bajaUsuario.php?error=0");
+  }
   $sentencia= "SELECT idFoto, Fichero, Titulo, Fecha, Pais, NomPais FROM fotos, paises WHERE idPais=Pais ORDER BY FRegistro DESC LIMIT 5";
   $resultado= mysqli_query($bbdd, $sentencia);
 

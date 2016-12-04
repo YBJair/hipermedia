@@ -39,8 +39,12 @@ HTML;
       echo $html;
       ?>
       <hr/>
-
-  <a href="perfilModificar.php">Modificar datos</a>
+  <form action="perfilModificar.php">
+    <button type="submit" name="button">Modificar datos</button>
+  </form>
+  <form action="bajaUsuario.php">
+    <button type="submit" name="button">Darse de baja</button>
+  </form>
 
   <h2>Albumes</h2>
 
@@ -48,7 +52,7 @@ HTML;
     <li><a href="misalbumes.php">Mis Albumes</a></li>
     <li><a href="crearalbum.php">Crear Album</a></li>
     <li><a href="solalbum.php">Solicitar album</a></li>
-    <li><a href="#">Darse de baja</a></li>
+    
   </ul>
 
 </main>

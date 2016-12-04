@@ -1,5 +1,5 @@
 <?php
-$title= "Crear Album";
+$title= "Añadir foto a album";
 include("includes/head.php");
 if(isset($_SESSION["remember"])==false){
   header("location: index.php");
@@ -13,20 +13,22 @@ if(isset($_POST) && isset($_POST["titulo"])){
   $descripcion= $_POST['titulo'];
   $titulo = $_POST['titulo'];
   $pais= $_POST['pais'];
+  $fechaRegistro= date("Y-m-d H:i:s");
+
   if(isset($_POST['fecha'])){
     $fecha = $_POST['fecha'];
   }
   else {
-    $fecha= date("Y-m-d");
+    $fechaRegistro= date("Y-m-d H:i:s");
   }
   //BEWARE SQL INJECTIONS
-  //$sentencia= "INSERT INTO albumes VALUES (NULL, $titulo, $descripcion, $fecha, $pais, $idUsu)";
+  //$sentencia= "INSERT INTO albumes VALUES (NULL, $titulo, $descripcion, $pais, $idUsu)";
   //$resultado = mysqli_query($bbdd, $sentencia);
 
 }
 ?>
 
-<h1 class="index">Crear Album</h1>
+<h1 class="index">Añadir foto a album</h1>
 <main>
   <form action="crearalbum.php" method="POST">
     <p><label for="title">Titulo: </label><input id="title" name="titulo" type="text" required/></p>
@@ -37,6 +39,18 @@ if(isset($_POST) && isset($_POST["titulo"])){
       <label for="date">Fecha: </label><input id="date" type="date" name="fecha">
     </p>
     <p>
+      <label for="album">Album: </label>
+      <select id="album" name="album">
+
+        <?php
+          include_once("includes/albumes.php");
+        ?>
+      </select>
+    </p>
+    <p>
+      <label for="fichero">Enlace(local): </label><input id="fichero" type="text" name="fichero">
+    </p>
+    <p>
       <label for="country">Pais: </label>
       <select id="country" name="country">
         <?php
@@ -45,7 +59,7 @@ if(isset($_POST) && isset($_POST["titulo"])){
       </select>
     </p>
 
-    <input type="submit" value="Crear" class="boton"/>
+    <input type="submit" value="Añadir" class="boton"/>
   </form>
 </main>
 

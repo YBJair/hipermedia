@@ -51,8 +51,9 @@ HTML;
   <ul>
     <li><a href="misalbumes.php">Mis Albumes</a></li>
     <li><a href="crearalbum.php">Crear Album</a></li>
+    <li><a href="anadirfoto.php">Añadir foto a album</a></li>
     <li><a href="solalbum.php">Solicitar album</a></li>
-    
+
   </ul>
 
 </main>

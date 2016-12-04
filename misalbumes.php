@@ -1,5 +1,5 @@
 <?php
-$title= "Perfil";
+$title= "Mis Albumes";
 include("includes/head.php");
 
 if(isset($_SESSION["remember"])==false){

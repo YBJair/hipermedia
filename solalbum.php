@@ -103,9 +103,7 @@
       <p>
         <label for="album">Álbum de PI: </label>
         <select id="album" name="album" required>
-          <option value=""></option>
-          <option value="1"> Finchingo</option>
-          <option  value="2"> Pinchipopi</option>
+          <?php include_once("includes/albumes.php") ?>
         </select>(*)
       </p>
       <p>

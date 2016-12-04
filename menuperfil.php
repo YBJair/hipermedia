@@ -17,10 +17,10 @@
     $fecha  = $_POST["fecha"];
     $ciudad = $_POST["ciudad"];
     $pais   = $_POST["pais"];
-
-    $sentencia = "UPDATE Usuarios SET NomUsuario = '$user', Clave = '$pass', Email = '$email', Sexo = $sexo, FNacimiento ='$fecha'
-        Ciudad = '$ciudad', Pais = $pais  ";
-    $resultado = mysqli_fetch($bbdd,$sentencia);
+    echo($idUsu);
+    $sentencia = "UPDATE Usuarios u SET NomUsuario = '".$user."', Clave = '".$pass."', Email = '".$email."', Sexo = ".$sexo.", FNacimiento =".$fecha."
+        Ciudad = '".$ciudad."', Pais = ".$pais."  where u.idUsuario = ".$idUsu ;
+    $resultado = mysqli_query($bbdd,$sentencia);
     echo ("<p>Cambios guardados</p>");
   }
 ?>

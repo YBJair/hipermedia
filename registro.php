@@ -4,8 +4,10 @@ include("includes/head.php");
 include("includes/headerL.php");
 
 //Gestion de los datos de registro
-if(isset($_POST)){
-  //se comprueba que esten inicializacdas
+//Comprobamos si se ha enviado algun post
+if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) || isset($_POST["email"]) || isset($_POST["sexo"])
+  || isset($_POST["fecha"]) || isset($_POST["ciudad"]) || isset($_POST["pais"]) || isset($_POST["foto"])){
+  //se comprueba que esten inicializados todos los datos necesario
   if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"])
   && isset($_POST["fecha"]) && isset($_POST["ciudad"]) && isset($_POST["pais"]) && isset($_POST["foto"])){
     //Comprobamos con los introducidos
@@ -58,7 +60,7 @@ if(isset($_POST)){
 
 
           $trozos = explode("-",$fecha);
-          $fecha = $trozos[2]."-".$trozos[1]."-".$trozos[0];
+          $fecha = $trozos[0]."-".$trozos[1]."-".$trozos[2];
 
        //if($foto == null)
               $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, FRegistro, Pais)
@@ -86,7 +88,7 @@ if(isset($_POST)){
         } else header("location: registro.php?error=3");
       } else header("location: registro.php?error=2");
     } else header("location: registro.php?error=1");
-  } else header("location: registro.php?error=0");
+  } //else header("location: registro.php?error=0");
 }
 ?>
 

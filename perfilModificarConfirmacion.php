@@ -19,6 +19,25 @@
         $fecha  = $_POST["fecha"];
         $ciudad = $_POST["ciudad"];
         $pais   = $_POST["pais"];
+        include("includes/filtros.php");
+
+        if($nPass == "" && $cPass == ""){
+          $nPass = $pass;
+          $cPass = $pass;
+        }
+
+        if(!preg_match($filtroEmail, $email))
+              header("location: perfilModificar.php?error=3");
+          if(preg_match($filtroUser, $user))
+              header("location: perfilModificar.php?error=4");
+          if(preg_match($filtroPass1,$nPass))
+              header("location: perfilModificar.php?error=5");
+          if(!preg_match($filtroPassMayu,$nPass) || !preg_match($filtroPassMinu,$nPass) || !preg_match($filtroPassNum,$nPass) )
+              header("location: perfilModificar.php?error=6");
+          if(strlen($nPass) > 15 || strlen($nPass) < 6 )
+              header("location: perfilModificar.php?error=7");
+          if(strlen($user) > 15 || strlen($user) < 3)
+              header("location: perfilModificar.php?error=8");
     }
     if($nPass == $cPass){
       $id = (String)$_SESSION['remember'];
@@ -43,31 +62,36 @@
 <form action="menuperfil.php" method="POST">
 
     <p>
-      <label for="userName">Usuario: </label><input id="userName" name="nombre" disabled type="text" required 
+      <label for="userName">Usuario: </label><input id="userName" name="nombre"  type="text" required 
       <?php echo "value='".$user."'"; ?>/>
     </p>
     <p>
-      <label for="email">Email: </label><input id="email" name="email" disabled type="email" required 
+      <label for="email">Email: </label><input id="email" name="email"  type="email" required 
       <?php  echo "value='".$email."'"; ?>/>
     </p>
     <p>
+      <label for="pass">Password: </label><input type="password" name="pass" required id="password"
+      <?php  echo "value='".$pass."'"; ?>/>
+
+    </p>
+    <p>
       <label for="gender" >Genero: </label>
-      <select id="gender" disabled name="sexo">
+      <select id="gender"  name="sexo">
         <option value="1" > Hombre</option>
         <option value="2" 
         <?php if($sexo=="2") echo "selected"; ?>> Mujer</option>
       </select>
     </p>
     <p>
-      <label for="birth" >Fecha de nacimiento: </label><input id="birth"  disabled type="date" name="fecha" required 
+      <label for="birth" >Fecha de nacimiento: </label><input id="birth"   type="date" name="fecha" required 
       <?php  echo "value='".$fecha."'"; ?>>
     </p>
     <p>
       <label for="city">Ciudad: </label>
-      <input id="city" disabled type="text" name="ciudad" placeholder="Ciudad" 
+      <input id="city" type="text" name="ciudad" placeholder="Ciudad" 
       <?php echo "value='".$ciudad."'"; ?>/>
       <label for="country">Pais: </label>
-      <select id="country" disabled name="pais" >
+      <select id="country"  name="pais" >
 
         <?php include("includes/paises.php"); ?>
 

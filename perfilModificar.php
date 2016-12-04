@@ -18,6 +18,24 @@
     case 1:
     echo "La contraseña no es correcta";
     break;
+    case 3:
+    echo "El email tiene un forma inválido";
+    break;
+    case 4:
+    echo "El nombre de usuario solo puede tener valores numéricos o letras del alfabeto inglés";
+    break;
+    case 5:
+    echo "La contraseña solo puede tener carácteres del alfabeto inglés, números y barra baja _";
+    break;
+    case 6:
+    echo "La contraseña debe tener por lo menos una mayúscula, una minúscula y un número";
+    break;
+    case 7:
+    echo "La contraseña debe tener entre 6 y 15 carácteres";
+    break;
+    case 8:
+    echo "El nombre de usuario debe tener entre 3 y 15 carácteres";
+    break;
     default:
     echo "Error desconocido";
     break;
@@ -30,10 +48,13 @@
   $resultado = mysqli_query($bbdd, $sentencia);
   $fila = $resultado->fetch_assoc();
 ?>
+
+<p class="registro"> La contraseña debe tener entre 6 y 15 carácteres, mínimo una mayúscula, una minúscula y un número </p>
+<p class="registro"> El nombre de usuario debe tener entre 3 y 15 carácteres, solo se permiten números y alfabeto inglés</p>
 <main>
 
 
-
+<h1>Modificar datos</h1>
 
 <form action= "perfilModificarConfirmacion.php" method="POST">
   <p>
@@ -76,6 +97,7 @@
 
 
       </select>
+      Asegurese de elegir bien su país
 
   </p>
   <p>

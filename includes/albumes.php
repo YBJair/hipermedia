@@ -1,5 +1,5 @@
 <?php
-$sql= "SELECT titulo, idAlbum FROM albumes";
+$sql= "SELECT titulo, idAlbum FROM albumes a where a.Usuario = ".$idUsu;
 $resalbum=mysqli_query($bbdd, $sql);
 if($resalbum!=false && !mysqli_error($bbdd)){
   while ($filaalbum = $resalbum->fetch_assoc()) {

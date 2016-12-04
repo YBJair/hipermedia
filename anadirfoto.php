@@ -48,7 +48,7 @@ if(isset($_POST) && isset($_POST["titulo"])){
       </select>
     </p>
     <p>
-      <label for="fichero">Enlace(local): </label><input id="fichero" type="text" name="fichero">
+      <label for="fichero">Imagen: </label><input id="fichero" type="file" name="fichero">
     </p>
     <p>
       <label for="country">Pais: </label>

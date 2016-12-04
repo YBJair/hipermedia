@@ -10,9 +10,9 @@ include("includes/headerC.php");
 
 if(isset($_POST) && isset($_POST["titulo"])){
   //Comprobamos los parametros
-  $descripcion= $_POST['titulo'];
+  $descripcion= $_POST['descripcion'];
   $titulo = $_POST['titulo'];
-  $pais= $_POST['pais'];
+  $pais= $_POST['country'];
   if(isset($_POST['fecha'])){
     $fecha = $_POST['fecha'];
   }
@@ -20,9 +20,9 @@ if(isset($_POST) && isset($_POST["titulo"])){
     $fecha= date("Y-m-d");
   }
   //BEWARE SQL INJECTIONS
-  //$sentencia= "INSERT INTO albumes VALUES (NULL, $titulo, $descripcion, $fecha, $pais, $idUsu)";
-  //$resultado = mysqli_query($bbdd, $sentencia);
-
+  $sentencia= "INSERT INTO albumes VALUES (NULL, '$titulo', '$descripcion', '$fecha', $pais, $idUsu)";
+  $resultado = mysqli_query($bbdd, $sentencia);
+  echo("<p class=registro> Álbum creado</p>");
 }
 ?>
 

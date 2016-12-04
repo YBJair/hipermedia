@@ -62,36 +62,35 @@
 <form action="menuperfil.php" method="POST">
 
     <p>
-      <label for="userName">Usuario: </label><input id="userName" name="nombre"  type="text" required 
+      <label for="userName">Usuario: </label><input id="userName" readonly name="nombre"  type="text" required 
       <?php echo "value='".$user."'"; ?>/>
     </p>
     <p>
-      <label for="email">Email: </label><input id="email" name="email"  type="email" required 
+      <label for="email">Email: </label><input id="email" name="email" readonly type="email" required 
       <?php  echo "value='".$email."'"; ?>/>
     </p>
     <p>
-      <label for="pass">Password: </label><input type="password" name="pass" required id="password"
+      <label for="pass">Password: </label><input type="password" readonly name="pass" required id="password"
       <?php  echo "value='".$pass."'"; ?>/>
 
     </p>
     <p>
       <label for="gender" >Genero: </label>
-      <select id="gender"  name="sexo">
+      <select id="gender" readonly name="sexo">
         <option value="1" > Hombre</option>
         <option value="2" 
         <?php if($sexo=="2") echo "selected"; ?>> Mujer</option>
       </select>
     </p>
     <p>
-      <label for="birth" >Fecha de nacimiento: </label><input id="birth"   type="date" name="fecha" required 
+      <label for="birth" >Fecha de nacimiento: </label><input id="birth"  readonly type="date" name="fecha" required 
       <?php  echo "value='".$fecha."'"; ?>>
     </p>
     <p>
-      <label for="city">Ciudad: </label>
-      <input id="city" type="text" name="ciudad" placeholder="Ciudad" 
+      <label for="city">Ciudad: </label><input id="city" type="text" name="ciudad" readonly placeholder="Ciudad" 
       <?php echo "value='".$ciudad."'"; ?>/>
       <label for="country">Pais: </label>
-      <select id="country"  name="pais" >
+      <select id="country" readonly  name="pais" >
 
         <?php include("includes/paises.php"); ?>
 

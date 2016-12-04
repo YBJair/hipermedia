@@ -6,6 +6,8 @@
   if(isset($_SESSION["remember"])==false){
 		header("location: index.php");
 	}
+
+  
 ?>
 <p id="explicacion"> Mediante este formulario puedes solicitar un album en color o en blanco y negro.</p>
 <main>
@@ -61,7 +63,7 @@
       </p>
       <p>
         <label for="additional">Texto adicional: </label>
-        <input id="additional" name="additional text" type="text" />
+        <input id="additional" name="addtext" type="text" />
       </p>
       <p>
         <label for="email">Email: </label>
@@ -84,9 +86,8 @@
       </p>
       <p>
         <label for="tel"> Telefono: </label>
-        <input id="tel" name="telephone" placeholder="+## ### ## ## ##" type="tel"
+        <input id="tel" name="phone" placeholder="+## ### ## ## ##" type="tel"
         pattern="(\+[0-9]{2}) [0-9]{9}" title="Prefix + your number (+## ### ## ## ##)" />
-
       </p>
       <p>
         <label for="color"> Color de la portada: </label>
@@ -94,7 +95,7 @@
       </p>
       <p>
         <label for="numCop"> Número de copias </label>
-        <input id="numCop" name="numbercopies" type="number" value="1" min="1" />(*)
+        <input id="numCop" name="numcopies" type="number" value="1" min="1" />(*)
       </p>
       <p>
         <label for="resolution"> Resolucion de impresión: </label>
@@ -114,7 +115,7 @@
         <label> ¿Imprimir a color? </label>
         <input type="radio" id="colorprint" name="colorprint" value="color">
         <label for="colorprint"> Si </label>
-        <input type="radio" id="black" name="radioprint" value="black">
+        <input type="radio" id="black" name="colorprint" value="black">
         <label for="black">No </label>
       </p>
       <button type="submit" >Aceptar </button>

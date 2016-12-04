@@ -40,7 +40,7 @@
 
 
 <p>¿Está seguro de querer guardar los cambios?</p>
-<form action = "menuperfil.php" method ="POST">
+<form action="menuperfil.php" method="POST">
 
     <p>
       <label for="userName">Usuario: </label><input id="userName" name="nombre" disabled type="text" required 
@@ -74,10 +74,11 @@
 
       </select>
 
-  </p>
- <p>
-        <button type="submit" name = "button">Guardar cambios</button>
- </p>
+    </p>
+    <p>
+  
+       <button type="submit" name = "button">Guardar cambios</button>
+    </p>
         
 
 </form>

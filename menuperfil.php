@@ -1,6 +1,6 @@
 <?php
   $title= "Perfil";
-  include("includes/head.php");
+ include("includes/head.php");
 
   if(isset($_SESSION["remember"])==false){
 	  	header("location: index.php");
@@ -8,7 +8,7 @@
 	}
 
   include("includes/headerC.php");
- 
+ echo($_POST["nombre"]);
   if(isset($_POST["nombre"])){
     $user   = $_POST["nombre"];
     $pass   = $_POST["pass"];

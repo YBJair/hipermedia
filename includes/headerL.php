@@ -12,7 +12,7 @@
   //Comprobacion existe envio post
   if(isset($_POST)){
     if(isset($_POST["user"]) && isset($_POST["password"])){
-      //Comprobamos los parametros (en un futuro se comprobaran con la base de datos)
+      //Comprobamos los parametros
       $user=$_POST["user"];
       $pass=$_POST["password"];
 

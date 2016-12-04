@@ -9,14 +9,24 @@
   include("includes/headerC.php");
     if(isset($_POST["nombre"]) == false)
         header("location: index.php");
-    else
+    else{
         $user   = $_POST["nombre"];
         $pass   = $_POST["pass"];
+        $nPass = $_POST["newPass"];
+        $cPass = $_POST["conPass"];
         $email  = $_POST["email"];
         $sexo   = $_POST["sexo"];
         $fecha  = $_POST["fecha"];
         $ciudad = $_POST["ciudad"];
         $pais   = $_POST["pais"];
+    }
+    if($nPass == $cPass){
+      $id = (String)$_SESSION['remember'];
+      $comprobacion = "SELECT NomUsuario, idUsuario FROM usuarios u WHERE u.idUsuario = '".$id."' and u.Clave ='".$pass."'";
+      $result = mysqli_query($bbdd,$comprobacion); //Comprobamos que la password e id de usuario haya sido correctamente introducida.
+      //Devuelve el Nombre del usuario cuyo id y contraseña coincida
+    }else header("location: perfilModificar.php?error=0");
+
 ?>
 <main>
 
@@ -25,24 +35,29 @@
 <form action = "menuperfil.php" method = "POST">
 
     <p>
-      <label for="userName">Usuario: </label><input id="userName" name="nombre" disabled type="text" required <?php echo "value='".$user."'"; ?>/>
+      <label for="userName">Usuario: </label><input id="userName" name="nombre" disabled type="text" required 
+      <?php echo "value='".$user."'"; ?>/>
     </p>
     <p>
-      <label for="email">Email: </label><input id="email" name="email" disabled type="email" required <?php if (isset($fila['Email'])) echo "value='".$email."'"; ?>/>
+      <label for="email">Email: </label><input id="email" name="email" disabled type="email" required 
+      <?php if (isset($fila['Email'])) echo "value='".$email."'"; ?>/>
     </p>
     <p>
       <label for="gender" >Genero: </label>
       <select id="gender" disabled name="sexo">
         <option value="1" > Hombre</option>
-        <option value="2" <?php if($sexo=="2") echo "selected"; ?>> Mujer</option>
+        <option value="2" 
+        <?php if($sexo=="2") echo "selected"; ?>> Mujer</option>
       </select>
     </p>
     <p>
-      <label for="birth" >Fecha de nacimiento: </label><input id="birth"  disabled type="date" name="fecha" required <?php  echo "value='".$fecha."'"; ?>>
+      <label for="birth" >Fecha de nacimiento: </label><input id="birth"  disabled type="date" name="fecha" required 
+      <?php  echo "value='".$fecha."'"; ?>>
     </p>
     <p>
       <label for="city">Ciudad: </label>
-      <input id="city" disabled type="text" name="ciudad" placeholder="Ciudad" <?php echo "value='".$ciudad."'"; ?>/>
+      <input id="city" disabled type="text" name="ciudad" placeholder="Ciudad" 
+      <?php echo "value='".$ciudad."'"; ?>/>
       <label for="country">Pais: </label>
       <select id="country" disabled name="pais" >
 

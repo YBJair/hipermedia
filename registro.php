@@ -9,7 +9,7 @@ if(isset($_POST)){
   if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"])
   && isset($_POST["fecha"]) && isset($_POST["ciudad"]) && isset($_POST["pais"]) && isset($_POST["foto"])){
     //Comprobamos con los introducidos
-    if($_POST["nombre"] != "" && $_POST["nombre"] != "jesus" && $_POST["nombre"] != "jair" && $_POST["nombre"] != "test"){
+    if($_POST["nombre"] != ""){
       if ($_POST["pass"] == $_POST["pass2"]){
         if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
           $user   = $_POST["nombre"];
@@ -86,7 +86,7 @@ if(isset($_POST)){
         } else header("location: registro.php?error=3");
       } else header("location: registro.php?error=2");
     } else header("location: registro.php?error=1");
-  }
+  } else header("location: registro.php?error=0");
 }
 ?>
 
@@ -138,14 +138,16 @@ if (isset($_GET["error"])) {
 <main>
   <form action="registro.php" method="POST">
     <p>
-      <label for="userName">Usuario: </label><input id="userName" name="nombre" type="text" required <?php if (isset($user)) echo "value='".$user."' disabled"; ?>/>
+      <label for="userName">Usuario: </label><input id="userName" name="nombre" type="text" required 
+      <?php if (isset($user)) echo "value='".$user."' disabled"; ?>/>
     </p>
     <p>
       <label for="password">Contraseña: </label><input id="password" name="pass" type="password" required/>
       <label for="confirm">Confirmar contraseña: </label><input id="confirm" name="pass2" type="password" required/>
     </p>
     <p>
-      <label for="email">Email: </label><input id="email" name="email" type="email" placeholder="example@gmail.com" required <?php if (isset($email)) echo "value='".$email."' disabled"; ?>/>
+      <label for="email">Email: </label><input id="email" name="email" type="email" placeholder="example@gmail.com" required 
+      <?php if (isset($email)) echo "value='".$email."' disabled"; ?>/>
     </p>
     <p>
       <label for="gender">Genero: </label>
@@ -155,11 +157,13 @@ if (isset($_GET["error"])) {
       </select>
     </p>
     <p>
-      <label for="birth" >Fecha de nacimiento: </label><input id="birth" type="date" name="fecha" required <?php if (isset($fecha)) echo "value='".$fecha."' disabled"; ?>>
+      <label for="birth" >Fecha de nacimiento: </label><input id="birth" type="date" name="fecha" required 
+      <?php if (isset($fecha)) echo "value='".$fecha."' disabled"; ?>>
     </p>
     <p>
       <label for="city">Ciudad: </label>
-      <input id="city" type="text" name="ciudad" placeholder="Ciudad" <?php if (isset($ciudad)) echo "value='".$ciudad."' disabled"; ?>/>
+      <input id="city" type="text" name="ciudad" placeholder="Ciudad" 
+      <?php if (isset($ciudad)) echo "value='".$ciudad."' disabled"; ?>/>
       <label for="country">Pais: </label>
       <select id="country" name="pais" <?php if (isset($pais)) echo "disabled"; ?>>
 

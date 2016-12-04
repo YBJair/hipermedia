@@ -6,7 +6,7 @@
 	  	header("location: index.php");
       exit;
   }
-  include("includes/headerL.php");
+  include("includes/headerC.php");
   $id = (String)$_SESSION['remember'];
 
   if (isset($_GET["error"])) {
@@ -15,8 +15,11 @@
     case 0:
     echo "Las contraseñas no coinciden";
     break;
+    case 1:
+    echo "La contraseña no es correcta";
+    break;
     default:
-    echo "error desconocido";
+    echo "Error desconocido";
     break;
   }
   echo "</h3>";

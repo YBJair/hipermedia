@@ -8,8 +8,8 @@
 	}
 
   include("includes/headerC.php");
+ 
   if(isset($_POST["nombre"])){
-
     $user   = $_POST["nombre"];
     $pass   = $_POST["pass"];
     $email  = $_POST["email"];

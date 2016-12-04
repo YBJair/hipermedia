@@ -22,9 +22,17 @@
     }
     if($nPass == $cPass){
       $id = (String)$_SESSION['remember'];
-      $comprobacion = "SELECT NomUsuario, idUsuario FROM usuarios u WHERE u.idUsuario = '".$id."' and u.Clave ='".$pass."'";
+      $comprobacion = "SELECT NomUsuario FROM usuarios u WHERE u.idUsuario = ".$id." and u.Clave ='".$pass."'";
       $result = mysqli_query($bbdd,$comprobacion); //Comprobamos que la password e id de usuario haya sido correctamente introducida.
       //Devuelve el Nombre del usuario cuyo id y contraseña coincida
+      
+      if($result!=false && !mysqli_error($bbdd)){
+          $row = $result->fetch_assoc();
+          if($row['NomUsuario'] == ""){
+            header("location: perfilModificar.php?error=1");
+          }
+      } else header("location: perfilModificar.php?error=6");
+
     }else header("location: perfilModificar.php?error=0");
 
 ?>
@@ -32,7 +40,7 @@
 
 
 <p>¿Está seguro de querer guardar los cambios?</p>
-<form action = "menuperfil.php" method = "POST">
+<form action = "menuperfil.php" method ="POST">
 
     <p>
       <label for="userName">Usuario: </label><input id="userName" name="nombre" disabled type="text" required 
@@ -40,7 +48,7 @@
     </p>
     <p>
       <label for="email">Email: </label><input id="email" name="email" disabled type="email" required 
-      <?php if (isset($fila['Email'])) echo "value='".$email."'"; ?>/>
+      <?php  echo "value='".$email."'"; ?>/>
     </p>
     <p>
       <label for="gender" >Genero: </label>
@@ -70,13 +78,13 @@
  <p>
         <button type="submit" name = "button">Guardar cambios</button>
  </p>
-        <form action="menuperfil.php">
-            <button type="submit" name = "button">Cancelar</button>
-        </form>
+        
 
 </form>
 
-
+      <form action="menuperfil.php">
+            <button type="submit" name = "button">Cancelar</button>
+        </form> 
 
 </main>
 

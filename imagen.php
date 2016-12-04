@@ -68,7 +68,7 @@ HTML;
 
   }
   else {
-    echo "<h1> HTTP 404: FILE NOT FOUND</h1>\n";
+    echo "<h1> Error 404: Imagen no encontrada</h1>\n";
   }
 ?>
 

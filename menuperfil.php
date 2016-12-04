@@ -26,35 +26,21 @@
 ?>
   <a class='boton' href='principal.php'><i class="material-icons">arrow_back</i>Volver</a>
   <main>
-    <h1>Pagina de Perfil</h1>
+    <h1 >Pagina de Perfil</h1>
     <h2>Información Personal</h2>
 
-    <?php
-      $resultado = mysqli_query($bbdd, "SELECT NomUsuario, Email, Foto FROM usuarios WHERE idUsuario='$idUsu'");
-    ?>
-
-    <form action="" method="POST">
 
       <?php
-      echo <<<HEREDOC
-      <p><label for="userName">Usuario: </label><!--<input id="userName" name="Nombre" type="text" placeholder="Suk Mike Hok" required/>-->$nombreUsu </p>
-      <p><label for="email">Email: </label><!--<input id="email" name="email" type="email" placeholder="example@gmail.com" required/>-->$emailUsu</p>
-      <label for="imgP">Imagen de perfil: </label><!--<input id="imgP" name="img" type="file"/>--> <br/><img src="$fotoUsu" alt="foto de perfil"/>
-HEREDOC;
+      $html = <<<HTML
+<p><label for="userName">Usuario: </label>$nombreUsu </p>
+<p><label for="email">Email: </label>$emailUsu</p>
+<label for="imgP">Imagen de perfil: </label><br/><img src="$fotoUsu" alt="foto de perfil"/>
+HTML;
+      echo $html;
       ?>
-
-      <!--<button type="submit" name="button">Guardar</button>-->
-      <hr>
-    </form>
-    <!--<form class="" action="index.php" method="post">
-    <p><label for="password">Nueva Contraseña: </label><input id="password" name="Pass" type="password" required/>
-    <label for="confirm">Confirmar contraseña</label><input id="confirm" name="confirm" type="password" required/></p>
-    <button type="submit" name="button">Guardar</button>
-  </form>-->
+      <hr/>
 
   <a href="perfilModificar.php">Modificar datos</a>
-
-
 
   <h2>Albumes</h2>
 

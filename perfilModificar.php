@@ -55,6 +55,7 @@
   </p>
   <p>
       <button type="submit" name="button">Guardar cambios</button>
+      <a href="principal.php">Cancelar</a>
   </p>
 </form>
 </main>

@@ -6,12 +6,12 @@ $bbdd = @mysqli_connect(
         '',
         'pibd'  //bbdd
       );
-      mysqli_set_charset($bbdd, 'utf8');
-      if(!$bbdd){
-        echo '<p> Error en base de datos: ' . mysqli_connect_error();
-        echo '</p>';
-        exit;
-      }
+mysqli_set_charset($bbdd, 'utf8');
+if(!$bbdd){
+  echo '<p> Error en base de datos: ' . mysqli_connect_error();
+  echo '</p>';
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

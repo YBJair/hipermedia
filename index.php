@@ -8,7 +8,7 @@
   //include_once("includes/bbddConexion.php");
 
   if(isset($_SESSION["remember"])==true){
-		//header("location: principal.php");
+		header("location: principal.php");
 	}
 
 	if(isset($_GET["q"]) && $_GET["q"]=="logout"){
@@ -31,7 +31,7 @@
       $comprobacion = "SELECT NomUsuario FROM usuarios u WHERE u.idUsuario = ".$id." and u.Clave ='".$pass."'";
       $result = mysqli_query($bbdd,$comprobacion); //Comprobamos que la password haya sido correctamente introducida.
       //Devuelve el Nombre del usuario cuyo id y contraseña coincida
-      
+
       if($result!=false && !mysqli_error($bbdd)){
           $row = $result->fetch_assoc();
           if($row['NomUsuario'] == ""){

@@ -16,13 +16,11 @@ if(isset($_GET)){
     $sentencia="SELECT f.Titulo, f.Fichero, f.Fecha, f.Album, NomPais, a.Titulo as TituloAlbum, u.NomUsuario, u.Foto
     FROM fotos f, paises, albumes a, usuarios u
     WHERE f.idFoto = $id AND f.Pais=paises.idPais AND a.idAlbum = f.Album AND u.idUsuario = a.Usuario";
+    //echo $sentencia;
     $resultado= mysqli_query($bbdd, $sentencia);
 
   }
 }
-
-
-
 
 
 ?>
@@ -53,7 +51,7 @@ if(isset($_GET)){
 <h3 id="fecha">Fecha: $fecha</h3>
 <figure id="detalleImg"><img width="70%" src='$foto' alt='$titulo'/></figure>
 
-<div class="propietarioImagen"><p>Subido por: $nombrepropietario </p><img src="$fotopropietario" alt="foto de perfil"></div>
+<div class="propietarioImagen"><p>Subido por: </p> <p><img src="$fotopropietario" alt="foto de perfil"/><span>$nombrepropietario</span></p></div>
 
 <h3>Detalles</h3>
 <ul>
@@ -71,7 +69,7 @@ HTML;
     echo "<h1> Error 404: Imagen no encontrada</h1>\n";
   }
 ?>
-
+<span></span>
 <h3></h3>
 </main>
 

@@ -17,7 +17,7 @@
     $fecha  = $_POST["fecha"];
     $ciudad = $_POST["ciudad"];
     $pais   = $_POST["pais"];
-    
+
     $sentencia = "UPDATE Usuarios u SET NomUsuario = '".$user."', Clave = '".$pass."', Email = '".$email."', Sexo = ".$sexo.", FNacimiento =".$fecha.",
         Ciudad = '".$ciudad."', Pais = ".$pais."  where u.idUsuario = ".$idUsu ;
     $resultado = mysqli_query($bbdd,$sentencia);
@@ -32,9 +32,9 @@
 
       <?php
       $html = <<<HTML
-<p><label for="userName">Usuario: </label>$nombreUsu </p>
-<p><label for="email">Email: </label>$emailUsu</p>
-<label for="imgP">Imagen de perfil: </label><br/><img src="$fotoUsu" alt="foto de perfil"/>
+<p>Usuario: $nombreUsu </p>
+<p>Email: $emailUsu</p>
+Imagen de perfil: <br/><img src="$fotoUsu" alt="foto de perfil"/>
 HTML;
       echo $html;
       ?>

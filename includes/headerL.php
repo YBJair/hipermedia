@@ -3,7 +3,7 @@
 
   <form action="buscar.php" method="GET" class="search text">
 
-    <label for="search">Buscar: </label><input id="search"  placeholder="Busqueda" name="busqueda" type="search" class=""/>
+    <label for="search">Buscar: </label><input id="search" placeholder="Busqueda" name="busqueda" type="search" class=""/>
     <button type="submit"> <i class="material-icons">search</i></button>
 
   </form>
@@ -73,7 +73,7 @@ HEREDOC;
         ?>
 
         <label for="user">Usuario: </label><input  id="user" name="user" type="text" placeholder="Usuario" required/>
-        <label for="pass">Contraseña: </label><input id="pass"  name="password" type="password" placeholder="Contraseña" required/>
+        <label for="pass">Contraseña: </label><input id="pass" name="password" type="password" placeholder="Contraseña" required/>
         <div class="absol">
           <input id="remember"type="checkbox" name="remember"><label class="show" for="remember">¿Recordarme?</label>
         </div>

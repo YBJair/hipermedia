@@ -8,24 +8,29 @@ if(isset($_SESSION["remember"])==false){
 include("includes/headerC.php");
 
 
-if(isset($_POST) && isset($_POST["titulo"])){
+if(isset($_POST) && isset($_POST["titulo"]) && isset($_POST["fichero"]) && $_POST["titulo"]!="" && $_POST["fichero"]!=""){
   //Comprobamos los parametros
   $descripcion= $_POST['descripcion'];
   $titulo = $_POST['titulo'];
   $pais= $_POST['country'];
+  $fichero = $_POST['fichero'];
   $freg= date("Y-m-d H:i:s");
   $album = $_POST["album"];
 
-  if(isset($_POST['fecha'])){
+  if(isset($_POST['fecha']) && $_POST['fecha']!= ""){
     $fecha = $_POST['fecha'];
   }
   else {
     $fecha= date("Y-m-d");
   }
   //BEWARE SQL INJECTIONS
-  $sentencia= "INSERT INTO fotos VALUES (NULL, '".$titulo."', '".$descripcion."','".$fecha."', ".$album.", null, '".$freg."', ".$pais.")";
-  $resultado = mysqli_query($bbdd, $sentencia);
-  echo("<p class=registro> Inserción realizada </p>");
+  $sentencia= "INSERT INTO fotos VALUES (NULL, '".$titulo."', '".$descripcion."','".$fecha."', ".$album.", $fichero, '".$freg."', ".$pais.")";
+  //$resultado = mysqli_query($bbdd, $sentencia);
+  echo("$sentencia");
+  echo("<h3 class='index'> Inserción realizada </p></h3>");
+}
+else{
+  echo "<h3 class='index'> Introduce los datos correctamente </p></h3>";
 }
 ?>
 

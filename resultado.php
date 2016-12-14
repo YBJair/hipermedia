@@ -39,10 +39,10 @@ if(isset($_GET)){
 
       $html= <<<HTML
 <article>
-<a href="imagen.php?id=$id"><img src='$foto' alt='$titulo'/></a>
-<p>$titulo</p>
-<p>$fecha</p>
-<p>$nombrepais2</p>
+  <h3>$titulo</h3>
+  <a href="imagen.php?id=$id"><img src='$foto' alt='$titulo'/></a>
+  <p>$fecha</p>
+  <p>$nombrepais2</p>
 </article>
 HTML;
       echo $html;

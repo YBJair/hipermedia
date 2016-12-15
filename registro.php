@@ -9,7 +9,7 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
   || isset($_POST["fecha"]) || isset($_POST["ciudad"]) || isset($_POST["pais"]) || isset($_POST["foto"])){
   //se comprueba que esten inicializados todos los datos necesario
   if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"])
-  && isset($_POST["fecha"]) && isset($_POST["ciudad"]) && isset($_POST["pais"]) && isset($_POST["foto"])){
+  && isset($_POST["fecha"]) && isset($_POST["ciudad"]) && isset($_POST["pais"])){
     //Comprobamos con los introducidos
     if($_POST["nombre"] != ""){
       if ($_POST["pass"] == $_POST["pass2"]){
@@ -21,9 +21,8 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
           $fecha  = $_POST["fecha"];
           $ciudad = $_POST["ciudad"];
           $pais   = $_POST["pais"];
-          $foto   = $_POST["foto"];
 
-          $fRegistro = getdate();
+          /*$fRegistro = getdate();
           if(strlen($fRegistro['hours']) <2)
             $fRegistro['hours'] = "0".$fRegistro['hours'];
           if(strlen($fRegistro['minutes']) <2)
@@ -31,22 +30,35 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
           if(strlen($fRegistro['seconds']) <2)
             $fRegistro['seconds'] = "0".$fRegistro['seconds'];
           $fRegistro = $fRegistro['year']."-".$fRegistro['mon']."-".$fRegistro['mday']." ".$fRegistro['hours'].":".$fRegistro['minutes'].":".$fRegistro['seconds'];
-
+          */
+          $fRegistro= date("Y-m-d H:i:s");
 
          include("includes/filtros.php");
 
-          if(!preg_match($filtroEmail, $email))
+          if(!preg_match($filtroEmail, $email)){
               header("location: registro.php?error=3");
-          if(preg_match($filtroUser, $user))
+              exit;
+            }
+          if(preg_match($filtroUser, $user)){
               header("location: registro.php?error=4");
-          if(preg_match($filtroPass1,$pass))
+              exit;
+            }
+          if(preg_match($filtroPass1,$pass)){
               header("location: registro.php?error=5");
-          if(!preg_match($filtroPassMayu,$pass) || !preg_match($filtroPassMinu,$pass) || !preg_match($filtroPassNum,$pass) )
+              exit;
+            }
+          if(!preg_match($filtroPassMayu,$pass) || !preg_match($filtroPassMinu,$pass) || !preg_match($filtroPassNum,$pass)){
               header("location: registro.php?error=6");
-          if(strlen($pass) > 15 || strlen($pass) < 6 )
+              exit;
+            }
+          if(strlen($pass) > 15 || strlen($pass) < 6 ){
               header("location: registro.php?error=7");
-          if(strlen($user) > 15 || strlen($user) < 3)
+              exit;
+            }
+          if(strlen($user) > 15 || strlen($user) < 3){
               header("location: registro.php?error=8");
+              exit;
+            }
          /* if(!preg_match($filtroFecha,$fecha))
               header("location: registro.php?error=9");
           if(preg_match($filtroFechaMes,$fecha))
@@ -62,13 +74,16 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
           $trozos = explode("-",$fecha);
           $fecha = $trozos[0]."-".$trozos[1]."-".$trozos[2];
 
-       //if($foto == null)
-              $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, FRegistro, Pais)
-           values('$user','$pass','$email',$sexo,'$fecha','$ciudad','$fRegistro',$pais)";
 
-          /* else
-              $registro = "insert into `usuarios` (`NomUsuario`, `Clave`, `Email`, `Sexo`, `FNacimiento`, `Ciudad`, `Foto`, `FRegistro`, `Pais`)
-           values(\'$user\',\'$pass\',\'$email\',$sexo,\'$fecha\',\'$ciudad\',\'$foto\',\'$fRegistro\',$pais)";*/
+          if(!isset($_POST["foto"]))
+              $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, FRegistro, Pais)
+              VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$fRegistro',$pais)";
+
+          else{
+            $foto = $_POST["foto"];
+            $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Foto, FRegistro, Pais)
+            VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$foto','$fRegistro',$pais)";
+            }
 
           $resultado= mysqli_query($bbdd, $registro);
 
@@ -77,19 +92,25 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
           else
             $sexo = "Mujer";
 
-          echo "<p class = \"registro\">El usuario se ha registrado correctamente</p>\n";
-          echo "<p class = \"registro\">Usuario: $user</p>\n";
-          echo "<p class = \"registro\">Email: $email</p>\n";
-          echo "<p class = \"registro\">Sexo: $sexo</p>\n";
-          echo "<p class = \"registro\">Fecha: $fecha</p>\n";
-          echo "<p class = \"registro\">Ciudad: $ciudad </p>\n";
-          echo "<p class = \"registro\">País: $pais </p>\n";
+          $contenido = <<<REG
+<h3>El usuario se ha registrado correctamente</h3>
+<pre>
+Usuario: $user
+Email: $email
+Sexo: $sexo
+Fecha: $fecha
+Ciudad: $ciudad
+País: $pais
+</pre>
+</div>
+REG;
+          echo $contenido;
 
         } else header("location: registro.php?error=3");
       } else header("location: registro.php?error=2");
     } else header("location: registro.php?error=1");
-  } //else header("location: registro.php?error=0");
-}
+  } //else echo"me cago en dios";
+}//else{echo "tusmuertos";}
 ?>
 
 <h1 class="index">Registro nuevo usuario</h1>
@@ -138,9 +159,9 @@ if (isset($_GET["error"])) {
 ?>
 
 <main>
-  <form action="registro.php" method="POST">
+  <form action="registro.php" method="POST" enctype="multipart/form-data">
     <p>
-      <label for="userName">Usuario: </label><input id="userName" name="nombre" type="text" required 
+      <label for="userName">Usuario: </label><input id="userName" name="nombre" type="text" required
       <?php if (isset($user)) echo "value='".$user."' disabled"; ?>/>
     </p>
     <p>
@@ -148,7 +169,7 @@ if (isset($_GET["error"])) {
       <label for="confirm">Confirmar contraseña: </label><input id="confirm" name="pass2" type="password" required/>
     </p>
     <p>
-      <label for="email">Email: </label><input id="email" name="email" type="email" placeholder="example@gmail.com" required 
+      <label for="email">Email: </label><input id="email" name="email" type="email" placeholder="example@gmail.com" required
       <?php if (isset($email)) echo "value='".$email."' disabled"; ?>/>
     </p>
     <p>
@@ -159,19 +180,19 @@ if (isset($_GET["error"])) {
       </select>
     </p>
     <p>
-      <label for="birth" >Fecha de nacimiento: </label><input id="birth" type="date" name="fecha" required 
+      <label for="birth" >Fecha de nacimiento: </label><input id="birth" type="date" name="fecha" required
       <?php if (isset($fecha)) echo "value='".$fecha."' disabled"; ?>>
     </p>
     <p>
       <label for="city">Ciudad: </label>
-      <input id="city" type="text" name="ciudad" placeholder="Ciudad" 
+      <input id="city" type="text" name="ciudad" placeholder="Ciudad"
       <?php if (isset($ciudad)) echo "value='".$ciudad."' disabled"; ?>/>
       <label for="country">Pais: </label>
       <select id="country" name="pais" <?php if (isset($pais)) echo "disabled"; ?>>
 
         <?php include("includes/paises.php"); ?>
 
-        
+
       </select>
     </p>
 

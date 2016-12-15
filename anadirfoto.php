@@ -29,8 +29,18 @@ if(isset($_POST) && isset($_POST["titulo"]) && isset($_POST["fichero"]) && $_POS
   echo("$sentencia");
   echo("<h3 class='index'> Inserción realizada </p></h3>");
 }
-else{
-  echo "<h3 class='index'> Introduce los datos correctamente </p></h3>";
+
+if (isset($_GET["error"])) {
+  echo "<h3 class='index'>";
+  switch($_GET["error"]){
+    case 0:
+    echo "Introduce los datos correctamente";
+    break;
+    default:
+    echo "error desconocido";
+    break;
+  }
+  echo "</h3>";
 }
 ?>
 

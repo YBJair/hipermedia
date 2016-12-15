@@ -13,7 +13,7 @@ if(isset($_POST) && isset($_POST["titulo"])){
   $descripcion= $_POST['descripcion'];
   $titulo = $_POST['titulo'];
   $pais= $_POST['country'];
-  if(isset($_POST['fecha'])){
+  if(isset($_POST['fecha']) && $_POST['fecha']=""){
     $fecha = $_POST['fecha'];
   }
   else {

@@ -10,8 +10,11 @@ include("includes/headerL.php");
 
 if(isset($_GET)){
   $tituloget=$_GET["titulo"];
-  $fechaget=$_GET["fecha"];
   $paisget=$_GET["pais"];
+  if(isset($_GEt["fecha"]))
+    $fechaget=$_GET["fecha"];
+  else $fechaget= date("Y-m-d");
+
 
   $sentencia="SELECT idFoto, Fichero, Titulo, Fecha, p1.NomPais, p2.NomPais as NomPaisGet
   FROM fotos, paises p1, paises p2 WHERE p1.idPais=$paisget AND p1.idPais=p2.idPais AND p2.idPais=$paisget AND (Titulo LIKE '%$tituloget%')

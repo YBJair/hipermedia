@@ -6,14 +6,15 @@ include("includes/headerL.php");
 //Gestion de los datos de registro
 //Comprobamos si se ha enviado algun post
 if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) || isset($_POST["email"]) || isset($_POST["sexo"])
-  || isset($_POST["fecha"]) || isset($_POST["ciudad"]) || isset($_POST["pais"]) || isset($_POST["foto"])){
-  //se comprueba que esten inicializados todos los datos necesario
+  || isset($_POST["fecha"]) || isset($_POST["ciudad"]) || isset($_POST["pais"]) || isset($_FILES["foto"])){
+    //se comprueba que esten inicializados todos los datos necesario
   if(isset($_POST["nombre"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_POST["sexo"])
   && isset($_POST["fecha"]) && isset($_POST["ciudad"]) && isset($_POST["pais"])){
     //Comprobamos con los introducidos
     if($_POST["nombre"] != ""){
       if ($_POST["pass"] == $_POST["pass2"]){
         if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+          echo"tus muertos";
           $user   = $_POST["nombre"];
           $pass   = $_POST["pass"];
           $email  = $_POST["email"];
@@ -75,15 +76,32 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
           $fecha = $trozos[0]."-".$trozos[1]."-".$trozos[2];
 
 
-          if(!isset($_POST["foto"]))
+          if(!isset($_FILES["foto"]))
+          {
               $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, FRegistro, Pais)
               VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$fRegistro',$pais)";
+              $resultado= mysqli_query($bbdd, $registro);
+          }
 
-          else{
-            $foto = $_POST["foto"];
-            $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Foto, FRegistro, Pais)
-            VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$foto','$fRegistro',$pais)";
+          else
+          {
+            if($_FILES["foto"]["error"]){
+              header("location: registro.php?error=10");
+              exit;
             }
+            else{
+              if(move_uploaded_file($_FILES["foto"]["tmp_name"], "images/$user".$_FILES["foto"]["name"])){
+                $foto = $_FILES["foto"]["name"];
+
+
+
+
+                $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Foto, FRegistro, Pais)
+                VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$foto','$fRegistro',$pais)";
+                $resultado= mysqli_query($bbdd, $registro);
+              }
+            }
+          }
 
           $resultado= mysqli_query($bbdd, $registro);
 
@@ -134,23 +152,25 @@ if (isset($_GET["error"])) {
     echo "El email no es valido";
     break;
     case 4:
-    echo "<p>Carácter/es inválido/s en el nombre de usuario (letras y números)</p>";
+    echo "Carácter/es inválido/s en el nombre de usuario (letras y números)";
     break;
     case 5:
-    echo "<p>Carácter/es inválido/s en la contraseña (letras, números y _)</p>";
+    echo "Carácter/es inválido/s en la contraseña (letras, números y _)";
     break;
     case 6:
-    echo "<p>Es necesario como mínimo una mayúscula, una miníscula y un número en la contraseña</p>";
+    echo "Es necesario como mínimo una mayúscula, una miníscula y un número en la contraseña";
     break;
     case 7:
-    echo "<p>Tamaño de contraseña incorrecto, debe tener entre 6 y 15 carácteres</p>";
+    echo "Tamaño de contraseña incorrecto, debe tener entre 6 y 15 carácteres";
     break;
     case 8:
-    echo "<p>Tamaño de nombre de usuario incorrecto, debe tener entre 3 y 15 carácteres</p>";
+    echo "Tamaño de nombre de usuario incorrecto, debe tener entre 3 y 15 carácteres";
     break;
     case 9:
-    echo "<p> Fecha no válida</p>";
+    echo " Fecha no válida";
     break;
+    case 10:
+    echo "Se ha producido un error en la foto".$_FILES["foto"]["error"];
     default:
     echo "error desconocido";
     break;

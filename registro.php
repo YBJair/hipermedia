@@ -93,6 +93,7 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
             $sexo = "Mujer";
 
           $contenido = <<<REG
+<div class="resultadoRegistro">
 <h3>El usuario se ha registrado correctamente</h3>
 <pre>
 Usuario: $user

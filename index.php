@@ -23,6 +23,16 @@
      }
 	}
 
+  if(isset($_GET["error"])){
+    switch ($_GET["error"]){
+      case 0:
+        echo("Fichero vacío");
+        break;
+      default:
+        echo("Error desconocido");
+    }
+  }
+
   if(isset($_POST["pass"]) && isset($_POST["borrar"])){
 
     if($_POST["borrar"] == "BORRAR"){
@@ -45,7 +55,7 @@
   }
   if(($fichero = @file(CRITICA)) == false){
   echo("No se pudo abrir el fichero para la sección de selección de críticos");
-} else {
+} else if(count($fichero) > 0){
     if(isset($_COOKIE["random"])){
       do{
         $crit = mt_rand(1,count($fichero)-1);
@@ -109,7 +119,10 @@ echo <<<HEREDOC
   </ul>
 </main>
 HEREDOC;
+} else {
+  header("location: index.php?error=0");
 }
+
 ?>
 <main>
 <?php

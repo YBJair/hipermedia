@@ -53,9 +53,12 @@ if(isset($_FILES["foto"])){
       $registro = "UPDATE usuarios SET Foto='$foto' WHERE idUsuario=$idUsu";
       $resultado= mysqli_query($bbdd, $registro);
     }
+    header("location: menuperfil.php?success=0");
+  } else {
+    header("location: menuperfil.php?error=1");
   }
-  sleep(1);
-  header("location: menuperfil.php?success=0");
+  
+  
 }
 if (isset($_GET["success"])) {
   if($_GET["success"] == 0){
@@ -80,6 +83,9 @@ if (isset($_GET["error"])) {
   switch($_GET["error"]){
     case 0:
     echo "Selecciona una foto para modificarla";
+    break;
+    case 1:
+    echo "El fichero introducido no es válido. Debe ser una foto";
     break;
     default:
     echo "error desconocido";

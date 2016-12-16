@@ -13,7 +13,7 @@ if(isset($_POST) && isset($_POST["titulo"]) && $_POST["titulo"]!="" && isset($_F
     header("location: menuperfil.php?error=0");
     exit;
   }
-  else if(preg_match("/image\//", $_FILES["foto"]["type"])){
+  else if(preg_match("/image\//", $_FILES["fichero"]["type"])){
     //Comprobamos los parametros
     $descripcion= $_POST['descripcion'];
     $titulo = $_POST['titulo'];
@@ -38,6 +38,8 @@ if(isset($_POST) && isset($_POST["titulo"]) && $_POST["titulo"]!="" && isset($_F
       //echo("$sentencia");
       header("location: anadirfoto.php?success");
     }
+  } else {
+    header("location: anadirfoto.php?error=2");
   }
 }
 
@@ -58,6 +60,9 @@ if (isset($_GET["error"])) {
     break;
     case 1:
     echo "Se ha producido un error con la foto";
+    break;
+    case 2:
+    echo "El fichero introducido no es válido. Debe ser una foto";
     break;
     default:
     echo "error desconocido";

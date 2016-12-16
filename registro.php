@@ -75,14 +75,13 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
           $fecha = $trozos[0]."-".$trozos[1]."-".$trozos[2];
 
 
-          if(!isset($_FILES["foto"]))
+          if(isset($_FILES["foto"]) && $_FILES["foto"]["error"] ==4 )
           {
             $foto = "perfil.jpg";
-            $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, Foto, FRegistro, Pais)
-            VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$foto','$fRegistro',$pais)";
-            $resultado= mysqli_query($bbdd, $registro);
+            $flag = true;
+            
           }
-
+          
           else
           {
             if($_FILES["foto"]["error"]){
@@ -93,14 +92,18 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
               include_once("includes/funciones.php");
               $foto = sanear_string($user)."_".time()."_".sanear_string($_FILES["foto"]["name"]);
               if(@move_uploaded_file($_FILES["foto"]["tmp_name"], "images/$foto")){
-                $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Foto, FRegistro, Pais)
-                VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$foto','$fRegistro',$pais)";
-                $resultado= mysqli_query($bbdd, $registro);
+                $flag = true;
+                
               }
+            } else {
+              header("location: registro.php?error=11");
             }
           }
-
-          $resultado= mysqli_query($bbdd, $registro);
+          if($flag == true){
+              $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Foto, FRegistro, Pais)
+                    VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$foto','$fRegistro',$pais)";
+              $resultado= mysqli_query($bbdd, $registro);
+          }
 
           if($sexo == 1) //Los cambiamos para que al imprimirlos sea legible para el usuario
           $sexo = "Hombre";

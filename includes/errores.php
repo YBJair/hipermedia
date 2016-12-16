@@ -33,7 +33,11 @@ if (isset($_GET["error"])) {
     echo " Fecha no válida";
     break;
     case 10:
-    echo "Se ha producido un error en la foto".$_FILES["foto"]["error"];
+    echo "Se ha producido un error en la foto";
+    break;
+    case 11:
+    echo "El fichero introducido no es válido. Debe ser una foto";
+    break;
     default:
     echo "error desconocido";
     break;

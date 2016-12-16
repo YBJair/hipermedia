@@ -8,33 +8,56 @@ if(isset($_SESSION["remember"])==false){
 include("includes/headerC.php");
 
 
-if(isset($_POST) && isset($_POST["titulo"]) && $_POST["titulo"]!="" && $_POST["fichero"]!="" && isset($_FILES["fichero"])){
-  //Comprobamos los parametros
-  $descripcion= $_POST['descripcion'];
-  $titulo = $_POST['titulo'];
-  $pais= $_POST['country'];
-  //$fichero = $_POST['fichero'];
-  $freg= date("Y-m-d H:i:s");
-  $album = $_POST["album"];
+if(isset($_POST) && isset($_POST["titulo"]) && $_POST["titulo"]!="" && isset($_FILES["fichero"])){
+  if($_FILES["fichero"]["error"]){
+    header("location: menuperfil.php?error=0");
+    exit;
+  }
+  else{
+    //Comprobamos los parametros
+    $descripcion= $_POST['descripcion'];
+    $titulo = $_POST['titulo'];
+    $pais= $_POST['country'];
+    $freg= date("Y-m-d H:i:s");
+    $album = $_POST["album"];
 
-  if(isset($_POST['fecha']) && $_POST['fecha']!= ""){
-    $fecha = $_POST['fecha'];
+    if(isset($_POST['fecha']) && $_POST['fecha']!= ""){
+      $fecha = $_POST['fecha'];
+    }
+    else {
+      $fecha= date("Y-m-d");
+    }
+
+
+    include_once("includes/funciones.php");
+    $foto = "images/".sanear_string($nombreUsu)."_".sanear_string($album)."_".time()."_".sanear_string($_FILES["fichero"]["name"]);
+    if(@move_uploaded_file($_FILES["fichero"]["tmp_name"], "$foto")){
+      //prepare ur anus
+      $sentencia= "INSERT INTO fotos VALUES (NULL, '$titulo', '$descripcion','$fecha', $album, '$foto', '$freg', $pais)";
+      $resultado = mysqli_query($bbdd, $sentencia);
+      //echo("$sentencia");
+      header("location: anadirfoto.php?success");
+    }
   }
-  else {
-    $fecha= date("Y-m-d");
-  }
-  //BEWARE SQL INJECTIONS
-  $sentencia= "INSERT INTO fotos VALUES (NULL, '".$titulo."', '".$descripcion."','".$fecha."', ".$album.", $fichero, '".$freg."', ".$pais.")";
-  //$resultado = mysqli_query($bbdd, $sentencia);
-  echo("$sentencia");
-  echo("<h3 class='index'> Inserción realizada </p></h3>");
 }
 
+
+if (isset($_GET["success"])) {
+$contenido = <<<REG
+<div class="resultadoRegistro">
+<h3>La foto se ha cambiado correctamente</h3>
+</div>
+REG;
+echo $contenido;
+}
 if (isset($_GET["error"])) {
   echo "<h3 class='index'>";
   switch($_GET["error"]){
     case 0:
     echo "Introduce los datos correctamente";
+    break;
+    case 1:
+    echo "Se ha producido un error con la foto";
     break;
     default:
     echo "error desconocido";

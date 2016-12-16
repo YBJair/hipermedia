@@ -77,7 +77,7 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
 
           if(!isset($_FILES["foto"]))
           {
-            $foto = "perfil.jpg"
+            $foto = "perfil.jpg";
             $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, Foto, FRegistro, Pais)
             VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$foto','$fRegistro',$pais)";
             $resultado= mysqli_query($bbdd, $registro);
@@ -85,7 +85,7 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
 
           else
           {
-            if($_FILES["foto"]["error"]){
+            if(8){
               header("location: registro.php?error=10");
               exit;
             }

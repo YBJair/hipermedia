@@ -1,0 +1,5 @@
+En cada linea se pondra una imagen haciendo referencia a su direccion, nombre de critico y comentario separados por <> Se ignorará esta primera línea al tratar el fichero
+1<>Manolo<>Esta es una muy buena foto para dar la razón
+4<>Jisus<>Crítica mordaz de la situación estadounidense
+3<>Bill Puertas<>Hay que rellenar
+5<>Alguien<>Enserio, necesito rellenar

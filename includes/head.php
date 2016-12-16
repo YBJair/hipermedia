@@ -12,6 +12,7 @@ if(!$bbdd){
   echo '</p>';
   exit;
 }
+define("CRITICA","ficheros/critica.txt")
 ?>
 <!DOCTYPE html>
 <html lang="es">

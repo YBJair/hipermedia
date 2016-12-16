@@ -51,7 +51,7 @@ if(isset($_GET)){
 <h3 id="fecha">Fecha: $fecha</h3>
 <figure id="detalleImg"><img width="70%" src='$foto' alt='$titulo'/></figure>
 
-<div class="propietarioImagen"><p>Subido por: </p> <p><img src="$fotopropietario" alt="foto de perfil"/><span>$nombrepropietario</span></p></div>
+<div class="propietarioImagen"><h3>Subido por: </h3> <p><img src="$fotopropietario" alt="foto de perfil"/><span>$nombrepropietario</span></p></div>
 
 <h3>Detalles</h3>
 <ul>

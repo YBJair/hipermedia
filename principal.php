@@ -12,11 +12,11 @@ if(($fichero = @file(CRITICA)) == false){
 } else {
     if(isset($_COOKIE["random"])){
       do{
-        $crit = mt_rand(1,sizeof($fichero)-1);
+        $crit = mt_rand(1,count($fichero)-1);
       }while($crit == $_COOKIE["random"]);
       setcookie("random",$crit);
     } else{
-      $crit = mt_rand(1,sizeof($fichero)-1);
+      $crit = mt_rand(1,count($fichero)-1);
       setcookie("random",$crit);
     }
     

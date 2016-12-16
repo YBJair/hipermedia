@@ -19,10 +19,14 @@ if(isset($_POST) && isset($_POST["titulo"])){
   else {
     $fecha= date("Y-m-d");
   }
-  //BEWARE SQL INJECTIONS
+  //prepare ur anus
   $sentencia= "INSERT INTO albumes VALUES (NULL, '$titulo', '$descripcion', '$fecha', $pais, $idUsu)";
   $resultado = mysqli_query($bbdd, $sentencia);
-  echo("<p class=registro> Álbum creado</p>");
+  header("location: crearalbum.php?success");
+
+}
+if (isset($_GET["success"])) {
+  echo("<div class='resultadoRegistro'><h3>Álbum creado</h3></div>");
 }
 ?>
 

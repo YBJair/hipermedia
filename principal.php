@@ -63,7 +63,7 @@ echo <<<HEREDOC
   <p id="detalleImg">
       <a href='imagen.php?id=$id' ><img  width="70%"  src='$foto' alt='$titulo'/></a>
   </p> 
-  <div class="propietarioImagen"><h3>Subido por: </h3> <p><img src="$fotoUsu" alt="foto de perfil"/><span>$nomUsu</span></p></div>
+  <div class="propietarioImagen"><h3>Subido por: </h3> <p><img src="images/$fotoUsu" alt="foto de perfil"/><span>$nomUsu</span></p></div>
   <h3>Detalles</h3>
 
   <ul>

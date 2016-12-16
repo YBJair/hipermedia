@@ -23,6 +23,14 @@
     $resultado = mysqli_query($bbdd,$sentencia);
     echo ("<p class= registro>Cambios guardados</p>");
   }
+  if(isset($_POST["borrar"])){
+    $sentencia = "UPDATE Usuarios u SET Foto = perfil.jpg where u.idUsuario = ".$idUsu;
+    $resultado = mysqli_query($bbdd,$sentencia);
+    echo ("<p class= registro>Imagen borrada</p>");
+  }
+  if(isset($_POST["foto"])){
+    //Mete aqui lo que haya que hacer para modificar la foto
+  }
 ?>
   <a class='boton' href='principal.php'><i class="material-icons">arrow_back</i>Volver</a>
   <main>
@@ -38,6 +46,13 @@ Imagen de perfil: <br/><img src="$fotoUsu" alt="foto de perfil"/>
 HTML;
       echo $html;
       ?>
+      <form action="menuperfil.php" method="POST">
+        <p><input type="file" name="foto"></p>
+        <button type="submit">Modificar foto</button>
+      </form>
+      <form action="menuperfil.php" method="POST">
+        <button type="submit" name ="borrar" value="true">Borrar foto</button>
+      </form>
       <hr/>
   <form action="perfilModificar.php">
     <button type="submit" name="button">Modificar datos</button>

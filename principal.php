@@ -8,9 +8,18 @@ if(isset($_SESSION["remember"])==false){
 }
 
 if(($fichero = @file(CRITICA)) == false){
-  echo("No se pudo abrir el fichero");
+  echo("No se pudo abrir el fichero para la sección de selección de críticos");
 } else {
-    $crit = mt_rand(1,sizeof($fichero)-1);
+    if(isset($_COOKIE["random"])){
+      do{
+        $crit = mt_rand(1,sizeof($fichero)-1);
+      }while($crit == $_COOKIE["random"]);
+      setcookie("random",$crit);
+    } else{
+      $crit = mt_rand(1,sizeof($fichero)-1);
+      setcookie("random",$crit);
+    }
+    
     $linea = $fichero[$crit];
     $info = explode("<>",$linea);
 
@@ -42,7 +51,7 @@ if(($fichero = @file(CRITICA)) == false){
     
         
     }
-  }
+  
 
 ?>
 <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
@@ -65,6 +74,7 @@ echo <<<HEREDOC
   </ul>
 </main>
 HEREDOC;
+}
 ?>
 <main>
 

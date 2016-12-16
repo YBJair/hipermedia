@@ -17,13 +17,29 @@ if(($fichero = @file(CRITICA)) == false){
     $id = $info[0];
     $critico = $info[1];
     $coment = $info[2];
-    $resultado= mysqli_query($bbdd, "SELECT f.Fichero, f.Titulo, f.Fecha, f.Pais, p.NomPais FROM fotos f, paises p WHERE f.Pais=p.idPais and f.idFoto =" .$id);
-    while($fila = $resultado->fetch_assoc()){
+    $sentencia = "SELECT f.Titulo, f.Fichero, f.Fecha, f.Album, p.NomPais, a.Titulo as TituloAlbum, u.NomUsuario, u.Foto 
+          FROM fotos f, paises p , albumes a, usuarios u
+          WHERE f.Pais=p.idPais and f.idFoto = $id and a.idAlbum = f.Album and u.idUsuario = a.Usuario";
+    $resultado= mysqli_query($bbdd, $sentencia);
+    if ($resultado!=false && $resultado->num_rows> 0){
+        $fila = $resultado->fetch_assoc();
         $foto= $fila ["Fichero"];
         $titulo= $fila ["Titulo"];
         $fecha= $fila ["Fecha"];
-        $pais= $fila ["Pais"];
         $nombrepais= $fila["NomPais"];
+        $nomUsu = $fila["NomUsuario"];
+        $titAlbum = $fila["TituloAlbum"];
+        $idAlbum = $fila["Album"];
+        $fotoUsu = $fila["Foto"];
+
+        if($nombrepais==null){
+      $nombrepais="Desconocido";
+    }
+
+    if($idAlbum==null){
+      $titAlbum="No tiene album";
+    }
+    
         
     }
   }
@@ -38,10 +54,15 @@ echo <<<HEREDOC
   <p id="detalleImg">
       <a href='imagen.php?id=$id' ><img  width="70%"  src='$foto' alt='$titulo'/></a>
   </p> 
-  
-  <h3> $nombrepais</h3>
-  <p><b>Crítico: </b> $critico</p>
-  <p><b>Comentario: </b> $coment</p>
+  <div class="propietarioImagen"><h3>Subido por: </h3> <p><img src="$fotoUsu" alt="foto de perfil"/><span>$nomUsu</span></p></div>
+  <h3>Detalles</h3>
+
+  <ul>
+    <li><b>Pais:</b> $nombrepais</li>
+    <li><b>Album:</b> <a href="album.php?id=$idAlbum">$titAlbum</a></li>
+    <li><b>Crítico: </b> $critico</li>
+    <li><b>Comentario: </b> $coment</li>
+  </ul>
 </main>
 HEREDOC;
 ?>

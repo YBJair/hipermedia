@@ -43,14 +43,70 @@
       } else header("location: bajaUsuario.php?error=6");
     }else header("location: bajaUsuario.php?error=0");
   }
-  $sentencia= "SELECT idFoto, Fichero, Titulo, Fecha, Pais, NomPais FROM fotos, paises WHERE idPais=Pais ORDER BY FRegistro DESC LIMIT 5";
-  $resultado= mysqli_query($bbdd, $sentencia);
+  if(($fichero = @file(CRITICA)) == false){
+  echo("No se pudo abrir el fichero");
+} else {
+    $crit = mt_rand(1,sizeof($fichero)-1);
+    $linea = $fichero[$crit];
+    $info = explode("<>",$linea);
 
+    $id = $info[0];
+    $critico = $info[1];
+    $coment = $info[2];
+    $sentencia = "SELECT f.Titulo, f.Fichero, f.Fecha, f.Album, p.NomPais, a.Titulo as TituloAlbum, u.NomUsuario, u.Foto 
+          FROM fotos f, paises p , albumes a, usuarios u
+          WHERE f.Pais=p.idPais and f.idFoto = $id and a.idAlbum = f.Album and u.idUsuario = a.Usuario";
+    $resultado= mysqli_query($bbdd, $sentencia);
+    if ($resultado!=false && $resultado->num_rows> 0){
+        $fila = $resultado->fetch_assoc();
+        $foto= $fila ["Fichero"];
+        $titulo= $fila ["Titulo"];
+        $fecha= $fila ["Fecha"];
+        $nombrepais= $fila["NomPais"];
+        $nomUsu = $fila["NomUsuario"];
+        $titAlbum = $fila["TituloAlbum"];
+        $idAlbum = $fila["Album"];
+        $fotoUsu = $fila["Foto"];
+
+        if($nombrepais==null){
+      $nombrepais="Desconocido";
+    }
+
+    if($idAlbum==null){
+      $titAlbum="No tiene album";
+    }
+    
+        
+    }
+  }
 
 ?>
 <h1 class="index"> Tus imágenes donde quieras, cuando quieras</h1>
+<?php
+echo <<<HEREDOC
+<main>
+  <h2 id="titulo">$titulo</h2>
+  <h3 id="fecha">Fecha: $fecha</h3>
+  <p id="detalleImg">
+      <a href='imagen.php?id=$id' ><img  width="70%"  src='$foto' alt='$titulo'/></a>
+  </p> 
+  <div class="propietarioImagen"><h3>Subido por: </h3> <p><img src="$fotoUsu" alt="foto de perfil"/><span>$nomUsu</span></p></div>
+  <h3>Detalles</h3>
+
+  <ul>
+    <li><b>Pais:</b> $nombrepais</li>
+    <li><b>Album:</b> <a href="album.php?id=$idAlbum">$titAlbum</a></li>
+    <li><b>Crítico: </b> $critico</li>
+    <li><b>Comentario: </b> $coment</li>
+  </ul>
+</main>
+HEREDOC;
+?>
 <main>
 <?php
+  $sentencia= "SELECT idFoto, Fichero, Titulo, Fecha, Pais, NomPais FROM fotos, paises WHERE idPais=Pais ORDER BY FRegistro DESC LIMIT 5";
+  $resultado= mysqli_query($bbdd, $sentencia);
+
 
   if($resultado!=false && !mysqli_error($bbdd)){
     while($fila=$resultado->fetch_assoc()){

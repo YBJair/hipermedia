@@ -42,9 +42,9 @@ if(isset($_FILES["foto"])){
     header("location: menuperfil.php?error=0");
     exit;
   }
-  else{
-
+  else if(preg_match("/image\//", $_FILES["foto"]["type"])){
     include_once("includes/funciones.php");
+    
     $foto = sanear_string($nombreUsu)."_".time()."_".sanear_string($_FILES["foto"]["name"]);
     if(@move_uploaded_file($_FILES["foto"]["tmp_name"], "images/$foto")){
       if(!preg_match("/perfil.jpg/", $fotoUsu))
@@ -72,7 +72,7 @@ REG;
 REG;
   }
 echo $contenido;
-  
+
 }
 
 if (isset($_GET["error"])) {

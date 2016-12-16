@@ -85,11 +85,11 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
 
           else
           {
-            if(8){
+            if($_FILES["foto"]["error"]){
               header("location: registro.php?error=10");
               exit;
             }
-            else{
+            else if(preg_match("/image\//", $_FILES["foto"]["type"])){
               include_once("includes/funciones.php");
               $foto = sanear_string($user)."_".time()."_".sanear_string($_FILES["foto"]["name"]);
               if(@move_uploaded_file($_FILES["foto"]["tmp_name"], "images/$foto")){

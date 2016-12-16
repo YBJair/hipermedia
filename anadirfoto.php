@@ -13,7 +13,7 @@ if(isset($_POST) && isset($_POST["titulo"]) && $_POST["titulo"]!="" && isset($_F
     header("location: menuperfil.php?error=0");
     exit;
   }
-  else{
+  else if(preg_match("/image\//", $_FILES["foto"]["type"])){
     //Comprobamos los parametros
     $descripcion= $_POST['descripcion'];
     $titulo = $_POST['titulo'];

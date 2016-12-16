@@ -77,8 +77,9 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
 
           if(!isset($_FILES["foto"]))
           {
-            $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, FRegistro, Pais)
-            VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$fRegistro',$pais)";
+            $foto = "perfil.jpg"
+            $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email,Sexo, FNacimiento,Ciudad, Foto, FRegistro, Pais)
+            VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$foto','$fRegistro',$pais)";
             $resultado= mysqli_query($bbdd, $registro);
           }
 
@@ -89,8 +90,9 @@ if(isset($_POST["nombre"]) || isset($_POST["pass"]) || isset($_POST["pass2"]) ||
               exit;
             }
             else{
-              $foto = $user."_".time()."_".$_FILES["foto"]["name"];
-              if(move_uploaded_file($_FILES["foto"]["tmp_name"], "images/$foto")){
+              include_once("includes/funciones.php");
+              $foto = sanear_string($user)."_".time()."_".sanear_string($_FILES["foto"]["name"]);
+              if(@move_uploaded_file($_FILES["foto"]["tmp_name"], "images/$foto")){
                 $registro = "INSERT INTO usuarios (NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Foto, FRegistro, Pais)
                 VALUES('$user','$pass','$email',$sexo,'$fecha','$ciudad','$foto','$fRegistro',$pais)";
                 $resultado= mysqli_query($bbdd, $registro);

@@ -26,9 +26,14 @@ if(isset($_POST["nombre"])){
 
 //BORRAR FOTO
 if(isset($_POST["borrar"])){
-  $sentencia = "UPDATE Usuarios u SET Foto = 'perfil.jpg' WHERE u.idUsuario = $idUsu";
-  $resultado = mysqli_query($bbdd,$sentencia);
+    if(!preg_match("/perfil.jpg/", $fotoUsu)){
+      $sentencia = "UPDATE Usuarios u SET Foto = 'perfil.jpg' WHERE u.idUsuario = $idUsu";
+      $resultado = mysqli_query($bbdd,$sentencia);
+      unlink($fotoUsu);
+    }
   echo ("<p class= registro>Imagen borrada</p>");
+  header("location: menuperfil.php?success=1");
+
 }
 
 //MODIFICAR FOTO
@@ -53,12 +58,21 @@ if(isset($_FILES["foto"])){
   header("location: menuperfil.php?success=0");
 }
 if (isset($_GET["success"])) {
-$contenido = <<<REG
-<div class="resultadoRegistro">
-<h3>La foto se ha cambiado correctamente</h3>
-</div>
+  if($_GET["success"] == 0){
+      $contenido = <<<REG
+      <div class="resultadoRegistro">
+      <h3>La foto se ha cambiado correctamente</h3>
+      </div>
 REG;
+  } else if($_GET["success"] == 1){
+    $contenido = <<<REG
+      <div class="resultadoRegistro">
+      <h3>La foto se ha borrado correctamente</h3>
+      </div>
+REG;
+  }
 echo $contenido;
+  
 }
 
 if (isset($_GET["error"])) {
@@ -84,7 +98,7 @@ if (isset($_GET["error"])) {
   $html = <<<HTML
 <p>Usuario: $nombreUsu </p>
 <p>Email: $emailUsu</p>
-Imagen de perfil: <br/><img src="$fotoUsu" alt="foto de perfil"/>
+Imagen de perfil: <br/><img src="$fotoUsu" width="10%" alt="foto de perfil"/>
 HTML;
   echo $html;
   ?>

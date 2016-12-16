@@ -8,12 +8,12 @@ if(isset($_SESSION["remember"])==false){
 include("includes/headerC.php");
 
 
-if(isset($_POST) && isset($_POST["titulo"]) && isset($_POST["fichero"]) && $_POST["titulo"]!="" && $_POST["fichero"]!=""){
+if(isset($_POST) && isset($_POST["titulo"]) && $_POST["titulo"]!="" && $_POST["fichero"]!="" && isset($_FILES["fichero"])){
   //Comprobamos los parametros
   $descripcion= $_POST['descripcion'];
   $titulo = $_POST['titulo'];
   $pais= $_POST['country'];
-  $fichero = $_POST['fichero'];
+  //$fichero = $_POST['fichero'];
   $freg= date("Y-m-d H:i:s");
   $album = $_POST["album"];
 
@@ -46,7 +46,7 @@ if (isset($_GET["error"])) {
 
 <h1 class="index">Añadir foto a album</h1>
 <main>
-  <form action="anadirfoto.php" method="POST">
+  <form action="anadirfoto.php" method="POST" enctype="multipart/form-data">
     <p><label for="title">Titulo: </label><input id="title" name="titulo" type="text" required/></p>
     <p>
       <label for="descripcion">Descripción: </label><input id="descripcion" type="text" name="descripcion" placeholder="descripcion">

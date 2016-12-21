@@ -129,7 +129,6 @@ HEREDOC;
   $sentencia= "SELECT idFoto, Fichero, Titulo, Fecha, Pais, NomPais FROM fotos, paises WHERE idPais=Pais ORDER BY FRegistro DESC LIMIT 5";
   $resultado= mysqli_query($bbdd, $sentencia);
 
-
   if($resultado!=false && !mysqli_error($bbdd)){
     while($fila=$resultado->fetch_assoc()){
       $id= $fila ["idFoto"];

@@ -13,7 +13,7 @@ if(isset($_GET)){
   if(isset($_GET['id'])){
     $id= $_GET['id'];
 
-    $sentencia="SELECT f.Titulo, f.Fichero, f.Fecha, f.Album, NomPais, a.Titulo as TituloAlbum, u.NomUsuario, u.Foto
+    $sentencia="SELECT f.Titulo, f.Fichero, f.Fecha, f.Album, NomPais,  u.idUsuario, a.Titulo as TituloAlbum, u.NomUsuario, u.Foto
     FROM fotos f, paises, albumes a, usuarios u
     WHERE f.idFoto = $id AND f.Pais=paises.idPais AND a.idAlbum = f.Album AND u.idUsuario = a.Usuario";
     //echo $sentencia;
@@ -29,6 +29,7 @@ if(isset($_GET)){
   <?php
   if ($resultado!=false && $resultado->num_rows> 0){
     $fila=$resultado->fetch_assoc();
+    $id = $fila["idUsuario"];
     $titulo= $fila ["Titulo"];
     $foto= $fila ["Fichero"];
     $fecha= $fila ["Fecha"];
@@ -51,7 +52,7 @@ if(isset($_GET)){
 <h3 id="fecha">Fecha: $fecha</h3>
 <figure id="detalleImg"><img width="70%" src='$foto' alt='$titulo'/></figure>
 
-<div class="propietarioImagen"><h3>Subido por: </h3> <p><img src="$fotopropietario" alt="foto de perfil"/><span>$nombrepropietario</span></p></div>
+<div class="propietarioImagen"><h3>Subido por: </h3> <p><a href="usuarioDetallado.php?id=$id"> <img src="$fotopropietario" alt="foto de perfil"/><span>$nombrepropietario</span></a></p></div>
 
 <h3>Detalles</h3>
 <ul>

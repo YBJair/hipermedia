@@ -57,7 +57,7 @@ if(isset($_GET)){
 <h3>Detalles</h3>
 <ul>
   <li>Pais: $nombrepais</li>
-  <li>Album: <a href="album.php?id=$idalbum">$nombrealbum</a></li>
+  <li>Album: <a href="verAlbum.php?id=$idalbum">$nombrealbum</a></li>
 </ul>
 
 HTML;

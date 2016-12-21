@@ -1,5 +1,5 @@
 <?php
-  $title= "Solicitar Album";
+  $title= "Ver Álbum";
   include("includes/head.php");
   include("includes/headerC.php");
 
@@ -36,7 +36,7 @@
                 $fTitulo = $datos["fTitulo"];
                 $foto = $datos["Fichero"];
                 $idF = $datos["idFoto"];
-                $fichero = $datos["Fichero"];
+                
                 ob_start();
                 $img = getimagesize($foto);
 

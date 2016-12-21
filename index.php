@@ -153,5 +153,22 @@ HEREDOC2;
 
 ?>
 </main>
+<main>
+  <?php 
+  
+  
+  
+  include("includes/grafico.php");
+
+
+  
+     
+  $string = "<img src = $img_src alt = grafica />";
+  echo("<h2> Gráfica de subida de los 7 últimos días</h2>");
+  echo("$string");
+  
+?>
+
+</main>
 
 <?php include_once("includes/footer.php");?>

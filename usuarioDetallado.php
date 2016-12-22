@@ -18,9 +18,12 @@
             where u.idUsuario = $id and p.idPais = u.Pais";
       $datos = mysqli_query($bbdd, $sentencia);
 
-      $sentencia = "SELECT  a.Titulo, idAlbum, Fichero
+      /*$sentencia = "SELECT  a.Titulo, idAlbum, Fichero
                 from albumes a, fotos f
-                where a.Usuario = $id and a.idAlbum = f.Album";
+                where a.Usuario = $id and a.idAlbum = f.Album";*/
+      $sentencia = "SELECT idAlbum, Titulo, Descripcion
+                FROM albumes a
+                WHERE a.Usuario = $id";
       $albumes = mysqli_query($bbdd, $sentencia);
 
       if ($datos!=false && $datos->num_rows> 0){
@@ -57,7 +60,19 @@ HTML;
                   if($titulo != $album["Titulo"]){
                   $titulo = $album["Titulo"];
                   $id = $album["idAlbum"];
-                  $foto = $album["Fichero"];
+
+                  $sentencia = "SELECT Fichero
+              FROM fotos f, albumes a
+              WHERE f.Album = $id limit 1";
+             $fotos = mysqli_query($bbdd, $sentencia);
+            
+             if($fotos != false && !mysqli_error($bbdd)){
+                if($fotoA = $fotos->fetch_assoc())
+                     $foto = $fotoA["Fichero"]; 
+                else $foto = "images/perfil.jpg";
+            }
+
+                  
 //MINIATURIZACION
                   ob_start();
                 $img = getimagesize($foto);

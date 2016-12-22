@@ -16,21 +16,38 @@ include("includes/headerC.php");
   <ol>
 
   <?php
-  $sentencia = "SELECT idAlbum, a.Titulo, Descripcion, Fichero
+  $sentencia = "SELECT idAlbum, Titulo, Descripcion
+                FROM albumes a
+                WHERE a.Usuario = $idUsu";
+
+
+
+  /*$sentencia = "SELECT idAlbum, a.Titulo, Descripcion, Fichero
                 FROM albumes a, fotos f
-                WHERE a.Usuario=$idUsu and f.Album = a.idAlbum";
+                WHERE a.Usuario=$idUsu and f.Album = a.idAlbum";*/
   $resultado = mysqli_query($bbdd, $sentencia);
 
   if($resultado!=false && !mysqli_error($bbdd)){
     $idalbum = "";
     while($fila=$resultado->fetch_assoc()){
-          if($idalbum != $fila["idAlbum"]){
+          //if($idalbum != $fila["idAlbum"]){
           $idalbum= $fila["idAlbum"];
           $tituloAlbum= $fila["Titulo"];
-          $foto = $fila["Fichero"];
+          
           $descripcionAlbum= "Descripción: ".$fila["Descripcion"];
           if($fila["Descripcion"]==null)
               $descripcionAlbum="No tiene descripción";
+
+          $sentencia = "SELECT Fichero
+              FROM fotos f, albumes a
+              WHERE f.Album = $idalbum limit 1";
+          $resultadoFoto = mysqli_query($bbdd, $sentencia);        
+          if($resultadoFoto != false && !mysqli_error($bbdd)){
+            if($filaFoto = $resultadoFoto->fetch_assoc())
+              $foto = $filaFoto["Fichero"]; 
+              else $foto = "images/perfil.jpg";
+          }
+             
 
            ob_start();
                 $img = getimagesize($foto);
@@ -61,7 +78,7 @@ HTML;
           imagedestroy($src_img);
           imagedestroy($marco);  
           echo $html;
-        }
+        //}
       }
   }
   ?>

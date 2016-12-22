@@ -82,7 +82,8 @@ HTML;
             }
         }
         echo($back);
-      }else  echo "<h1> Error 404: Álbum no encontrado</h1>\n";
+      }else if($resultado->num_rows == 0){ echo "<main><h1> Álbum vacío</h1></main>\n";}
+      else  echo "<h1> Error 404: Álbum no encontrado</h1>\n";
          
       
 
